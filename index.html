@@ -413,7 +413,7 @@
             <textarea id="panelInput" placeholder="Tempel/Paste seluruh log data teks dari PANEL di sini..." onpaste="handlePanelInputPaste(event)" oninput="parsePanelData()"></textarea>
             
             <div class="action-buttons">
-                <button class="btn btn-copy" onclick="copyPanelMainData()">COPY DATA (TIME, USER, COIN, DEPO)</button>
+                <button class="btn btn-copy" onclick="copyPanelMainData()">COPY DATA (TIME, USER, COIN & DEPO)</button>
                 <button class="btn btn-copy-alt" onclick="copyPanelTxIdData()">COPY KETERANGAN (TRANSACTION ID)</button>
                 <button class="btn btn-delete" onclick="clearPanelData()">HAPUS ALL</button>
             </div>
@@ -597,13 +597,13 @@
     function copyIdAndNominal() {
         if (parsedCsvData.length === 0) return;
         const textToCopy = parsedCsvData.map(item => `${item.id}\t${item.formattedNominal}`).join('\n');
-        navigator.clipboard.writeText(textToCopy).then(() => { showToast('✅ ID & Nominal berhasil dicopy!'); });
+        navigator.clipboard.writeText(textToCopy).then(() => { showToast('✅ ID & Nominal Berhasil Dicopy!'); });
     }
 
     function copyRefNumber() {
         if (parsedCsvData.length === 0) return;
         const textToCopy = parsedCsvData.map(item => item.ref).join('\n');
-        navigator.clipboard.writeText(textToCopy).then(() => { showToast('✅ Ref Number berhasil dicopy!'); });
+        navigator.clipboard.writeText(textToCopy).then(() => { showToast('✅ Ref Number Berhasil Dicopy!'); });
     }
 
     function clearCsvData() {
@@ -693,7 +693,7 @@
         ).join('\n');
 
         navigator.clipboard.writeText(textToCopy).then(() => {
-            showToast('✅ Menu 1: Data Utama VENDOR dicopy!');
+            showToast('✅ Data Utama VENDOR Berhasil Dicopy!');
         });
     }
 
@@ -702,7 +702,7 @@
         const textToCopy = parsedPanelDataArray.map(item => item.transactionId).join('\n');
 
         navigator.clipboard.writeText(textToCopy).then(() => {
-            showToast('✅ Menu 2: Semua TRANSACTION ID dicopy!');
+            showToast('✅ Data TRANSACTION ID Berhasil Dicopy!');
         });
     }
 
