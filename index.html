@@ -3,533 +3,816 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AKBAR_AVANZA - DATA PARSE ADMIN & MOTION</title>
+    <title>ADMIN DATA PARSE MASTER - AKBAR EDITION</title>
     <style>
         :root {
-            --bg-dark: #09090b;
-            --sidebar-bg: #111115;
-            --container-bg: #16161e;
-            --gold-accent: #ff9900;
-            --gold-hover: #ffaa22;
-            --text-main: #e4e4e7;
-            --text-muted: #a1a1aa;
-            --btn-green: #1b4d22;
-            --btn-green-text: #4af271;
-            --btn-red: #4d1b1b;
-            --btn-red-text: #f24a4a;
+            --bg-color: #020613;
+            --container-bg: rgba(6, 11, 25, 0.75);
+            --border-color: #ff9900;
+            --neon-blue: #00f0ff;
+            --text-color: #e2e8f0;
+            --btn-green: #0f4c2c;
+            --btn-green-text: #4ade80;
+            --btn-red: #5c1d1d;
+            --btn-red-text: #f87171;
+            --btn-purple: #3b0764;
+            --btn-purple-text: #d8b4fe;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+        body, html {
             margin: 0;
             padding: 0;
-            display: flex;
+            width: 100%;
             min-height: 100vh;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            overflow-x: hidden;
         }
 
-        /* --- SIDEBAR STYLE (Persis Gaya Gambar Referensi) --- */
-        .sidebar {
-            width: 280px;
-            background-color: var(--sidebar-bg);
-            border-right: 1px solid #22222a;
-            display: flex;
-            flex-direction: column;
-            padding: 25px 15px;
-            box-sizing: border-box;
-            flex-shrink: 0;
-        }
-
-        .profile-section {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 35px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #22222a;
-        }
-
-        .profile-avatar {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #1b3d36, #e06c3b);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 22px;
-            color: #fff;
-            border: 1px solid rgba(255, 153, 0, 0.3);
-            box-shadow: 0 0 10px rgba(255, 153, 0, 0.1);
-        }
-
-        .profile-info h3 {
-            margin: 0;
-            font-size: 15px;
-            color: var(--gold-accent);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .profile-info p {
-            margin: 3px 0 0 0;
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        .menu-group-title {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #555562;
-            margin: 10px 0 12px 10px;
-            font-weight: bold;
-        }
-
-        .menu-item {
-            background: none;
-            border: 1px solid transparent;
-            color: var(--text-muted);
-            text-align: left;
-            padding: 14px 20px;
-            font-size: 13px;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            margin-bottom: 8px;
+        /* Background Gambar Tetap */
+        .bg-matrix-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            box-sizing: border-box;
-            letter-spacing: 0.5px;
+            height: 100%;
+            background: 
+                linear-gradient(135px, rgba(2, 6, 19, 0.95) 20%, rgba(5, 12, 31, 0.8) 50%, rgba(2, 6, 19, 0.97) 100%),
+                url('https://images.alphacoders.com/135/1351119.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            z-index: -3;
         }
 
-        .menu-item:hover {
-            color: #fff;
-            background: rgba(255, 153, 0, 0.03);
+        /* Canvas Efek Bergerak Pro Master */
+        #cyberCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.45;
         }
 
-        .menu-item.active {
-            color: var(--gold-accent);
-            background: rgba(255, 153, 0, 0.05);
-            border: 1px solid rgba(255, 153, 0, 0.4);
-            box-shadow: inset 0 0 8px rgba(255, 153, 0, 0.05);
-        }
-
-        /* --- MAIN CONTENT LAYOUT --- */
-        .main-content {
-            flex-grow: 1;
-            padding: 30px;
-            box-sizing: border-box;
-            overflow-y: auto;
+        .main-container {
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px 15px;
+            box-sizing: border-box;
         }
 
-        .app-container {
+        .wrapper {
             width: 100%;
-            max-width: 950px;
+            max-width: 1000px;
             background: var(--container-bg);
-            border: 1px solid #22222a;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            display: none; /* Disembunyikan secara default */
-        }
-
-        .app-container.active {
-            display: block; /* Hanya muncul jika menu aktif */
+            backdrop-filter: blur(25px) saturate(210%);
+            -webkit-backdrop-filter: blur(25px) saturate(210%);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            padding: 35px;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 
+                0 0 50px rgba(0, 240, 255, 0.15),
+                0 30px 60px rgba(0, 0, 0, 0.85), 
+                inset 0 1px 3px rgba(255, 255, 255, 0.1);
         }
 
         .header-title {
-            color: var(--gold-accent);
-            font-size: 24px;
-            font-weight: bold;
+            color: var(--border-color);
+            font-size: 28px;
+            font-weight: 900;
             margin-bottom: 5px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 153, 0, 0.6), 0 0 2px #fff;
         }
 
         .sub-title {
             font-size: 11px;
-            color: var(--text-muted);
-            margin-bottom: 25px;
+            color: #94a3b8;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* --- STYLING UNTUK ELEMEN DI DALAM PANEL --- */
+        .tab-menu {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+            padding-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(0, 0, 0, 0.6);
+            color: #94a3b8;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 8px;
+            font-size: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 0.5px;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(90deg, #ff9900, #ffb74d);
+            color: #030712;
+            border-color: #ff9900;
+            box-shadow: 0 0 20px rgba(255, 153, 0, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-out; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         textarea {
             width: 100%;
-            height: 180px;
-            background: rgba(255, 255, 255, 0.95);
-            color: #111;
-            border: none;
+            height: 150px;
+            background: rgba(3, 7, 18, 0.75);
+            color: #fff;
+            border: 1px dashed var(--border-color);
             border-radius: 8px;
             padding: 15px;
-            font-family: monospace;
-            font-size: 14px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 13px;
             box-sizing: border-box;
             resize: vertical;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.8);
         }
 
-        .placeholder-text {
-            border: 1px dashed #333340;
-            border-radius: 8px;
-            padding: 40px;
-            text-align: center;
-            color: var(--text-muted);
-            font-style: italic;
-            background: rgba(0,0,0,0.1);
+        textarea:focus, .input-text:focus {
+            outline: none;
+            border-style: solid;
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3), inset 0 2px 8px rgba(0,0,0,0.8);
         }
 
-        /* --- TOAST GLOBAL --- */
-        .toast-global {
-            visibility: hidden;
-            min-width: 300px;
-            background-color: #2e7d32;
+        .input-text {
+            width: 100%;
+            background: rgba(3, 7, 18, 0.85);
             color: #fff;
-            text-align: center;
-            border-radius: 30px;
-            padding: 14px 28px;
-            position: fixed;
-            z-index: 9999;
-            left: 50%;
-            bottom: 30px;
-            transform: translateX(-50%) translateY(10px);
+            border: 1px solid rgba(0, 240, 255, 0.4);
+            border-radius: 6px;
+            padding: 12px;
+            font-family: 'Consolas', monospace;
             font-size: 13px;
-            font-weight: bold;
-            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
-            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-            opacity: 0;
+            box-sizing: border-box;
+            margin-bottom: 15px;
         }
 
-        .toast-global.show {
-            visibility: visible;
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
+        .filter-container {
+            background: rgba(9, 15, 29, 0.7);
+            border: 1px solid rgba(255, 153, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
         }
+
+        .filter-label {
+            font-size: 12px;
+            color: var(--border-color);
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            letter-spacing: 0.5px;
+        }
+
+        .upload-area {
+            border: 2px dashed rgba(0, 240, 255, 0.4);
+            border-radius: 12px;
+            padding: 55px 20px;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            background: rgba(3, 7, 18, 0.6);
+            transition: all 0.3s ease;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.6);
+        }
+
+        .upload-area:hover {
+            background: rgba(0, 240, 255, 0.03);
+            border-color: var(--neon-blue);
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.2);
+        }
+
+        .upload-area input[type="file"] {
+            position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0; cursor: pointer;
+        }
+
+        .upload-text {
+            color: #cbd5e1; font-size: 14px; font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .file-status {
+            margin-top: 15px; background: rgba(3, 7, 18, 0.9); border: 1px solid var(--border-color);
+            color: var(--border-color); padding: 12px 15px; font-size: 12px; border-radius: 6px; display: none; font-weight: bold;
+        }
+
+        .action-buttons { display: flex; gap: 12px; margin: 22px 0; flex-wrap: wrap; }
+        
+        .btn {
+            padding: 12px 24px; border: none; border-radius: 8px; font-size: 12px; font-weight: bold;
+            cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+
+        .btn:hover { transform: translateY(-2px); filter: brightness(1.2); }
+        .btn:active { transform: translateY(0); }
+        
+        .btn-copy { background-color: var(--btn-green); color: var(--btn-green-text); border: 1px solid rgba(74, 242, 113, 0.2); }
+        .btn-copy-alt { background-color: var(--btn-purple); color: var(--btn-purple-text); border: 1px solid rgba(216, 180, 254, 0.2); }
+        .btn-delete { background-color: var(--btn-red); color: var(--btn-red-text); border: 1px solid rgba(242, 74, 74, 0.2); }
+
+        .table-container { width: 100%; overflow-x: auto; margin-top: 15px; border-radius: 8px; }
+        
+        table {
+            width: 100%; border-collapse: collapse; font-size: 13px; background: rgba(3, 7, 18, 0.85);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        th {
+            text-align: left; color: var(--border-color); font-weight: bold;
+            border-bottom: 2px solid rgba(255, 153, 0, 0.5); padding: 14px 12px; font-size: 11px;
+            text-transform: uppercase; background: #090f1d; letter-spacing: 1px;
+        }
+
+        td {
+            padding: 14px 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #e2e8f0; text-shadow: 0 2px 3px rgba(0,0,0,1);
+        }
+
+        tr:hover td { color: #fff; background: rgba(0, 240, 255, 0.08); }
+        .empty-cell { color: #475569; font-style: italic; }
+
+        .stats-box {
+            margin-top: 20px; background: rgba(9, 15, 29, 0.9); border-left: 4px solid var(--neon-blue);
+            padding: 15px; font-size: 12px; color: #94a3b8; line-height: 1.6; border-radius: 0 8px 8px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+        .stats-box span { font-weight: bold; color: var(--neon-blue); }
+
+        .toast-notif {
+            position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(20px);
+            background-color: var(--neon-blue); color: #030712; padding: 12px 35px; font-size: 13px;
+            font-weight: bold; border-radius: 50px; opacity: 0; visibility: hidden;
+            transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.6); z-index: 9999;
+        }
+        .toast-notif.show { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+        /* ==================== SCREEN SECURITY STYLE ==================== */
+        .security-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 0, 0, 0.95); z-index: 100000;
+            display: none; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: #fff; font-family: 'Courier New', Courier, monospace;
+            animation: redGlowPulse 1.5s infinite alternate;
+        }
+
+        @keyframes redGlowPulse {
+            0% { box-shadow: inset 0 0 50px rgba(255, 0, 0, 0.6); background: rgba(8, 0, 0, 0.96); }
+            100% { box-shadow: inset 0 0 150px rgba(255, 0, 0, 0.9); background: rgba(22, 0, 0, 0.98); }
+        }
+
+        .danger-sign {
+            font-size: 70px; color: #ff003c; text-shadow: 0 0 30px #ff0000;
+            margin-bottom: 5px; animation: blinker 0.8s linear infinite;
+        }
+
+        .security-title {
+            font-size: 38px; font-weight: 900; color: #ffffff; letter-spacing: 5px;
+            margin: 10px 0; text-shadow: 0 0 20px rgba(255,255,255,0.7);
+        }
+
+        .danger-subtitle {
+            font-size: 45px; font-weight: 900; color: #ff003c; letter-spacing: 12px;
+            text-transform: uppercase; margin-bottom: 25px; text-shadow: 0 0 25px #ff0000;
+        }
+
+        .skull-graphic {
+            font-size: 110px; color: #e2e8f0; line-height: 1;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.4), 0 0 70px rgba(255, 0, 0, 0.5);
+            animation: floatSkull 3s ease-in-out infinite;
+        }
+
+        @keyframes floatSkull {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
+        }
+
+        @keyframes blinker { 50% { opacity: 0.2; } }
+
+        .close-sec-btn {
+            margin-top: 40px; background: transparent; border: 1px solid #ff003c;
+            color: #ff003c; padding: 10px 30px; font-weight: bold; cursor: pointer;
+            border-radius: 4px; font-size: 11px; letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+        .close-sec-btn:hover { background: #ff003c; color: #fff; box-shadow: 0 0 20px #ff0000; }
     </style>
 </head>
 <body>
 
-    <!-- SIDEBAR NAVIGASI -->
-    <div class="sidebar">
-        <div class="profile-section">
-            <div class="profile-avatar">A</div>
-            <div class="profile-info">
-                <h3>Akbar_Avanza</h3>
-                <p>DATA PARSE ADMIN & MOTION</p>
+<div class="bg-matrix-overlay"></div>
+<canvas id="cyberCanvas"></canvas>
+
+<!-- SCREEN SECURITY LOCKOVERLAY -->
+<div id="securityOverlay" class="security-overlay">
+    <div class="danger-sign">⚠</div>
+    <div class="security-title">AKBAR SECURITY</div>
+    <div class="danger-subtitle">DANGER</div>
+    <div class="skull-graphic">☠</div>
+    <button class="close-sec-btn" onclick="closeSecurityView()">KEMBALI KE SISTEM</button>
+</div>
+
+<div class="main-container">
+    <div class="wrapper">
+        <div class="header-title">PGA DATA PARSE MASTER</div>
+        <div class="sub-title">© AKBAR_RENALDI - Family — Gold & Black Hunter</div>
+
+        <div class="tab-menu">
+            <button class="tab-btn active" onclick="switchTab('pasteMode')">MODE 1: AUTO PARSE WITHDRAW</button>
+            <button class="tab-btn" onclick="switchTab('csvMode')">MODE 2: AUTO PARSE QRIS PGA</button>
+            <button class="tab-btn" onclick="switchTab('panelMode')">MODE 3: AUTO PARSE QRIS CEPAT</button>
+        </div>
+
+        <!-- ==================== TAB 1 ==================== -->
+        <div id="pasteMode" class="tab-content active">
+            <textarea id="rawInput" placeholder="Tempel teks transaksi di sini (Sistem otomatis membersihkan teks lama)..." onpaste="handleAutoPaste(event)"></textarea>
+            <div class="action-buttons">
+                <button class="btn btn-copy" onclick="copyPasteData()">COPY SEMUA DATA UTAMA</button>
+                <button class="btn btn-delete" onclick="clearPasteData()">HAPUS ALL</button>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kolom A (USERNAME)</th>
+                            <th>Kolom B (COIN)</th>
+                            <th>Kolom C (WD)</th>
+                            <th>Kolom D (KREDIT)</th>
+                            <th>Kolom E (DEBET)</th>
+                            <th>Kolom F (SALDO)</th>
+                            <th>Kolom G (KETERANGAN)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pasteTableBody"></tbody>
+                </table>
+            </div>
+            <div class="stats-box">
+                <strong>Parsing Statistics:</strong><br>
+                Total Transactions: <span id="totalTx">0</span><br>
+                Total Amount: Rp <span id="totalAmount">0</span>
             </div>
         </div>
 
-        <div class="menu-group-title">Operator Ganteng</div>
-        <!-- Tombol menu otomatis memicu fungsi pindah halaman -->
-        <button class="menu-item active" onclick="switchMenu('deposit', this)">PGA DEPOSIT</button>
-        <button class="menu-item" onclick="switchMenu('withdraw', this)">ADMIN WITHDRAW</button>
-    </div>
-
-    <!-- KONTEN UTAMA (PANEL HALAMAN) -->
-    <div class="main-content">
-
-<!-- ========================================== -->
-<!-- HALAMAN 1: PGA DEPOSIT -->
-<!-- ========================================== -->
-<div id="panel-deposit" class="app-container active">
-    <div class="header-title">PGA DEPOSIT</div>
-    <div class="sub-title">© AKBAR_RENALDI — Gold & Black Hunter Clan</div>
-    
-    <!-- HAPUS KOTAK PLACEHOLDER LALU GANTI MENJADI SEPERTI DI BAWAH INI -->
-    <div class="upload-area">
-        <div class="upload-text">Klik Di Sini Untuk Ambil Data Di Folder (.CSV)</div>
-        <input type="file" id="csvFileInput" accept=".csv">
-    </div>
-
-    <div class="file-status" id="fileStatus"></div>
-
-    <div class="button-group">
-        <button class="btn btn-dep-copy" onclick="copyIdAndNominal()">COPY ID</button>
-        <button class="btn btn-dep-copy" onclick="copyRefNumber()">COPY REF NUMBER</button>
-        <button class="btn btn-dep-delete" onclick="clearDepositData()">HAPUS ALL</button>
-    </div>
-
-    <div class="result-section">
-        <h2>Hasil Parse Dokumen CSV</h2>
-        <div class="table-responsive">
-            <table>
-                <thead>
-                    <tr>
-                        <th>User ID ↕</th>
-                        <th>Nominal ↕</th>
-                        <th>Ref Number ↕</th>
-                    </tr>
-                </thead>
-                <tbody id="depositTableBody">
-                    <!-- Data otomatis masuk di sini -->
-                </tbody>
-            </table>
+        <!-- ==================== TAB 2 ==================== -->
+        <div id="csvMode" class="tab-content">
+            <div class="upload-area">
+                <div class="upload-text">Klik Di Sini Untuk Ambil Data Di Folder</div>
+                <input type="file" id="csvFileInput" accept=".csv">
+            </div>
+            <div class="file-status" id="fileStatus"></div>
+            <div class="action-buttons">
+                <button class="btn btn-copy" onclick="copyIdAndNominal()">COPY ID & NOMINAL</button>
+                <button class="btn btn-copy" onclick="copyRefNumber()">COPY REF NUMBER</button>
+                <button class="btn btn-delete" onclick="clearCsvData()">HAPUS ALL</button>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User ID ↕</th>
+                            <th>Nominal ↕</th>
+                            <th>Ref Number ↕</th>
+                        </tr>
+                    </thead>
+                    <tbody id="csvTableBody"></tbody>
+                </table>
+            </div>
         </div>
+
+        <!-- ==================== TAB 3 ==================== -->
+        <div id="panelMode" class="tab-content">
+            <div class="filter-container">
+                <label class="filter-label">PASTE KETERANGAN TERAKHIR (KETERANGAN TERAKHIR YANG DI DOC)</label>
+                <input type="text" id="lastTxIdInput" class="input-text" placeholder="Tempel KETERANGAN (Transaction ID) terakhir di sini untuk ambil data setelahnya..." onpaste="handlePanelLastTxIdPaste(event)" oninput="parsePanelData()">
+            </div>
+
+            <textarea id="panelInput" placeholder="Tempel/Paste seluruh log data teks dari PANEL di sini..." onpaste="handlePanelInputPaste(event)" oninput="parsePanelData()"></textarea>
+            
+            <div class="action-buttons">
+                <button class="btn btn-copy" onclick="copyPanelMainData()">COPY DATA (TIME, USER, COIN, DEPO)</button>
+                <button class="btn btn-copy-alt" onclick="copyPanelTxIdData()">COPY KETERANGAN (TRANSACTION ID)</button>
+                <button class="btn btn-delete" onclick="clearPanelData()">HAPUS ALL</button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>TIME</th>
+                            <th>USER ID</th>
+                            <th>COIN & DEPO</th>
+                            <th>KETERANGAN (TX ID)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="panelTableBody"></tbody>
+                </table>
+            </div>
+            <div class="stats-box">
+                <strong>Panel Live Statistics:</strong><br>
+                Total Data Baru (Di Bawah Garis): <span id="panelTotalTx">0</span><br>
+                Total Jumlah Nominal Baru: Rp <span id="panelTotalSum">0</span>
+            </div>
+        </div>
+
     </div>
 </div>
 
-<!-- ========================================== -->
-<!-- HALAMAN 2: ADMIN WITHDRAW -->
-<!-- ========================================== -->
-<div id="panel-withdraw" class="app-container">
-    <div class="header-title">ADMIN WITHDRAW</div>
-    <div class="sub-title">PGA Data Parser (Anti-Error Edition)</div>
-    
-    <!-- HAPUS KOTAK PLACEHOLDER LALU GANTI MENJADI SEPERTI DI BAWAH INI -->
-    <textarea id="rawInput" placeholder="Tempel teks transaksi di sini..."></textarea>
-    
-    <div class="button-group">
-        <button class="btn btn-parse" onclick="parseWithdrawData()">PARSE ADMIN DATA</button>
-        <button class="btn btn-copy" onclick="copyWithdrawData()">COPY UNTUK GOOGLE SHEETS</button>
-        <button class="btn btn-clear" onclick="clearWithdrawAll()">CLEAR ALL</button>
-    </div>
+<div id="toastNotification" class="toast-notif">Data berhasil dicopy!</div>
 
-    <div class="result-section">
-        <h2>Pratinjau Struktur Kolom Google Sheets Anda</h2>
-        <div class="table-responsive">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Kolom A (BANK)</th>
-                        <th>Kolom B (USERNAME)</th>
-                        <th>Kolom C (COIN)</th>
-                        <th>Kolom D (WD)</th>
-                        <th>Kolom E (KREDIT)</th>
-                        <th>Kolom F (DEBET)</th>
-                        <th>Kolom G (SALDO)</th>
-                        <th>Kolom H (KETERANGAN)</th>
-                    </tr>
-                </thead>
-                <tbody id="withdrawTableBody">
-                    <!-- Data otomatis masuk di sini -->
-                </tbody>
-            </table>
-        </div>
-        <div class="stats">
-            <strong>Parsing Statistics Overview</strong><br>
-            Total Transactions: <span id="totalTx">0</span><br>
-            Total Amount: Rp <span id="totalAmount">0</span>
-        </div>
-    </div>
-</div>
+<script>
+    const toast = document.getElementById('toastNotification');
+    const secOverlay = document.getElementById('securityOverlay');
+    let currentParsedData = []; 
+    let parsedCsvData = [];     
+    let parsedPanelDataArray = []; 
 
-
-    </div>
-
-    <!-- ELEMEN NOTIFIKASI TOAST MELAYANG -->
-    <div id="globalToast" class="toast-global">Data Berhasil Disalin!</div>
-
-    <!-- ========================================== -->
-    <!-- LOGIKA JAVASCRIPT SISTEM -->
-    <!-- ========================================== -->
-    <script>
-        // 1. SISTEM UTAMA NAVIGASI MENU (SUDAH AKTIF)
-        function switchMenu(menuId, element) {
-            // Sembunyikan semua panel kontainer halaman terlebih dahulu
-            document.querySelectorAll('.app-container').forEach(panel => {
-                panel.classList.remove('active');
-            });
-            // Tampilkan panel kontainer halaman yang dipilih
-            document.getElementById('panel-' + menuId).classList.add('active');
-
-            // Reset status tombol menu aktif lama
-            document.querySelectorAll('.menu-item').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            // Aktifkan gaya visual tombol menu baru yang diklik
-            element.classList.add('active');
-        }
-
-        // 2. SISTEM NOTIFIKASI MELAYANG GLOBAL (BISA LANGSUNG DIPANGGIL DI RUMUS ANDA)
-        function showToast(message) {
-            const toast = document.getElementById('globalToast');
-            toast.innerText = message;
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 2500);
-        }
-
-// ===================================================
-// TEMPAT MENEMPELKAN LOGIKA JAVASCRIPT RUMUS ANDA:
-// ===================================================
-
-// PASTE SELURUH KODE DI BAWAH INI TEPAT DI AREA INI:
-
-// --- LOGIKA PROGRAM: PGA DEPOSIT ---
-const fileInput = document.getElementById('csvFileInput');
-const fileStatus = document.getElementById('fileStatus');
-const depositTableBody = document.getElementById('depositTableBody');
-let depositParsedData = [];
-
-fileInput.addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    fileStatus.textContent = `Selected: ${file.name}`;
-    fileStatus.style.display = 'block';
-
-    const reader = new FileReader();
-    reader.onload = function(event) {
-        const text = event.target.result;
-        processDepositCSV(text);
-    };
-    reader.readAsText(file);
-});
-
-function processDepositCSV(csvText) {
-    depositTableBody.innerHTML = '';
-    depositParsedData = [];
-    const lines = csvText.split(/\r?\n/);
-    lines.forEach((line, index) => {
-        if (line.trim() === '') return;
-        const columns = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || line.split(/[;,]/);
-        if (index === 0 && (line.toLowerCase().includes('invoice') || line.toLowerCase().includes('id'))) {
-            return;
-        }
-        if (columns.length >= 8) {
-            const userId = columns[0].replace(/"/g, '').trim();
-            const refNumber = columns[1].replace(/"/g, '').trim();
-            let nominal = columns[7].replace(/"/g, '').trim();
-            if (userId !== "") {
-                depositParsedData.push({id: userId, formattedNominal: nominal, ref: refNumber});
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td>${userId}</td><td>${nominal}</td><td>${refNumber}</td>`;
-                depositTableBody.appendChild(tr);
-            }
+    // ==================== INTERCEPT CTRL + U ====================
+    window.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'u') {
+            e.preventDefault(); 
+            triggerSecurityView();
         }
     });
-}
 
-function copyIdAndNominal() {
-    if (depositParsedData.length === 0) {
-        alert('Tidak ada data deposit untuk disalin. Sila unggah berkas CSV terlebih dahulu.');
-        return;
+    function triggerSecurityView() {
+        secOverlay.style.display = 'flex';
     }
-    const textToCopy = depositParsedData.map(item => `${item.id}\t${item.formattedNominal}`).join('\n');
-    navigator.clipboard.writeText(textToCopy).then(() => {
-        showToast('✅ ID & Nominal Berhasil Dicopy!');
-    }).catch(err => console.error('Gagal menyalin:', err));
-}
 
-function copyRefNumber() {
-    if (depositParsedData.length === 0) {
-        alert('Tidak ada data deposit untuk disalin. Sila unggah berkas CSV terlebih dahulu.');
-        return;
+    function closeSecurityView() {
+        secOverlay.style.display = 'none';
     }
-    const textToCopy = depositParsedData.map(item => item.ref).join('\n');
-    navigator.clipboard.writeText(textToCopy).then(() => {
-        showToast('✅ Ref Number Berhasil Dicopy!');
-    }).catch(err => console.error('Gagal menyalin:', err));
-}
 
-function clearDepositData() {
-    fileInput.value = '';
-    depositTableBody.innerHTML = '';
-    depositParsedData = [];
-    fileStatus.style.display = 'none';
-}
-
-
-// --- LOGIKA PROGRAM: ADMIN WITHDRAW ---
-let withdrawParsedData = [];
-
-function parseWithdrawData() {
-    const input = document.getElementById('rawInput').value;
-    const tableBody = document.getElementById('withdrawTableBody');
-    tableBody.innerHTML = '';
-    withdrawParsedData = [];
-    if (!input.trim()) {
-        updateWithdrawStats(0, 0);
-        return;
+    function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => { toast.classList.remove('show'); }, 2000);
     }
-    const lines = input.split('\n').map(line => line.trim()).filter(line => line.length > 0);
-    let totalCount = 0;
-    let totalSum = 0;
-    for (let i = 0; i < lines.length; i++) {
-        const parts = lines[i].split(/\s+/);
-        if (parts.length >= 2 && !isNaN(parts[0])) {
-            let username = parts.slice(1).join(' ').toUpperCase();
-            let amount = '0';
-            let bank = '';
-            let name = '';
-            if (i + 1 < lines.length) {
-                const secondLineParts = lines[i+1].split(/\s+/);
-                for (let j = 2; j < secondLineParts.length; j++) {
-                    if (secondLineParts[j].includes(',') || (!isNaN(secondLineParts[j]) && secondLineParts[j].length > 3)) {
-                        amount = secondLineParts[j];
+
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
+
+    // ==================== ENGINE MODE 1 ====================
+    function handleAutoPaste(event) {
+        event.preventDefault();
+        const pastedText = (event.clipboardData || window.clipboardData).getData('text');
+        document.getElementById('rawInput').value = pastedText;
+        parsePasteData();
+    }
+
+    function parsePasteData() {
+        const input = document.getElementById('rawInput').value;
+        const tableBody = document.getElementById('pasteTableBody');
+        tableBody.innerHTML = ''; currentParsedData = [];
+
+        if (!input.trim()) { updateStats(0, 0); return; }
+        const lines = input.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+        let totalCount = 0; let totalSum = 0;
+
+        for (let i = 0; i < lines.length; i++) {
+            const parts = lines[i].split(/\s+/);
+            if (parts.length >= 2 && !isNaN(parts[0])) {
+                let username = parts.slice(1).join(' ').toUpperCase();
+                let amount = '0'; let name = '';
+
+                if (i + 1 < lines.length) {
+                    const secondLineParts = lines[i+1].split(/\s+/);
+                    for (let j = 2; j < secondLineParts.length; j++) {
+                        if (secondLineParts[j].includes(',') || (!isNaN(secondLineParts[j]) && secondLineParts[j].length > 3)) {
+                            amount = secondLineParts[j]; break;
+                        }
+                    }
+                }
+
+                let searchIndex = i + 2;
+                while (searchIndex < lines.length && searchIndex < i + 5) {
+                    if (lines[searchIndex].includes(',')) {
+                        const bankParts = lines[searchIndex].split(',').map(p => p.trim());
+                        if (bankParts.length >= 3) { name = bankParts[2].toUpperCase(); }
                         break;
                     }
+                    searchIndex++;
                 }
-            }
-            let searchIndex = i + 2;
-            while (searchIndex < lines.length && searchIndex < i + 5) {
-                if (lines[searchIndex].includes(',')) {
-                    const bankParts = lines[searchIndex].split(',').map(p => p.trim());
-                    if (bankParts.length >= 3) {
-                        bank = bankParts[0].toUpperCase();
-                        name = bankParts[2].toUpperCase();
-                    }
-                    break;
+
+                if (username && amount && name) {
+                    currentParsedData.push({ username, amount, name });
+                    totalSum += parseInt(amount.replace(/,/g, ''), 10) || 0; totalCount++;
+
+                    tableBody.innerHTML += `<tr>
+                        <td style="color: var(--border-color); font-weight: bold;">${username}</td>
+                        <td class="empty-cell">[Kosong]</td>
+                        <td style="color: #4ade80; font-weight: bold;">${amount}</td>
+                        <td class="empty-cell">[Kosong]</td>
+                        <td class="empty-cell">[Kosong]</td>
+                        <td class="empty-cell">[Rumus]</td>
+                        <td style="color: #e2e8f0;">${name}</td>
+                    </tr>`;
                 }
-                searchIndex++;
-            }
-            if (bank && username && amount && name) {
-                withdrawParsedData.push({ bank, username, amount, name });
-                const numericAmount = parseInt(amount.replace(/,/g, ''), 10) || 0;
-                totalSum += numericAmount;
-                totalCount++;
-                const row = `<tr>
-                    <td><b>${bank}</b></td>
-                    <td>${username}</td>
-                    <td class="empty-cell">[Kosong]</td>
-                    <td style="background-color: rgba(255,235,59,0.15); font-weight:bold; color: #111;">${amount}</td>
-                    <td class="empty-cell">[Kosong]</td>
-                    <td class="empty-cell">[Kosong]</td>
-                    <td class="empty-cell">[Rumus]</td>
-                    <td>${name}</td>
-                </tr>`;
-                tableBody.innerHTML += row;
             }
         }
+        updateStats(totalCount, totalSum);
     }
-    updateWithdrawStats(totalCount, totalSum);
-}
 
-function updateWithdrawStats(count, sum) {
-    document.getElementById('totalTx').innerText = count;
-    document.getElementById('totalAmount').innerText = sum.toLocaleString('id-ID');
-}
-
-function copyWithdrawData() {
-    if (withdrawParsedData.length === 0) {
-        alert('Tidak ada data yang bisa dicopy. Silakan masukkan data teks lalu klik PARSE ADMIN DATA terlebih dahulu.');
-        return;
+    function updateStats(count, sum) {
+        document.getElementById('totalTx').innerText = count;
+        document.getElementById('totalAmount').innerText = sum.toLocaleString('id-ID');
     }
-    let textToCopy = "";
-    withdrawParsedData.forEach(item => {
-        textToCopy += `${item.bank}\t${item.username}\t\t${item.amount}\t\t\t\t${item.name}\n`;
+
+    function copyPasteData() {
+        if (currentParsedData.length === 0) return;
+        let textToCopy = currentParsedData.map(item => `${item.username}\t\t${item.amount}\t\t\t\t${item.name}`).join('\n');
+        navigator.clipboard.writeText(textToCopy).then(() => { showToast('✅ Data Kolom A-G Berhasil Dicopy!'); });
+    }
+
+    function clearPasteData() {
+        document.getElementById('rawInput').value = '';
+        document.getElementById('pasteTableBody').innerHTML = '';
+        updateStats(0, 0); currentParsedData = [];
+    }
+
+    // ==================== ENGINE MODE 2 ====================
+    const fileInput = document.getElementById('csvFileInput');
+    const fileStatus = document.getElementById('fileStatus');
+    const csvTableBody = document.getElementById('csvTableBody');
+
+    fileInput.addEventListener('change', function(e) {
+        const file = e.target.files[0]; if (!file) return;
+        fileStatus.textContent = `Selected: ${file.name}`; fileStatus.style.display = 'block';
+        const reader = new FileReader(); reader.onload = function(event) { processCsvData(event.target.result); };
+        reader.readAsText(file);
     });
-    navigator.clipboard.writeText(textToCopy).then(() => {
-        showToast('📋 Data Berhasil Disalin! Silakan paste (Ctrl+V) ke Google Sheets.');
-    }).catch(err => {
-        alert('Gagal menyalin data otomatis: ', err);
-    });
-}
 
-// Fungsi tombol reset halaman withdraw
-function clearWithdrawAll() {
-    document.getElementById('rawInput').value = '';
-    document.getElementById('withdrawTableBody').innerHTML = '';
-    updateWithdrawStats(0, 0);
-    withdrawParsedData = [];
-}
+    function processCsvData(csvText) {
+        csvTableBody.innerHTML = ''; parsedCsvData = [];
+        const lines = csvText.split(/\r?\n/);
+        lines.forEach((line, index) => {
+            if (line.trim() === '') return;
+            const columns = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || line.split(/[;,]/);
+            if (index === 0 && (line.toLowerCase().includes('invoice') || line.toLowerCase().includes('id'))) return;
 
+            if (columns.length >= 8) {
+                const userId = columns[0].replace(/"/g, '').trim();    
+                const refNumber = columns[1].replace(/"/g, '').trim(); 
+                let nominal = columns[7].replace(/"/g, '').trim();     
 
-    </script>
+                if (userId !== "") {
+                    parsedCsvData.push({ id: userId, formattedNominal: nominal, ref: refNumber });
+                    csvTableBody.innerHTML += `<tr>
+                        <td style="font-weight: bold; color: #fff;">${userId}</td>
+                        <td style="color: var(--border-color); font-weight: bold;">${nominal}</td>
+                        <td style="color: #94a3b8;">${refNumber}</td>
+                    </tr>`;
+                }
+            }
+        });
+    }
+
+    function copyIdAndNominal() {
+        if (parsedCsvData.length === 0) return;
+        const textToCopy = parsedCsvData.map(item => `${item.id}\t${item.formattedNominal}`).join('\n');
+        navigator.clipboard.writeText(textToCopy).then(() => { showToast('✅ ID & Nominal berhasil dicopy!'); });
+    }
+
+    function copyRefNumber() {
+        if (parsedCsvData.length === 0) return;
+        const textToCopy = parsedCsvData.map(item => item.ref).join('\n');
+        navigator.clipboard.writeText(textToCopy).then(() => { showToast('✅ Ref Number berhasil dicopy!'); });
+    }
+
+    function clearCsvData() {
+        fileInput.value = ''; csvTableBody.innerHTML = ''; parsedCsvData = []; fileStatus.style.display = 'none';
+    }
+
+    // ==================== ENGINE MODE 3 (AUTO FLUSH) ====================
+    function handlePanelLastTxIdPaste(event) {
+        event.preventDefault();
+        const text = (event.clipboardData || window.clipboardData).getData('text').trim();
+        document.getElementById('lastTxIdInput').value = text;
+        parsePanelData();
+    }
+
+    function handlePanelInputPaste(event) {
+        event.preventDefault();
+        const text = (event.clipboardData || window.clipboardData).getData('text');
+        document.getElementById('panelInput').value = text;
+        parsePanelData();
+    }
+
+    function parsePanelData() {
+        const rawText = document.getElementById('panelInput').value;
+        const lastTxId = document.getElementById('lastTxIdInput').value.trim();
+        const tableBody = document.getElementById('panelTableBody');
+        
+        tableBody.innerHTML = '';
+        parsedPanelDataArray = [];
+
+        if (!rawText.trim()) {
+            document.getElementById('panelTotalTx').innerText = '0';
+            document.getElementById('panelTotalSum').innerText = '0';
+            return;
+        }
+
+        const lines = rawText.split('\n');
+        let fullList = [];
+
+        lines.forEach(line => {
+            const row = line.trim().split('\t');
+            if (row.length >= 6 && !isNaN(row[0]) && row[0] !== '') {
+                const paidDate = row[1] ? row[1].trim() : '';
+                const txId = row[2] ? row[2].trim() : '';
+                const jumlah = row[3] ? row[3].trim() : '0';
+                const memberName = row[6] ? row[6].trim() : '';
+
+                fullList.push({
+                    time: paidDate,
+                    userId: memberName,
+                    coinDepo: jumlah,
+                    transactionId: txId
+                });
+            }
+        });
+
+        let filteredList = fullList;
+        if (lastTxId !== '') {
+            const cutIndex = fullList.findIndex(item => item.transactionId === lastTxId);
+            if (cutIndex !== -1) {
+                filteredList = fullList.slice(cutIndex + 1);
+            }
+        }
+
+        parsedPanelDataArray = filteredList;
+
+        let totalSum = 0;
+        parsedPanelDataArray.forEach(item => {
+            totalSum += parseInt(item.coinDepo.replace(/,/g, ''), 10) || 0;
+            tableBody.innerHTML += `
+                <tr>
+                    <td style="color: #a0a5b0;">${item.time}</td>
+                    <td style="font-weight: bold; color: #fff;">${item.userId}</td>
+                    <td style="color: #4ade80; font-weight: bold;">${item.coinDepo}</td>
+                    <td style="color: var(--border-color); font-weight: bold;">${item.transactionId}</td>
+                </tr>
+            `;
+        });
+
+        document.getElementById('panelTotalTx').innerText = parsedPanelDataArray.length;
+        document.getElementById('panelTotalSum').innerText = totalSum.toLocaleString('id-ID');
+    }
+
+    function copyPanelMainData() {
+        if (parsedPanelDataArray.length === 0) return;
+        const textToCopy = parsedPanelDataArray.map(item => 
+            `${item.time}\t${item.userId}\t${item.coinDepo}\t${item.coinDepo}`
+        ).join('\n');
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            showToast('✅ Menu 1: Data Utama VENDOR dicopy!');
+        });
+    }
+
+    function copyPanelTxIdData() {
+        if (parsedPanelDataArray.length === 0) return;
+        const textToCopy = parsedPanelDataArray.map(item => item.transactionId).join('\n');
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            showToast('✅ Menu 2: Semua TRANSACTION ID dicopy!');
+        });
+    }
+
+    function clearPanelData() {
+        document.getElementById('panelInput').value = '';
+        document.getElementById('lastTxIdInput').value = '';
+        document.getElementById('panelTableBody').innerHTML = '';
+        parsedPanelDataArray = [];
+        document.getElementById('panelTotalTx').innerText = '0';
+        document.getElementById('panelTotalSum').innerText = '0';
+    }
+
+    // ==================== ADVANCED MATRIX CYBER STORM ENGINE ====================
+    const canvas = document.getElementById('cyberCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Setup Hujan Kode Matrix (Cyber Rain)
+    const katakana = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ01";
+    const alphabet = katakana.split("");
+
+    const fontSize = 14;
+    let columns = Math.floor(canvas.width / fontSize) + 1;
+    let rainDrops = [];
+
+    for (let x = 0; x < columns; x++) {
+        rainDrops[x] = Math.random() * -100; // Mulai dari atas layar secara acak
+    }
+
+    // Setup Partikel Aura Naik (Upward Glow Particles)
+    let upParticles = [];
+    class UpGlowParticle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = canvas.height + Math.random() * 50;
+            this.size = Math.random() * 2 + 0.5;
+            this.speedY = Math.random() * 1.2 + 0.3;
+            this.alpha = Math.random() * 0.5 + 0.1;
+        }
+        update() {
+            this.y -= this.speedY;
+            if (this.alpha > 0.005) this.alpha -= 0.0015;
+        }
+        draw() {
+            ctx.save();
+            ctx.globalAlpha = this.alpha;
+            ctx.fillStyle = '#00f0ff';
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = '#00f0ff';
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+        }
+    }
+
+    function drawCyberEngine() {
+        // Efek trail pudar transparan untuk membuat hujan bergerak
+        ctx.fillStyle = 'rgba(2, 6, 19, 0.08)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // 1. Draw Rain Drops (Turun Ke Bawah)
+        ctx.fillStyle = '#00f0ff'; // Warna teks utama hujan
+        ctx.font = fontSize + 'px monospace';
+
+        for (let i = 0; i < rainDrops.length; i++) {
+            const text = alphabet[Math.floor(Math.random() * alphabet.length)];
+            const x = i * fontSize;
+            const y = rainDrops[i] * fontSize;
+
+            // Karakter paling ujung atas diberikan kilau putih neon
+            if (Math.random() > 0.98) {
+                ctx.fillStyle = '#ffffff';
+            } else {
+                ctx.fillStyle = 'rgba(0, 240, 255, 0.8)';
+            }
+
+            ctx.fillText(text, x, y);
+
+            if (y > canvas.height && Math.random() > 0.975) {
+                rainDrops[i] = 0;
+            }
+            rainDrops[i]++;
+        }
+
+        // 2. Draw Glow Particles (Naik Ke Atas)
+        if (upParticles.length < 40) {
+            upParticles.push(new UpGlowParticle());
+        }
+        for (let i = 0; i < upParticles.length; i++) {
+            upParticles[i].update();
+            upParticles[i].draw();
+            if (upParticles[i].alpha <= 0 || upParticles[i].y < 0) {
+                upParticles.splice(i, 1);
+                i--;
+            }
+        }
+
+        requestAnimationFrame(drawCyberEngine);
+    }
+    
+    // Jalankan animasi
+    drawCyberEngine();
+</script>
+
 </body>
 </html>
