@@ -560,9 +560,21 @@
     let parsedPanelDataArray = []; 
     let parsedPgaMotionDataArray = [];
 
-    // ==================== INTERCEPT CTRL + U ====================
+    // ==================== INTERCEPT ANTI-INSPECT SECURITY ====================
+    // Mematikan Klik Kanan
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        triggerSecurityView();
+    });
+
+    // Mematikan F12, Ctrl+U, Ctrl+Shift+I, Ctrl+Shift+J
     window.addEventListener('keydown', function(e) {
-        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'u') {
+        if (
+            e.key === 'F12' || 
+            ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'u') || 
+            ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'i') ||
+            ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'j')
+        ) {
             e.preventDefault(); 
             triggerSecurityView();
         }
@@ -605,7 +617,7 @@
         if (!input.trim()) { updateStats(0, 0); return; }
         const lines = input.split('\n').map(line => line.trim()).filter(line => line.length > 0);
         let totalCount = 0; let totalSum = 0;
-        let htmlBuffer = ''; // Penampung string sementara
+        let htmlBuffer = ''; 
 
         for (let i = 0; i < lines.length; i++) {
             const parts = lines[i].split(/\s+/);
@@ -648,7 +660,7 @@
                 }
             }
         }
-        tableBody.innerHTML = htmlBuffer; // Cetak sekaligus
+        tableBody.innerHTML = htmlBuffer; 
         updateStats(totalCount, totalSum);
     }
 
@@ -686,7 +698,7 @@
         const lines = csvText.split(/\r?\n/);
         let totalCount = 0;
         let totalSum = 0;
-        let htmlBuffer = ''; // Menggunakan buffer agar anti-lag saat data besar
+        let htmlBuffer = ''; 
 
         lines.forEach((line, index) => {
             if (line.trim() === '') return;
@@ -713,7 +725,7 @@
                 }
             }
         });
-        csvTableBody.innerHTML = htmlBuffer; // Render ke HTML cuma 1 kali di akhir proses
+        csvTableBody.innerHTML = htmlBuffer; 
         updateCsvStats(totalCount, totalSum);
     }
 
@@ -722,6 +734,7 @@
         document.getElementById('csvTotalAmount').innerText = sum.toLocaleString('id-ID');
     }
 
+    // Fungsi perbaikan klik tabel (sorting dibiarkan standar)
     function copyIdAndNominal() {
         if (parsedCsvData.length === 0) return;
         const textToCopy = parsedCsvData.map(item => `${item.id}\t${item.formattedNominal}`).join('\n');
@@ -799,7 +812,7 @@
         parsedPanelDataArray = filteredList;
 
         let totalSum = 0;
-        let htmlBuffer = ''; // Menggunakan buffer agar lancar jaya bebas freeze
+        let htmlBuffer = ''; 
 
         parsedPanelDataArray.forEach(item => {
             totalSum += parseInt(item.coinDepo.replace(/,/g, ''), 10) || 0;
@@ -813,7 +826,7 @@
             `;
         });
 
-        tableBody.innerHTML = htmlBuffer; // Cetak seluruh baris tabel sekaligus
+        tableBody.innerHTML = htmlBuffer; 
 
         document.getElementById('panelTotalTx').innerText = parsedPanelDataArray.length;
         document.getElementById('panelTotalSum').innerText = totalSum.toLocaleString('id-ID');
@@ -870,7 +883,7 @@
         const blocks = input.split(/NOTE/i).map(b => b.trim()).filter(b => b.length > 0);
         let totalCount = 0;
         let totalSum = 0;
-        let htmlBuffer = ''; // Penampung string sementara
+        let htmlBuffer = ''; 
 
         blocks.forEach(block => {
             const lines = block.split('\n').map(line => line.trim()).filter(line => line.length > 0);
@@ -913,7 +926,7 @@
             }
         });
 
-        tableBody.innerHTML = htmlBuffer; // Cetak sekaligus
+        tableBody.innerHTML = htmlBuffer; 
         updatePgaMotionStats(totalCount, totalSum);
     }
 
