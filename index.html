@@ -1032,8 +1032,8 @@
         parsedPanelDataArray = full; let sum = 0, html = '';
         parsedPanelDataArray.forEach(item => {
             sum += parseInt(item.depo.replace(/,/g, ''), 10) || 0;
-            let col = 'var(--btn-copy-border)', txt = `Koin: ${item.coin} | Depo: ${item.depo}`;
-            if (item.isGagal || item.isPending) { col = 'var(--btn-delete-border)'; txt = `Depo: ${item.depo} (${item.isGagal ? 'GAGAL' : 'TERTUNDA'})`; }
+            let col = 'var(--btn-copy-border)', txt = `${item.coin} | ${item.depo}`;
+            if (item.isGagal || item.isPending) { col = 'var(--btn-delete-border)'; txt = `${item.depo} (${item.isGagal ? 'GAGAL' : 'TERTUNDA'})`; }
             html += `<tr><td style="color:var(--sub-text);">${item.time}</td><td style="font-weight:bold;">${item.userId}</td><td style="color:${col};font-weight:bold">${txt}</td><td style="color:var(--btn-copy-text); font-weight:bold">${item.transactionId}</td></tr>`;
         });
         tbody.innerHTML = html; 
