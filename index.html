@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,73 +8,54 @@
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;500;600;700&display=swap');
         
         :root {
-            /* TEMA UTAMA CYBERPUNK NEON (DARK MODE) */
             --bg-color: #020006; 
             --container-bg: rgba(2, 0, 6, 0.82); 
             --bg-sidebar: #0a0514;
-            
-            /* Variabel lama --gold dipertahankan namanya agar script berjalan, tapi warnanya diubah ke Neon Cyan */
             --gold: #00f0ff; 
             --gold-glow: rgba(0, 240, 255, 0.2);
-            
             --text-color: #f1f5f9;
             --sub-text: #94a3b8;
-            --table-head-bg: rgba(189, 0, 255, 0.15); /* Hint Neon Ungu */
+            --table-head-bg: rgba(189, 0, 255, 0.15);
             --table-row-hover: rgba(0, 240, 255, 0.08);
             --input-bg: rgba(10, 5, 20, 0.6);
             --box-bg: rgba(10, 5, 20, 0.9);
-            
-            /* Aksen 1: Neon Cyan */
             --btn-copy-bg: rgba(0, 240, 255, 0.1);
             --btn-copy-border: #00f0ff;
             --btn-copy-text: #00f0ff;
-            
-            /* Aksen 2: Neon Pink (Bahaya/Hapus) */
             --btn-delete-bg: rgba(255, 0, 119, 0.1);
             --btn-delete-border: #ff0077;
             --btn-delete-text: #ff0077;
-
-            /* Aksen 3: Neon Ungu (Alternatif) */
             --btn-alt-bg: rgba(189, 0, 255, 0.1);
             --btn-alt-border: #bd00ff;
             --btn-alt-text: #bd00ff;
-            
             --scrollbar-thumb: #00f0ff;
             --scrollbar-track: #020006;
-            
             --global-radius: 8px; 
             --switch-active: #bd00ff;
-            --hover-text-color: #020006; /* Teks jadi gelap saat tombol neon dihover */
+            --hover-text-color: #020006;
         }
 
-        /* TEMA LIGHT MODE ELEGAN & KLASIK */
         body.light-theme {
             --bg-color: #f8fafc; 
             --container-bg: rgba(255, 255, 255, 0.95); 
             --bg-sidebar: #ffffff;
-            
-            --gold: #d4af37; /* Emas */
+            --gold: #d4af37; 
             --gold-glow: rgba(212, 175, 55, 0.15);
-            
-            --text-color: #0f172a; /* Midnight Blue */
+            --text-color: #0f172a; 
             --sub-text: #475569; 
             --table-head-bg: #e2e8f0;
             --table-row-hover: rgba(212, 175, 55, 0.05); 
             --input-bg: #f8fafc; 
             --box-bg: #f1f5f9;
-            
             --btn-copy-bg: rgba(212, 175, 55, 0.1); 
             --btn-copy-border: #d4af37; 
             --btn-copy-text: #b89528;
-            
             --btn-delete-bg: rgba(220, 38, 38, 0.08); 
             --btn-delete-border: #dc2626; 
             --btn-delete-text: #b91c1c;
-            
             --btn-alt-bg: rgba(15, 23, 42, 0.05); 
             --btn-alt-border: #0f172a; 
             --btn-alt-text: #0f172a;
-            
             --scrollbar-thumb: #cbd5e1; 
             --scrollbar-track: #f1f5f9; 
             --switch-active: #d4af37;
@@ -92,7 +73,6 @@
         #cyberCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0.6; }
         body.light-theme #cyberCanvas { opacity: 0.15; }
 
-        /* --- SIDEBAR KIRI --- */
         .sidebar {
             width: 250px; min-width: 250px; background-color: var(--bg-sidebar);
             border-right: 1px solid rgba(255, 255, 255, 0.05);
@@ -134,7 +114,6 @@
         }
         body.light-theme .tab-btn.active { background: #fffbeb; text-shadow: none; }
 
-        /* --- KONTEN UTAMA KANAN --- */
         .main-content {
             flex: 1; display: flex; flex-direction: column; padding: 30px 40px;
             overflow-y: auto; position: relative;
@@ -149,7 +128,6 @@
         .header-right { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 5px; position: relative; }
         .right-subtitle { font-size: 12px; color: var(--gold); font-weight: bold; letter-spacing: 1px; text-transform: uppercase; margin-top: 10px; }
 
-        /* PENGATURAN DROPDOWN */
         .settings-menu-container { position: relative; display: inline-block; }
         .settings-btn {
             background: rgba(0, 240, 255, 0.1); border: 1px solid var(--gold); color: var(--gold);
@@ -171,7 +149,6 @@
         .setting-label { font-size: 11px; font-weight: bold; text-transform: uppercase; color: var(--gold); }
         body.light-theme .setting-label { color: #0f172a; }
         
-        /* SWITCH TOGGLE */
         .switch-control { position: relative; display: inline-block; width: 40px; height: 20px; }
         .switch-control input { opacity: 0; width: 0; height: 0; }
         .slider-round { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #334155; transition: .3s; border-radius: 34px; }
@@ -184,7 +161,6 @@
         body.light-theme .inline-guide-btn { background: rgba(212,175,55,0.1); }
         .inline-guide-btn:hover { background: var(--gold); color: var(--hover-text-color); box-shadow: 0 0 10px var(--gold-glow);}
 
-        /* TAB KONTEN & FORM */
         .tab-content { display: none; animation: panelFadeIn 0.4s ease-in-out; }
         .tab-content.active { display: block; }
         @keyframes panelFadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
@@ -198,7 +174,6 @@
         textarea { height: 120px; }
         textarea:focus, .input-text:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 15px var(--gold-glow); }
 
-        /* DRAG & DROP AREA */
         .upload-area { border: 1px dashed rgba(0, 240, 255, 0.4); padding: 40px 20px; text-align: center; cursor: pointer; position: relative; background: var(--input-bg); transition: all 0.3s ease; border-radius: var(--global-radius); margin-bottom: 15px; }
         .upload-area:hover { border-color: var(--gold); background: rgba(0, 240, 255, 0.05); box-shadow: 0 0 15px var(--gold-glow);}
         body.light-theme .upload-area { border-color: #cbd5e1; box-shadow: none; }
@@ -208,7 +183,6 @@
         .file-status { margin-bottom: 15px; background: rgba(0, 240, 255, 0.05); border: 1px solid var(--gold); color: var(--gold); padding: 12px; font-size: 11px; font-weight: bold; display: none; border-radius: var(--global-radius); font-family: monospace; box-shadow: 0 0 10px var(--gold-glow);}
         body.light-theme .file-status { box-shadow: none; }
 
-        /* TOMBOL AKSI (DENGAN EFEK NEON GLOW) */
         .action-buttons { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
         .btn { padding: 10px 20px; border: 1px solid transparent; font-size: 10px; font-weight: 700; cursor: pointer; transition: all 0.25s ease; text-transform: uppercase; letter-spacing: 1px; border-radius: var(--global-radius); }
         
@@ -225,7 +199,6 @@
             box-shadow: none; color: #fff;
         }
         
-        /* AREA TABEL */
         .table-container { 
             width: 100%; overflow-x: auto; margin-top: 10px; border: 1px solid rgba(255, 255, 255, 0.04); 
             background: rgba(10, 5, 20, 0.6); border-radius: var(--global-radius); 
@@ -246,14 +219,12 @@
         .stats-box span { font-weight: bold; color: var(--gold); }
         body.light-theme .stats-box span { color: #0f172a; }
 
-        /* SCROLLBAR CUSTOM */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
         ::-webkit-scrollbar-thumb { background: rgba(0, 240, 255, 0.3); border-radius: 10px; }
         body.light-theme ::-webkit-scrollbar-thumb { background: #cbd5e1; }
         ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 
-        /* TOAST, MODAL, DAN SCAREWARE */
         .toast-notif { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(20px); background: #020006; color: var(--gold); padding: 14px 40px; font-size: 11px; font-weight: 900; border-radius: 30px; border: 1px solid var(--gold); opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: 0 0 20px var(--gold-glow); z-index: 9999; letter-spacing: 1.5px; text-transform: uppercase; }
         body.light-theme .toast-notif { background: #0f172a; color: #fff; box-shadow: none; border-color: #0f172a;}
         .toast-notif.show { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
@@ -282,7 +253,6 @@
         .system-error-log { border-top: 1px dashed #ff0077; border-bottom: 1px dashed #ff0077; padding: 20px 0; max-width: 600px; margin: 0 auto; font-family: 'Courier New', monospace; font-size: 13px; color: #00f0ff; text-align: left; }
         @keyframes pulseSkull { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
 
-        /* TAB 5: POLA GAME */
         .pola-provider-scroll { display: flex; overflow-x: auto; gap: 8px; padding: 5px 0; margin-bottom: 15px; -ms-overflow-style: none; scrollbar-width: none; }
         .pola-provider-scroll::-webkit-scrollbar { display: none; }
         .pola-provider-btn { flex: 0 0 auto; padding: 8px 15px; border-radius: var(--global-radius); font-size: 10px; font-weight: bold; color: white; border: none; cursor: pointer; transition: transform 0.2s; }
@@ -313,52 +283,52 @@
 
 <div id="guideModal" class="guide-modal">
     <div class="guide-content">
-        <div class="guide-title" id="mGuideTitle">⚙️ TERMINAL MANUAL & PEDOMAN</div>
+        <div class="guide-title" id="mGuideTitle">⚙️ TERMINAL MANUAL & GUIDELINES</div>
         <div class="guide-section">
-            <h4 id="mSec1Title">PENARIKAN ADMIN</h4>
+            <h4 id="mSec1Title">ADMIN WITHDRAWAL</h4>
             <ol id="mSec1List">
-                <li>Salin seluruh log teks transaksi penarikan dari grup/sistem Anda.</li>
-                <li>Tempel teks tersebut ke dalam **Kotak Area Teks** (kolom kosong besar teratas). Proses pemisahan data akan berjalan otomatis.</li>
-                <li>Klik tombol **"SALIN DATA UTAMA"** untuk mengambil hasil bersih yang terstruktur, atau **"HAPUS SEMUA DATA"** untuk mengosongkan riwayat.</li>
+                <li>Copy the entire withdrawal transaction text log from your group/system.</li>
+                <li>Paste the text into the **Textarea Box** (the large empty upper column). The data parsing process will run automatically.</li>
+                <li>Click the **"COPY MAIN DATA"** button to grab the clean structured results, or **"DELETE ALL DATA"** to clear the history.</li>
             </ol>
         </div>
         <div class="guide-section">
-            <h4 id="mSec2Title">ADMIN QRIS PGA</h4>
+            <h4 id="mSec2Title">QRIS PGA ADMIN</h4>
             <ol id="mSec2List">
-                <li>Siapkan file laporan berformat `.csv`.</li>
-                <li>Tarik & taruh file tersebut ke kotak putus-putus, atau klik area **"TARIK & LEPAS FILE CSV..."** untuk memilih berkas dari folder perangkat Anda.</li>
-                <li>Gunakan tombol **"SALIN ID & NOMINAL"** atau **"SALIN NOMOR REFERENSI"** untuk menyalin matriks data yang diinginkan secara instan.</li>
+                <li>Prepare a report file in `.csv` format.</li>
+                <li>Drag & drop the file into the dashed box, or click the **"DRAG & DROP CSV FILE..."** area to select files from your device folder.</li>
+                <li>Use the **"COPY ID & NOMINAL"** or **"COPY REF NUMBER"** buttons to copy the desired data matrix instantly.</li>
             </ol>
         </div>
         <div class="guide-section">
-            <h4 id="mSec3Title">PANEL QRIS CEPAT</h4>
+            <h4 id="mSec3Title">FAST QRIS PANEL</h4>
             <ol id="mSec3List">
-                <li>Jika ingin memfilter data lama, salin *ID Transaksi* terakhir Anda lalu tempel di kolom **"PELACAK FILTER TRANSAKSI TERAKHIR"**.</li>
-                <li>Salin seluruh isi log teks dari panel admin Anda, kemudian tempel di kotak **"LOG MASUKAN PANEL"** bawahnya.</li>
-                <li>Klik **"SALIN DATA UTAMA PANEL"**, **"SALIN SEMUA ID TX"**, atau **"SALIN SEMUA DATA"** untuk mengekstrak data log yang valid.</li>
+                <li>If you want to filter out old data, copy your last *Transaction ID* and paste it into the **"LAST TRANSACTION FILTER TRACKER"** column.</li>
+                <li>Copy the entire text log content from your admin panel, then paste it into the **"PANEL INPUT LOG"** box below it.</li>
+                <li>Click **"COPY PANEL MAIN DATA"**, **"COPY ALL TX ID"**, or **"COPY ALL DATA"** to extract valid log data.</li>
             </ol>
         </div>
         <div class="guide-section">
-            <h4 id="mSec4Title">PENARIKAN PGA MOTION</h4>
+            <h4 id="mSec4Title">PGA MOTION WITHDRAWAL</h4>
             <ol id="mSec4List">
-                <li>Salin baris teks transaksi dari log PGA Motion yang berisi struktur kata kunci "NOTE".</li>
-                <li>Tempel langsung ke dalam kotak teks **"MASUKAN PGA MOTION"**.</li>
-                <li>Klik **"SALIN DATA UTAMA MOTION"** untuk memindahkan tumpukan data bersih ke papan klip Anda.</li>
+                <li>Copy the transaction text line from the PGA Motion log that contains the "NOTE" keyword structure.</li>
+                <li>Paste it directly into the **"PGA MOTION INPUT"** text box.</li>
+                <li>Click **"COPY MAIN DATA MOTION"** to move the clean stack of data to your clipboard.</li>
             </ol>
         </div>
         <div class="guide-section">
-            <h4 id="mSec5Title">POLA GAME</h4>
+            <h4 id="mSec5Title">GAME PATTERN</h4>
             <ol id="mSec5List">
-                <li>Gunakan bilah gulir provider atau kolom pencarian untuk menemukan game pilihan Anda.</li>
-                <li>Klik tombol **"Generate Pola"** untuk membuat susunan pola acak profesional.</li>
-                <li>Gunakan tombol **"Salin Hasil Pola"** untuk memindahkan hasil eksekusi ke papan klip Anda.</li>
+                <li>Use the provider scrollbar or the search box to find your preferred game.</li>
+                <li>Click the **"Generate Pattern"** button to create a professional random sequence.</li>
+                <li>Use the **"Copy Pattern Result"** button to move the execution result to your clipboard.</li>
             </ol>
         </div>
         <div class="virus-warning-box">
-            <div class="virus-warning-title" id="mWarnTitle">⚠️ SISTEM PERINGATAN RISIKO TINGGI ⚠️</div>
-            <span id="mWarnDesc">Seluruh berkas arsitektur, log data, dan sistem internal pada file ini telah diinjeksikan program **Virus Ransomware Siber**. Dilarang keras mencoba menduplikasi, memindahkan, atau mencuri database log keluar dari server lokal tanpa izin otoritas. Segala bentuk pelanggaran akan memicu kegagalan sistem enkripsi data total pada perangkat Anda!</span>
+            <div class="virus-warning-title" id="mWarnTitle">⚠️ HIGH RISK WARNING SYSTEM ⚠️</div>
+            <span id="mWarnDesc">All architecture files, log data, and internal systems on this file have been injected with the **Cyber Ransom Virus** program. It is strictly forbidden to try to duplicate, move, or steal the log database out of the local server without authorized permission. Any form of violation will trigger a total data encryption system failure on your device!</span>
         </div>
-        <button class="close-guide-btn" id="mBtnClose" onclick="toggleGuide(false)">TUTUP PANDUAN</button>
+        <button class="close-guide-btn" id="mBtnClose" onclick="toggleGuide(false)">CLOSE MANUAL</button>
     </div>
 </div>
 
@@ -372,10 +342,10 @@
             <path d="M12 2C7.03 2 3 6.03 3 11c0 2.56 1.07 4.87 2.78 6.5L4 19v2h3v-1.15c1.47.73 3.14 1.15 5 1.15s3.53-.42 5-1.15V21h3v-2l-1.78-1.5C19.93 15.87 21 13.56 21 11c0-4.97-4.03-9-9-9zm-3 9c-.83 0-1.5-.67-1.5-1.5S8.17 7 9 7s1.5 0 1.5 1.5S9.83 11 9 11zm6 0c-.83 0-1.5-.67-1.5-1.5S14.17 7 15 7s1.5 0 1.5 1.5S15.83 11 15 11zm-3 7c-1.66 0-3-1.34-3-3h6c0 1.66-1.34 3-3 3z"/>
         </svg>
         <div class="system-error-log">
-            &gt; [STATUS]: <span style="color:#ff0077; font-weight:bold; text-shadow: 0 0 8px #ff0077;">PELANGGARAN_INTI_HAK_CIPTA</span><br>
-            &gt; [SISTEM]: Sistem utama telah dibuat untuk mempermudah pekerjaan.<br>
-            &gt; [SISTEM]: Hanya dengan menaruk data maka otomatis langsung di proses.<br>
-            &gt; <span style="color:#ff0077; font-weight:bold; text-shadow: 0 0 8px #ff0077;">JIKA TIDAK BISA MEMBUAT SETIDAKNYA JANGAN MENCURI, GUNAKAN SEBAIK BAIKNYA.</span>
+            &gt; [STATUS]: <span style="color:#ff0077; font-weight:bold; text-shadow: 0 0 8px #ff0077;">CORE_COPYRIGHT_VIOLATION</span><br>
+            &gt; [SYSTEM]: The main system has been designed to ease the workflow.<br>
+            &gt; [SYSTEM]: Simply drop the data and it will process automatically.<br>
+            &gt; <span style="color:#ff0077; font-weight:bold; text-shadow: 0 0 8px #ff0077;">IF YOU CANNOT BUILD IT, AT LEAST DO NOT STEAL IT. USE IT WISELY.</span>
         </div>
     </div>
 </div>
@@ -390,11 +360,11 @@
     </div>
 
     <ul class="menu-list">
-        <li><button class="tab-btn active" id="tabWd" onclick="switchTab('pasteMode', event)">PENARIKAN ADMIN</button></li>
-        <li><button class="tab-btn" id="tabQris" onclick="switchTab('csvMode', event)">ADMIN QRIS PGA</button></li>
-        <li><button class="tab-btn" id="tabPanel" onclick="switchTab('panelMode', event)">PANEL QRIS CEPAT</button></li>
-        <li><button class="tab-btn" id="tabPola" onclick="switchTab('polaGameMode', event)">POLA GAME</button></li>
-        <li><button class="tab-btn" id="tabPga" onclick="switchTab('pgaMotionMode', event)">PENARIKAN PGA MOTION</button></li>
+        <li><button class="tab-btn active" id="tabWd" onclick="switchTab('pasteMode', event)">ADMIN WITHDRAWAL</button></li>
+        <li><button class="tab-btn" id="tabQris" onclick="switchTab('csvMode', event)">QRIS PGA ADMIN</button></li>
+        <li><button class="tab-btn" id="tabPanel" onclick="switchTab('panelMode', event)">FAST QRIS PANEL</button></li>
+        <li><button class="tab-btn" id="tabPola" onclick="switchTab('polaGameMode', event)">GAME PATTERN</button></li>
+        <li><button class="tab-btn" id="tabPga" onclick="switchTab('pgaMotionMode', event)">PGA MOTION WITHDRAWAL</button></li>
     </ul>
 </div>
 
@@ -406,51 +376,44 @@
         </div>
         <div class="header-right">
             <div class="settings-menu-container">
-                <button class="settings-btn" onclick="toggleSettingsDropdown(event)">⚙️ <span id="uiSetBtn">PENGATURAN</span></button>
+                <button class="settings-btn" onclick="toggleSettingsDropdown(event)">⚙️ <span id="uiSetBtn">SETTINGS</span></button>
                 <div class="settings-dropdown" id="settingsDropdown">
                     <div class="setting-row">
-                        <div class="setting-label" id="uiModeLabel">MODE GELAP</div>
+                        <div class="setting-label" id="uiModeLabel">DARK MODE</div>
                         <label class="switch-control">
                             <input type="checkbox" id="themeToggleSwitch" onchange="toggleThemeViaSwitch(this)">
                             <span class="slider-round"></span>
                         </label>
                     </div>
-                    <div class="setting-row">
-                        <div class="setting-label" id="uiLangLabel">Bahasa Indonesia (ID)</div>
-                        <label class="switch-control">
-                            <input type="checkbox" id="langToggleSwitch" onchange="toggleLangViaSwitch(this)">
-                            <span class="slider-round"></span>
-                        </label>
-                    </div>
                     <div class="setting-row" style="margin-top: 5px; border: none;">
-                        <button class="inline-guide-btn" id="uiOpenManualBtn" onclick="openManualFromSettings()">📖 <span id="uiOpenManualText">BUKU PANDUAN</span></button>
+                        <button class="inline-guide-btn" id="uiOpenManualBtn" onclick="openManualFromSettings()">📖 <span id="uiOpenManualText">USER MANUAL</span></button>
                     </div>
                 </div>
             </div>
-            <div class="right-subtitle" id="uiOperator">Operator Ganteng</div>
+            <div class="right-subtitle" id="uiOperator">Handsome Operator</div>
         </div>
     </div>
 
     <div id="pasteMode" class="tab-content active">
-        <textarea id="rawInput" placeholder="Tempel teks transaksi di sini..." onpaste="handleAutoPaste(event)"></textarea>
+        <textarea id="rawInput" placeholder="Paste transaction text here..." onpaste="handleAutoPaste(event)"></textarea>
         <div class="action-buttons">
-            <button class="btn btn-copy" id="btnCopyWd" onclick="copyPasteData()">SALIN DATA UTAMA</button>
-            <button class="btn btn-delete" id="btnClearWd" onclick="clearPasteData()">HAPUS SEMUA DATA</button>
+            <button class="btn btn-copy" id="btnCopyWd" onclick="copyPasteData()">COPY MAIN DATA</button>
+            <button class="btn btn-delete" id="btnClearWd" onclick="clearPasteData()">DELETE ALL DATA</button>
         </div>
         <div class="stats-box" id="statsWd">
-            SISTEM INTI >> Total Transaksi: <span id="totalTx">0</span> | Total Nominal: Rp <span id="totalAmount">0</span>
+            CORE SYSTEM >> Total Transactions: <span id="totalTx">0</span> | Total Amount: Rp <span id="totalAmount">0</span>
         </div>
         <div class="table-container">
             <table>
                 <thead>
                     <tr>
-                        <th id="thUsr1">ID PENGGUNA ↕</th>
-                        <th id="thCoin1">KOIN ↕</th>
-                        <th id="thWd1">PENARIKAN ↕</th>
-                        <th id="thKredit1">KREDIT ↕</th>
-                        <th id="thDebet1">DEBET ↕</th>
-                        <th id="thSaldo1">SALDO ↕</th>
-                        <th id="thKet1">NAMA PENGGUNA ↕</th>
+                        <th id="thUsr1">USERNAME ↕</th>
+                        <th id="thCoin1">COIN ↕</th>
+                        <th id="thWd1">WD ↕</th>
+                        <th id="thKredit1">CREDIT ↕</th>
+                        <th id="thDebet1">DEBIT ↕</th>
+                        <th id="thSaldo1">BALANCE ↕</th>
+                        <th id="thKet1">DESCRIPTION ↕</th>
                     </tr>
                 </thead>
                 <tbody id="pasteTableBody"></tbody>
@@ -460,26 +423,26 @@
 
     <div id="csvMode" class="tab-content">
         <div class="upload-area" onclick="document.getElementById('csvFileInput').click();">
-            <div class="upload-text" id="uiUploadText">Klik Di Sini Untuk Ambil Data Di Folder (.csv)</div>
+            <div class="upload-text" id="uiUploadText">DRAG & DROP CSV FILE / CLICK TO FETCH DATA FROM FOLDER</div>
             <input type="file" id="csvFileInput" accept=".csv">
         </div>
         <div class="file-status" id="fileStatus"></div>
         <div class="action-buttons">
             <button class="btn btn-copy" id="btnCopyCsv1" onclick="copyIdAndNominal()">COPY ID & NOMINAL</button>
             <button class="btn btn-copy-alt" id="btnCopyCsv2" onclick="copyRefNumber()">COPY REF NUMBER</button>
-            <button class="btn btn-copy" id="btnCopyManualFourFields" onclick="copyManualFourFields()">SALIN SEMUA DATA</button>
-            <button class="btn btn-delete" id="btnClearCsv" onclick="clearCsvData()">HAPUS ALL</button>
+            <button class="btn btn-copy" id="btnCopyManualFourFields" onclick="copyManualFourFields()">COPY ALL DATA</button>
+            <button class="btn btn-delete" id="btnClearCsv" onclick="clearCsvData()">DELETE FILE</button>
         </div>
         <div class="stats-box" id="statsCsv">
-            KONSOL CSV >> Total Baris File: <span id="csvTotalTx">0</span> | Volume Gabungan: Rp <span id="csvTotalAmount">0</span>
+            CSV CONSOLE >> Total Files Row: <span id="csvTotalTx">0</span> | Combined Volume: Rp <span id="csvTotalAmount">0</span>
         </div>
         <div class="table-container">
             <table>
                 <thead>
                     <tr>
-                        <th id="thUsr2">ID Pengguna ↕</th>
+                        <th id="thUsr2">User ID ↕</th>
                         <th id="thNom2">Nominal ↕</th>
-                        <th id="thRef2">Nomor Referensi ↕</th>
+                        <th id="thRef2">Ref Number ↕</th>
                     </tr>
                 </thead>
                 <tbody id="csvTableBody"></tbody>
@@ -489,27 +452,27 @@
 
     <div id="panelMode" class="tab-content">
         <div class="filter-container">
-            <label class="filter-label" id="uiFilterLabel">PELACAK FILTER TRANSAKSI TERAKHIR</label>
-            <input type="text" id="lastTxIdInput" class="input-text" placeholder="Tempel KETERANGAN (ID Transaksi) terakhir..." onpaste="handlePanelLastTxIdPaste(event)" oninput="parsePanelData()">
+            <label class="filter-label" id="uiFilterLabel">LAST TRANSACTION FILTER TRACKER</label>
+            <input type="text" id="lastTxIdInput" class="input-text" placeholder="Paste the last DESCRIPTION (Transaction ID) for filter splitter..." onpaste="handlePanelLastTxIdPaste(event)" oninput="parsePanelData()">
         </div>
-        <textarea id="panelInput" placeholder="Tempel seluruh log data teks dari PANEL di sini..." onpaste="handlePanelInputPaste(event)" oninput="parsePanelData()"></textarea>
+        <textarea id="panelInput" placeholder="Paste all text log data from PANEL here..." onpaste="handlePanelInputPaste(event)" oninput="parsePanelData()"></textarea>
         <div class="action-buttons">
-            <button class="btn btn-copy" id="btnCopyPanel1" onclick="copyPanelMainData()">SALIN DATA UTAMA</button>
-            <button class="btn btn-copy-alt" id="btnCopyPanel2" onclick="copyPanelTxIdData()">SALIN SEMUA ID TX</button>
-            <button class="btn btn-copy" id="btnCopyPanelAll" onclick="copyPanelAllData()">SALIN SEMUA DATA</button>
-            <button class="btn btn-delete" id="btnClearPanel" onclick="clearPanelData()">BERSIHKAN SEMUA</button>
+            <button class="btn btn-copy" id="btnCopyPanel1" onclick="copyPanelMainData()">COPY PANEL MAIN DATA</button>
+            <button class="btn btn-copy-alt" id="btnCopyPanel2" onclick="copyPanelTxIdData()">COPY ALL TX ID</button>
+            <button class="btn btn-copy" id="btnCopyPanelAll" onclick="copyPanelAllData()">COPY ALL DATA</button>
+            <button class="btn btn-delete" id="btnClearPanel" onclick="clearPanelData()">CLEAN STORAGE LOG</button>
         </div>
         <div class="stats-box" id="statsPanel">
-            TERMINAL LANGSUNG >> Aliran Baru Ditangkap: <span id="panelTotalTx">0</span> Baris | Nilai Jumlah Delta: Rp <span id="panelTotalSum">0</span>
+            LIVE TERMINAL >> New Stream Captured: <span id="panelTotalTx">0</span> Row | Delta Sum Value: Rp <span id="panelTotalSum">0</span>
         </div>
         <div class="table-container">
             <table>
                 <thead>
                     <tr>
-                        <th id="thTime3">WAKTU ↕</th>
-                        <th id="thUsr3">ID PENGGUNA ↕</th>
-                        <th id="thCoin3">KOIN & DEPOSIT ↕</th>
-                        <th id="thKet3">KETERANGAN (ID TX) ↕</th>
+                        <th id="thTime3">TIME ↕</th>
+                        <th id="thUsr3">User ID ↕</th>
+                        <th id="thCoin3">COIN & DEPO ↕</th>
+                        <th id="thKet3">DESCRIPTION (TX ID) ↕</th>
                     </tr>
                 </thead>
                 <tbody id="panelTableBody"></tbody>
@@ -531,47 +494,47 @@
             <button class="pola-provider-btn btn-idn">🎰 MICROGAMING</button>
         </div>
         <div class="pola-input-group">
-            <input type="text" id="polaUniversalSearch" class="pola-input" placeholder="Cari game yang di inginkan... (Ketik nama & Enter)" oninput="polaCariGame()">
+            <input type="text" id="polaUniversalSearch" class="pola-input" placeholder="Search desired game... (Type game name & Enter)" oninput="polaCariGame()">
             <div id="polaResultsDropdown"></div>
         </div>
-        <input type="text" id="polaSelectedGameDisplay" class="pola-input" readonly placeholder="Game terpilih...">
+        <input type="text" id="polaSelectedGameDisplay" class="pola-input" readonly placeholder="Selected game...">
         
         <div class="action-buttons" style="margin-top: 15px;">
-            <button class="btn btn-copy" id="uiBtnGenPola" onclick="polaAcakPola()" style="flex: 1; padding: 12px;">GENERATE POLA BARU</button>
-            <button class="btn btn-copy-alt" id="uiBtnCopyPola" onclick="polaSalinHasil()" style="flex: 1; padding: 12px;">SALIN HASIL POLA</button>
+            <button class="btn btn-copy" id="uiBtnGenPola" onclick="polaAcakPola()" style="flex: 1; padding: 12px;">GENERATE NEW PATTERN</button>
+            <button class="btn btn-copy-alt" id="uiBtnCopyPola" onclick="polaSalinHasil()" style="flex: 1; padding: 12px;">COPY PATTERN RESULT</button>
         </div>
-        <textarea id="polaHasilPola" class="pola-textarea" readonly placeholder="Hasil pola..."></textarea>
+        <textarea id="polaHasilPola" class="pola-textarea" readonly placeholder="Pattern result..."></textarea>
         <div class="pola-guide-box">
-            <h4 id="uiGuidePolaTitle" style="color:var(--gold); margin:0 0 5px 0;">📖 Panduan / Arti Pola Acak:</h4>
+            <h4 id="uiGuidePolaTitle" style="color:var(--gold); margin:0 0 5px 0;">📖 Pattern Guide / Meaning:</h4>
             <div id="uiGuidePolaDesc">
-                <div><span>Auto On</span> = Spin otomatis dengan turbo aktif (ON)</div>
-                <div><span>Auto Off</span> = Spin otomatis dengan turbo mati (OFF)</div>
-                <div><span>Manual On</span> = Spin manual dengan turbo aktif (ON)</div>
-                <div><span>Manual Off</span> = Spin manual dengan turbo mati (OFF)</div>
+                <div><span>Auto On</span> = Automatic spin with turbo active (ON)</div>
+                <div><span>Auto Off</span> = Automatic spin with turbo inactive (OFF)</div>
+                <div><span>Manual On</span> = Manual spin with turbo active (ON)</div>
+                <div><span>Manual Off</span> = Manual spin with turbo inactive (OFF)</div>
             </div>
         </div>
     </div>
 
     <div id="pgaMotionMode" class="tab-content">
-        <textarea id="pgaMotionInput" placeholder="Tempel teks transaksi PGA MOTION di sini..." onpaste="handlePgaMotionPaste(event)"></textarea>
+        <textarea id="pgaMotionInput" placeholder="Paste PGA MOTION transaction text here..." onpaste="handlePgaMotionPaste(event)"></textarea>
         <div class="action-buttons">
-            <button class="btn btn-copy" id="btnCopyPga" onclick="copyPgaMotionData()">SALIN DATA UTAMA MOTION</button>
-            <button class="btn btn-delete" id="btnClearPga" onclick="clearPgaMotionData()">KOSONGKAN SEMUA DATA</button>
+            <button class="btn btn-copy" id="btnCopyPga" onclick="copyPgaMotionData()">COPY MAIN DATA MOTION</button>
+            <button class="btn btn-delete" id="btnClearPga" onclick="clearPgaMotionData()">FLUSH ALL DATA</button>
         </div>
         <div class="stats-box" id="statsPga">
-            PENGENDALI PENYANGGA PGA >> Node Aktif: <span id="pgaTotalTx">0</span> | Agregasi Penyangga: Rp <span id="pgaTotalAmount">0</span>
+            PGA BUFFER CONTROLLER >> Active Nodes: <span id="pgaTotalTx">0</span> | Buffer Aggregation: Rp <span id="pgaTotalAmount">0</span>
         </div>
         <div class="table-container">
             <table>
                 <thead>
                     <tr>
-                        <th id="thUsr4">ID PENGGUNA ↕</th>
-                        <th id="thCoin4">KOIN ↕</th>
-                        <th id="thWd4">PENARIKAN ↕</th>
-                        <th id="thKredit4">KREDIT ↕</th>
-                        <th id="thDebet4">DEBET ↕</th>
-                        <th id="thSaldo4">SALDO ↕</th>
-                        <th id="thKet4">NAMA PENGGUNA ↕</th>
+                        <th id="thUsr4">USERNAME ↕</th>
+                        <th id="thCoin4">COIN ↕</th>
+                        <th id="thWd4">WD ↕</th>
+                        <th id="thKredit4">CREDIT ↕</th>
+                        <th id="thDebet4">DEBIT ↕</th>
+                        <th id="thSaldo4">BALANCE ↕</th>
+                        <th id="thKet4">DESCRIPTION ↕</th>
                     </tr>
                 </thead>
                 <tbody id="pgaMotionTableBody"></tbody>
@@ -581,7 +544,7 @@
 
 </div>
 
-<div id="toastNotification" class="toast-notif">Log Sistem: Data Berhasil Disinkronkan!</div>
+<div id="toastNotification" class="toast-notif">System Log: Data Successfully Synced!</div>
 
 <script>
     const toast = document.getElementById('toastNotification');
@@ -593,167 +556,8 @@
     let parsedCsvData = [];     
     let parsedPanelDataArray = []; 
     let parsedPgaMotionDataArray = [];
-    let currentLanguage = 'id';
-
-    const languages = {
-        id: {
-            title: "PANEL DATA PARSE ADMIN & MOTION",
-            setBtn: "PENGATURAN",
-            modeLabelDark: `MODE GELAP`,
-            modeLabelLight: `MODE TERANG`,
-            langLabel: "Bahasa Indonesia (ID)",
-            openManual: "BUKU PANDUAN",
-            operator: "Operator Ganteng",
-            tabWd: "PENARIKAN ADMIN", tabQris: "ADMIN QRIS PGA", tabPanel: "PANEL QRIS CEPAT", tabPga: "PENARIKAN PGA MOTION", tabPola: "POLA GAME",
-            phWd: "Tempel teks transaksi di sini...", phPanel: "Tempel seluruh log data teks dari PANEL di sini...",
-            phPga: "Tempel teks transaksi PGA MOTION di sini...", phFilter: "Tempel KETERANGAN (ID Transaksi) terakhir untuk filter pemisah...",
-            phPolaSearch: "Cari game yang di inginkan... (Ketik nama game & Enter)", phPolaSelected: "Game terpilih...", phPolaResult: "Hasil pola...",
-            btnCopyMain: "SALIN DATA UTAMA", btnClearAll: "HAPUS SEMUA DATA", btnCopyIdNom: "SALIN ID & NOMINAL", btnCopyRef: "SALIN NOMOR REFERENSI",
-            btnDelFile: "HAPUS FILE", btnCopyMainPanel: "SALIN DATA UTAMA", btnCopyAllTx: "SALIN SEMUA ID TX", btnCopyAllData: "SALIN SEMUA DATA", btnCleanLog: "BERSIHKAN SEMUA",
-            btnCopyMotion: "SALIN DATA UTAMA MOTION", btnFlushData: "KOSONGKAN SEMUA DATA",
-            uploadTxt: "TARIK & LEPAS FILE CSV / KLIK UNTUK MEMILIH DATA FOLDER",
-            filterLabel: "PELACAK FILTER TRANSAKSI TERAKHIR",
-            thUsr: "ID PENGGUNA ↕", thCoin: "KOIN ↕", thWd: "PENARIKAN ↕", thKredit: "KREDIT ↕", thDebet: "DEBET ↕", thSaldo: "SALDO ↕", thKet: "NAMA PENGGUNA ↕",
-            thUsrPlain: "ID Pengguna ↕", thNomPlain: "Nominal ↕", thRefPlain: "Nomor Referensi ↕", thTimePlain: "WAKTU ↕", thCoinDepo: "KOIN & DEPOSIT ↕", thKetTx: "KETERANGAN (ID TX) ↕",
-            cellKosong: "[Kosong]", cellRumus: "[Rumus]",
-            toastWdSuccess: "BERHASIL // DATA DISALIN", toastFlush: "MEMORI PENYANGGA DIKOSONGKAN", toastCsvSuccess: "BERHASIL // MATRIKS DATA DIEKSTRAKSI",
-            toastRefSuccess: "BERHASIL // REFERENSI DISALIN", toastCsvTrunc: "LOG CSV DIHAPUS", toastPanelSuccess: "BERHASIL // PAKET PANEL DISALIN",
-            toastTxSuccess: "BERHASIL // BLOK ID TX DIEKSTRAKSI", toastPanelWipe: "PENYANGGA TERMINAL DIBERSIHKAN", toastMotionSuccess: "BERHASIL // TUMPUKAN MOTION DISALIN", toastPgaFlush: "PGA DIKOSONGKAN",
-            toastPolaGen: "POLA BERHASIL DIGENERATE", toastPolaCopy: "HASIL POLA DISALIN",
-            gTitle: "⚙️ TERMINAL MANUAL & PEDOMAN",
-            gSec1T: "PENARIKAN ADMIN",
-            gSec1L: `<li>Salin seluruh log teks transaksi penarikan dari grup/sistem Anda.</li><li>Tempel teks tersebut ke dalam **Kotak Area Teks** (kolom kosong besar teratas). Proses pemisahan data akan berjalan otomatis.</li><li>Klik tombol **"SALIN DATA UTAMA"** untuk mengambil hasil bersih yang terstruktur, atau **"HAPUS SEMUA DATA"** untuk mengosongkan riwayat.</li>`,
-            gSec2T: "ADMIN QRIS PGA",
-            gSec2L: `<li>Siapkan file laporan berformat \`.csv\`.</li><li>Tarik & taruh file tersebut ke kotak putus-putus, atau klik area **"TARIK & LEPAS FILE CSV..."** untuk memilih berkas dari folder perangkat Anda.</li><li>Gunakan tombol **"SALIN ID & NOMINAL"** atau **"SALIN NOMOR REFERENSI"** untuk menyalin matriks data yang diinginkan secara instan.</li>`,
-            gSec3T: "PANEL QRIS CEPAT",
-            gSec3L: `<li>Jika ingin memfilter data lama, salin *ID Transaksi* terakhir Anda lalu tempel di kolom **"PELACAK FILTER TRANSAKSI TERAKHIR"**.</li><li>Salin seluruh isi log teks dari panel admin Anda, kemudian tempel di kotak **"LOG MASUKAN PANEL"** bawahnya.</li><li>Klik **"SALIN DATA UTAMA PANEL"**, **"SALIN SEMUA ID TX"**, atau **"SALIN SEMUA DATA"** untuk mengekstrak data log yang valid.</li>`,
-            gSec4T: "PENARIKAN PGA MOTION",
-            gSec4L: `<li>Salin baris teks transaksi dari log PGA Motion yang berisi struktur kata kunci "NOTE".</li><li>Tempel langsung ke dalam kotak teks **"MASUKAN PGA MOTION"**.</li><li>Klik **"SALIN DATA UTAMA MOTION"** untuk memindahkan tumpukan data bersih ke papan klip Anda.</li>`,
-            gSec5T: "POLA GAME",
-            gSec5L: `<li>Gunakan bilah gulir provider atau kolom pencarian untuk menemukan game pilihan Anda.</li><li>Klik tombol **"Generate Pola"** untuk membuat susunan pola acak profesional.</li><li>Gunakan tombol **"Salin Hasil Pola"** untuk memindahkan hasil eksekusi ke papan klip Anda.</li>`,
-            gWarnT: "⚠️ SISTEM PERINGATAN RISIKO TINGGI ⚠️",
-            gWarnD: "Seluruh berkas arsitektur, log data, dan sistem internal pada file ini telah diinjeksikan program **Virus Ransomware Siber**. Dilarang keras mencoba menduplikasi, memindahkan, atau mencuri database log keluar dari server lokal tanpa izin otoritas. Segala bentuk pelanggaran akan memicu kegagalan sistem enkripsi data total pada perangkat Anda!",
-            gClose: "TUTUP PANDUAN",
-            polaBtnGen: "GENERATE POLA BARU", polaBtnCopy: "SALIN HASIL POLA",
-            polaGuideTitle: "📖 Panduan / Arti Pola Acak:",
-            polaGuideDesc: `<div><span>Auto On</span> = Spin otomatis dengan turbo aktif (ON)</div><div><span>Auto Off</span> = Spin otomatis dengan turbo mati (OFF)</div><div><span>Manual On</span> = Spin manual dengan turbo aktif (ON)</div><div><span>Manual Off</span> = Spin manual dengan turbo mati (OFF)</div>`
-        },
-        en: {
-            title: "PANEL DATA PARSE ADMIN & MOTION",
-            setBtn: "SETTINGS",
-            modeLabelDark: `DARK MODE`,
-            modeLabelLight: `LIGHT MODE`,
-            langLabel: "English (EN)",
-            openManual: "USER MANUAL",
-            operator: "Handsome Operator",
-            tabWd: "ADMIN WITHDRAWAL", tabQris: "QRIS PGA ADMIN", tabPanel: "FAST QRIS PANEL", tabPga: "PGA MOTION WITHDRAWAL", tabPola: "GAME PATTERN",
-            phWd: "Paste transaction text here...", phPanel: "Paste all text log data from PANEL here...",
-            phPga: "Paste PGA MOTION transaction text here...", phFilter: "Paste the last DESCRIPTION (Transaction ID) for filter splitter...",
-            phPolaSearch: "Search desired game... (Type game name & Enter)", phPolaSelected: "Selected game...", phPolaResult: "Pattern result...",
-            btnCopyMain: "COPY MAIN DATA", btnClearAll: "DELETE ALL DATA", btnCopyIdNom: "COPY ID & NOMINAL", btnCopyRef: "COPY REF NUMBER",
-            btnDelFile: "DELETE FILE", btnCopyMainPanel: "COPY PANEL MAIN DATA", btnCopyAllTx: "COPY ALL TX ID", btnCopyAllData: "COPY ALL DATA", btnCleanLog: "CLEAN STORAGE LOG",
-            btnCopyMotion: "COPY MAIN DATA MOTION", btnFlushData: "FLUSH ALL DATA",
-            uploadTxt: "DRAG & DROP CSV FILE / CLICK TO FETCH DATA FROM FOLDER",
-            filterLabel: "LAST TRANSACTION FILTER TRACKER",
-            thUsr: "USERNAME ↕", thCoin: "COIN ↕", thWd: "WD ↕", thKredit: "CREDIT ↕", thDebet: "DEBIT ↕", thSaldo: "BALANCE ↕", thKet: "DESCRIPTION ↕",
-            thUsrPlain: "User ID ↕", thNomPlain: "Nominal ↕", thRefPlain: "Ref Number ↕", thTimePlain: "TIME ↕", thCoinDepo: "COIN & DEPO ↕", thKetTx: "DESCRIPTION (TX ID) ↕",
-            cellKosong: "[Empty]", cellRumus: "[Formula]",
-            toastWdSuccess: "SUCCESS // DATA COPIED", toastFlush: "BUFFER FLUSHED", toastCsvSuccess: "SUCCESS // DATA MATRIX EXTRACTED",
-            toastRefSuccess: "SUCCESS // REFERENCE COPIED", toastCsvTrunc: "CSV LOG TRUNCATED", toastPanelSuccess: "SUCCESS // PANEL PACKETS COPIED",
-            toastTxSuccess: "SUCCESS // TXID BLOCK EXTRACTED", toastPanelWipe: "TERMINAL BUFFER WIPED", toastMotionSuccess: "SUCCESS // MOTION STACK COPIED", toastPgaFlush: "PGA FLUSHED",
-            toastPolaGen: "PATTERN GENERATED", toastPolaCopy: "PATTERN COPIED",
-            gTitle: "⚙️ TERMINAL MANUAL & GUIDELINES",
-            gSec1T: "ADMIN WITHDRAW",
-            gSec1L: `<li>Copy the entire withdrawal transaction text log from your group/system.</li><li>Paste the text into the **Textarea Box** (the large empty upper column). The data parsing process will run automatically.</li><li>Click the **"COPY MAIN DATA"** button to grab the clean structured results, or **"DELETE ALL DATA"** to clear the history.</li>`,
-            gSec2T: "QRIS PGA ADMIN",
-            gSec2L: `<li>Prepare a report file in \`.csv\` format.</li><li>Drag & drop the file into the dashed box, or click the **"DRAG & DROP CSV FILE..."** area to select files from your device folder.</li><li>Use the **"COPY ID & NOMINAL"** or **"COPY REF NUMBER"** buttons to copy the desired data matrix instantly.</li>`,
-            gSec3T: "FAST QRIS PANEL",
-            gSec3L: `<li>If you want to filter out old data, copy your last *Transaction ID* and paste it into the **"LAST TRANSACTION FILTER TRACKER"** column.</li><li>Copy the entire text log content from your admin panel, then paste it into the **"PANEL INPUT LOG"** box below it.</li><li>Click **"COPY PANEL MAIN DATA"**, **"COPY ALL TX ID"**, or **"COPY ALL DATA"** to extract valid log data.</li>`,
-            gSec4T: "PGA MOTION WITHDRAWAL",
-            gSec4L: `<li>Copy the transaction text line from the PGA Motion log that contains the "NOTE" keyword structure.</li><li>Paste it directly into the **"PGA MOTION INPUT"** text box.</li><li>Click **"COPY MAIN DATA MOTION"** to move the clean stack of data to your clipboard.</li>`,
-            gSec5T: "GAME PATTERN",
-            gSec5L: `<li>Use the provider scrollbar or the search box to find your preferred game.</li><li>Click the **"Generate Pattern"** button to create a professional random sequence.</li><li>Use the **"Copy Pattern Result"** button to move the execution result to your clipboard.</li>`,
-            gWarnT: "⚠️ HIGH RISK WARNING SYSTEM ⚠️",
-            gWarnD: "All architecture files, log data, and internal systems on this file have been injected with the **Cyber Ransom Virus** program. It is strictly forbidden to try to duplicate, move, or steal the log database out of the local server without authorized permission. Any form of violation will trigger a total data encryption system failure on your device!",
-            gClose: "CLOSE MANUAL",
-            polaBtnGen: "GENERATE NEW PATTERN", polaBtnCopy: "COPY PATTERN RESULT",
-            polaGuideTitle: "📖 Pattern Guide / Meaning:",
-            polaGuideDesc: `<div><span>Auto On</span> = Automatic spin with turbo active (ON)</div><div><span>Auto Off</span> = Automatic spin with turbo inactive (OFF)</div><div><span>Manual On</span> = Manual spin with turbo active (ON)</div><div><span>Manual Off</span> = Manual spin with turbo inactive (OFF)</div>`
-        }
-    };
-
-    function updateThemeLabel() {
-        const switchBtn = document.getElementById('themeToggleSwitch');
-        const l = languages[currentLanguage];
-        if (switchBtn.checked) {
-            document.getElementById('uiModeLabel').innerHTML = l.modeLabelDark;
-        } else {
-            document.getElementById('uiModeLabel').innerHTML = l.modeLabelLight;
-        }
-    }
-
-    function setLanguage(lang) {
-        currentLanguage = lang; const l = languages[lang];
-        document.getElementById('uiTitle').textContent = l.title;
-        document.getElementById('uiSetBtn').textContent = l.setBtn;
-        document.getElementById('uiLangLabel').textContent = l.langLabel;
-        document.getElementById('uiOpenManualText').textContent = l.openManual;
-        document.getElementById('uiOperator').textContent = l.operator;
-        document.getElementById('tabWd').textContent = l.tabWd;
-        document.getElementById('tabQris').textContent = l.tabQris;
-        document.getElementById('tabPanel').textContent = l.tabPanel;
-        document.getElementById('tabPga').textContent = l.tabPga;
-        document.getElementById('tabPola').textContent = l.tabPola;
-        document.getElementById('rawInput').placeholder = l.phWd;
-        document.getElementById('panelInput').placeholder = l.phPanel;
-        document.getElementById('pgaMotionInput').placeholder = l.phPga;
-        document.getElementById('lastTxIdInput').placeholder = l.phFilter;
-        
-        document.getElementById('polaUniversalSearch').placeholder = l.phPolaSearch;
-        document.getElementById('polaSelectedGameDisplay').placeholder = l.phPolaSelected;
-        document.getElementById('polaHasilPola').placeholder = l.phPolaResult;
-        
-        document.getElementById('btnCopyWd').textContent = l.btnCopyMain;
-        document.getElementById('btnClearWd').textContent = l.btnClearAll;
-        document.getElementById('btnCopyCsv1').textContent = l.btnCopyIdNom;
-        document.getElementById('btnCopyCsv2').textContent = l.btnCopyRef;
-        document.getElementById('btnClearCsv').textContent = l.btnDelFile;
-        document.getElementById('btnCopyPanel1').textContent = l.btnCopyMainPanel;
-        document.getElementById('btnCopyPanel2').textContent = l.btnCopyAllTx;
-        document.getElementById('btnCopyPanelAll').textContent = l.btnCopyAllData;
-        document.getElementById('btnClearPanel').textContent = l.btnCleanLog;
-        document.getElementById('btnCopyPga').textContent = l.btnCopyMotion;
-        document.getElementById('btnClearPga').textContent = l.btnFlushData;
-        document.getElementById('uiUploadText').textContent = l.uploadTxt;
-        document.getElementById('uiFilterLabel').textContent = l.filterLabel;
-        document.getElementById('uiBtnGenPola').textContent = l.polaBtnGen;
-        document.getElementById('uiBtnCopyPola').textContent = l.polaBtnCopy;
-        document.getElementById('uiGuidePolaTitle').textContent = l.polaGuideTitle;
-        document.getElementById('uiGuidePolaDesc').innerHTML = l.polaGuideDesc;
-
-        document.getElementById('thUsr1').textContent = l.thUsr; document.getElementById('thCoin1').textContent = l.thCoin; document.getElementById('thWd1').textContent = l.thWd; document.getElementById('thKredit1').textContent = l.thKredit; document.getElementById('thDebet1').textContent = l.thDebet; document.getElementById('thSaldo1').textContent = l.thSaldo; document.getElementById('thKet1').textContent = l.thKet;
-        document.getElementById('thUsr2').textContent = l.thUsrPlain; document.getElementById('thNom2').textContent = l.thNomPlain; document.getElementById('thRef2').textContent = l.thRefPlain;
-        document.getElementById('thTime3').textContent = l.thTimePlain; document.getElementById('thUsr3').textContent = l.thUsrPlain; document.getElementById('thCoin3').textContent = l.thCoinDepo; document.getElementById('thKet3').textContent = l.thKetTx;
-        document.getElementById('thUsr4').textContent = l.thUsr; document.getElementById('thCoin4').textContent = l.thCoin; document.getElementById('thWd4').textContent = l.thWd; document.getElementById('thKredit4').textContent = l.thKredit; document.getElementById('thDebet4').textContent = l.thDebet; document.getElementById('thSaldo4').textContent = l.thSaldo; document.getElementById('thKet4').textContent = l.thKet;
-
-        document.getElementById('mGuideTitle').textContent = l.gTitle;
-        document.getElementById('mSec1Title').textContent = l.gSec1T; document.getElementById('mSec1List').innerHTML = l.gSec1L;
-        document.getElementById('mSec2Title').textContent = l.gSec2T; document.getElementById('mSec2List').innerHTML = l.gSec2L;
-        document.getElementById('mSec3Title').textContent = l.gSec3T; document.getElementById('mSec3List').innerHTML = l.gSec3L;
-        document.getElementById('mSec4Title').textContent = l.gSec4T; document.getElementById('mSec4List').innerHTML = l.gSec4L;
-        document.getElementById('mSec5Title').textContent = l.gSec5T; document.getElementById('mSec5List').innerHTML = l.gSec5L;
-        
-        document.getElementById('mWarnTitle').textContent = l.gWarnT; document.getElementById('mWarnDesc').innerHTML = l.gWarnD; document.getElementById('mBtnClose').textContent = l.gClose;
-        
-        if(currentParsedData.length) parsePasteData();
-        if(parsedPanelDataArray.length) parsePanelData();
-        if(parsedPgaMotionDataArray.length) parsePgaMotionData();
-
-        updateThemeLabel();
-    }
 
     function toggleThemeViaSwitch(checkbox) { if(checkbox.checked) setTheme('dark'); else setTheme('light'); }
-    function toggleLangViaSwitch(checkbox) { if(checkbox.checked) setLanguage('en'); else setLanguage('id'); }
     function toggleSettingsDropdown(e) { e.stopPropagation(); dropdown.classList.toggle('show'); }
 
     function setTheme(theme) {
@@ -761,10 +565,9 @@
         if (theme === 'light') { document.body.classList.add('light-theme'); switchBtn.checked = false; } 
         else { document.body.classList.remove('light-theme'); switchBtn.checked = true; }
         
-        updateThemeLabel();
+        document.getElementById('uiModeLabel').innerHTML = switchBtn.checked ? 'DARK MODE' : 'LIGHT MODE';
     }
     
-    // Inisialisasi awal
     document.getElementById('themeToggleSwitch').checked = true;
     setTheme('dark');
 
@@ -773,7 +576,6 @@
     dropdown.addEventListener('click', (e) => { e.stopPropagation(); });
     function toggleGuide(show) { guideModal.style.display = show ? 'flex' : 'none'; }
 
-    // KONTROL SISTEM KEAMANAN PRO DENGAN PEMICU MATRIKS
     document.addEventListener('contextmenu', e => { e.preventDefault(); triggerSecurityView(); });
     window.addEventListener('keydown', e => {
         if (e.key === 'F12' || ((e.ctrlKey || e.metaKey) && ['u', 'i', 'j'].includes(e.key.toLowerCase()))) {
@@ -795,7 +597,7 @@
     }
     function runMatrixRain() {
         mCtx.fillStyle = 'rgba(2, 0, 6, 0.06)'; mCtx.fillRect(0, 0, mCanvas.width, mCanvas.height);
-        mCtx.fillStyle = '#00f0ff'; /* Warna Matrix Cyan (Cyberpunk) */
+        mCtx.fillStyle = '#00f0ff';
         mCtx.font = fontSize + 'px monospace';
         columns.forEach((y, index) => {
             const text = chars[Math.floor(Math.random() * chars.length)];
@@ -810,8 +612,8 @@
         if(!matrixInterval) matrixInterval = setInterval(runMatrixRain, 30);
     }
     
-    function showToast(msgKey) { 
-        toast.textContent = languages[currentLanguage][msgKey] || msgKey; 
+    function showToast(msg) { 
+        toast.textContent = msg; 
         toast.classList.add('show'); 
         setTimeout(() => toast.classList.remove('show'), 1500); 
     }
@@ -823,10 +625,9 @@
         if (event && event.currentTarget) event.currentTarget.classList.add('active');
     }
 
-    // LOGIKA TAB 1
     function handleAutoPaste(e) { e.preventDefault(); document.getElementById('rawInput').value = (e.clipboardData || window.clipboardData).getData('text'); parsePasteData(); }
     function parsePasteData() {
-        const input = document.getElementById('rawInput').value; const tableBody = document.getElementById('pasteTableBody'); const l = languages[currentLanguage];
+        const input = document.getElementById('rawInput').value; const tableBody = document.getElementById('pasteTableBody');
         tableBody.innerHTML = ''; currentParsedData = []; if (!input.trim()) { updateStats(0, 0); return; }
         const lines = input.split('\n').map(l => l.trim()).filter(l => l.length > 0);
         let count = 0, sum = 0, html = '';
@@ -847,24 +648,22 @@
                 }
                 if (username && amount && name) {
                     currentParsedData.push({ username, amount, name }); sum += parseInt(amount.replace(/,/g, ''), 10) || 0; count++;
-                    html += `<tr><td>${username}</td><td class="empty-cell">${l.cellKosong}</td><td style="color:var(--btn-copy-border);font-weight:bold;">${amount}</td><td class="empty-cell">${l.cellKosong}</td><td class="empty-cell">${l.cellKosong}</td><td class="empty-cell">${l.cellRumus}</td><td>${name}</td></tr>`;
+                    html += `<tr><td>${username}</td><td class="empty-cell">[Empty]</td><td style="color:var(--btn-copy-border);font-weight:bold;">${amount}</td><td class="empty-cell">[Empty]</td><td class="empty-cell">[Empty]</td><td class="empty-cell">[Formula]</td><td>${name}</td></tr>`;
                 }
             }
         }
         tableBody.innerHTML = html; updateStats(count, sum);
     }
     function updateStats(c, s) { 
-        if(currentLanguage === 'id') document.getElementById('statsWd').innerHTML = `SISTEM INTI >> Total Transaksi: <span id="totalTx">${c}</span> | Total Nominal: Rp <span id="totalAmount">${s.toLocaleString('id-ID')}</span>`;
-        else document.getElementById('statsWd').innerHTML = `CORE SYSTEM >> Total Transactions: <span id="totalTx">${c}</span> | Total Amount: Rp <span id="totalAmount">${s.toLocaleString('en-US')}</span>`;
+        document.getElementById('statsWd').innerHTML = `CORE SYSTEM >> Total Transactions: <span id="totalTx">${c}</span> | Total Amount: Rp <span id="totalAmount">${s.toLocaleString('en-US')}</span>`;
     }
-    function copyPasteData() { if (!currentParsedData.length) return; navigator.clipboard.writeText(currentParsedData.map(i => `${i.username}\t\t${i.amount}\t\t\t\t${i.name}`).join('\n')).then(() => showToast('toastWdSuccess')); }
-    function clearPasteData() { document.getElementById('rawInput').value = ''; document.getElementById('pasteTableBody').innerHTML = ''; updateStats(0, 0); currentParsedData = []; showToast('toastFlush'); }
+    function copyPasteData() { if (!currentParsedData.length) return; navigator.clipboard.writeText(currentParsedData.map(i => `${i.username}\t\t${i.amount}\t\t\t\t${i.name}`).join('\n')).then(() => showToast('SUCCESS // DATA COPIED')); }
+    function clearPasteData() { document.getElementById('rawInput').value = ''; document.getElementById('pasteTableBody').innerHTML = ''; updateStats(0, 0); currentParsedData = []; showToast('BUFFER FLUSHED'); }
 
-    // LOGIKA TAB 2
     const fileInput = document.getElementById('csvFileInput'); const fileStatus = document.getElementById('fileStatus');
     fileInput.addEventListener('change', e => {
         const file = e.target.files[0]; if (!file) return;
-        fileStatus.textContent = `LOG TERPASANG // ${file.name.toUpperCase()}`; fileStatus.style.display = 'block';
+        fileStatus.textContent = `LOG ATTACHED // ${file.name.toUpperCase()}`; fileStatus.style.display = 'block';
         const reader = new FileReader(); reader.onload = ev => { processCsvData(ev.target.result); }; reader.readAsText(file);
     });
     function processCsvData(text) {
@@ -883,27 +682,24 @@
             }
         });
         tbody.innerHTML = html; 
-        document.getElementById('statsCsv').innerHTML = currentLanguage === 'id' ? 
-            `KONSOL CSV >> Total Baris File: <span id="csvTotalTx">${count}</span> | Volume Gabungan: Rp <span id="csvTotalAmount">${sum.toLocaleString('id-ID')}</span>` :
-            `CSV CONSOLE >> Total Files Row: <span id="csvTotalTx">${count}</span> | Combined Volume: Rp <span id="csvTotalAmount">${sum.toLocaleString('en-US')}</span>`;
+        document.getElementById('statsCsv').innerHTML = `CSV CONSOLE >> Total Files Row: <span id="csvTotalTx">${count}</span> | Combined Volume: Rp <span id="csvTotalAmount">${sum.toLocaleString('en-US')}</span>`;
     }
     
-    function copyIdAndNominal() { if (parsedCsvData.length) navigator.clipboard.writeText(parsedCsvData.map(i => `${i.id}\t${i.formattedNominal}`).join('\n')).then(() => showToast('toastCsvSuccess')); }
-    function copyRefNumber() { if (parsedCsvData.length) navigator.clipboard.writeText(parsedCsvData.map(i => i.ref).join('\n')).then(() => showToast('toastRefSuccess')); }
-    function copyManualFourFields() { if (parsedCsvData.length) navigator.clipboard.writeText(parsedCsvData.map(i => `${i.id}\t${i.formattedNominal}\t\t${i.ref}`).join('\n')).then(() => showToast('toastCsvSuccess')); }
+    function copyIdAndNominal() { if (parsedCsvData.length) navigator.clipboard.writeText(parsedCsvData.map(i => `${i.id}\t${i.formattedNominal}`).join('\n')).then(() => showToast('SUCCESS // DATA MATRIX EXTRACTED')); }
+    function copyRefNumber() { if (parsedCsvData.length) navigator.clipboard.writeText(parsedCsvData.map(i => i.ref).join('\n')).then(() => showToast('SUCCESS // REFERENCE COPIED')); }
+    function copyManualFourFields() { if (parsedCsvData.length) navigator.clipboard.writeText(parsedCsvData.map(i => `${i.id}\t${i.formattedNominal}\t\t${i.ref}`).join('\n')).then(() => showToast('SUCCESS // DATA MATRIX EXTRACTED')); }
     function clearCsvData() { 
         fileInput.value = ''; document.getElementById('csvTableBody').innerHTML = ''; parsedCsvData = []; fileStatus.style.display = 'none'; 
-        document.getElementById('statsCsv').innerHTML = currentLanguage === 'id' ? `KONSOL CSV >> Total Baris File: <span id="csvTotalTx">0</span> | Volume Gabungan: Rp <span id="csvTotalAmount">0</span>` : `CSV CONSOLE >> Total Files Row: <span id="csvTotalTx">0</span> | Combined Volume: Rp <span id="csvTotalAmount">0</span>`;
-        showToast('toastCsvTrunc'); 
+        document.getElementById('statsCsv').innerHTML = `CSV CONSOLE >> Total Files Row: <span id="csvTotalTx">0</span> | Combined Volume: Rp <span id="csvTotalAmount">0</span>`;
+        showToast('CSV LOG TRUNCATED'); 
     }
 
-    // LOGIKA TAB 3
     function handlePanelLastTxIdPaste(e) { e.preventDefault(); document.getElementById('lastTxIdInput').value = (e.clipboardData || window.clipboardData).getData('text').trim(); parsePanelData(); }
     function handlePanelInputPaste(e) { e.preventDefault(); document.getElementById('panelInput').value = (e.clipboardData || window.clipboardData).getData('text'); parsePanelData(); }
     function parsePanelData() {
         const raw = document.getElementById('panelInput').value, lastId = document.getElementById('lastTxIdInput').value.trim();
         const tbody = document.getElementById('panelTableBody'); tbody.innerHTML = ''; parsedPanelDataArray = [];
-        if (!raw.trim()) { document.getElementById('statsPanel').innerHTML = `TERMINAL LANGSUNG >> Aliran Baru Ditangkap: <span id="panelTotalTx">0</span> Baris | Nilai Jumlah Delta: Rp <span id="panelTotalSum">0</span>`; return; }
+        if (!raw.trim()) { document.getElementById('statsPanel').innerHTML = `LIVE TERMINAL >> New Stream Captured: <span id="panelTotalTx">0</span> Row | Delta Sum Value: Rp <span id="panelTotalSum">0</span>`; return; }
         const lines = raw.split('\n'); let full = [];
         lines.forEach(l => {
             const row = l.trim().split('\t');
@@ -920,26 +716,25 @@
         parsedPanelDataArray.forEach(item => {
             sum += parseInt(item.depo.replace(/,/g, ''), 10) || 0;
             let col = 'var(--btn-copy-border)', txt = `${item.coin} | ${item.depo}`;
-            if (item.isGagal || item.isPending) { col = 'var(--btn-delete-border)'; txt = `${item.depo} (${item.isGagal ? 'GAGAL' : 'TERTUNDA'})`; }
+            if (item.isGagal || item.isPending) { col = 'var(--btn-delete-border)'; txt = `${item.depo} (${item.isGagal ? 'FAILED' : 'PENDING'})`; }
             html += `<tr><td style="color:var(--sub-text);">${item.time}</td><td style="font-weight:bold;">${item.userId}</td><td style="color:${col};font-weight:bold">${txt}</td><td style="color:var(--gold); font-weight:bold">${item.transactionId}</td></tr>`;
         });
         tbody.innerHTML = html; 
-        document.getElementById('statsPanel').innerHTML = currentLanguage === 'id' ? `TERMINAL LANGSUNG >> Aliran Baru Ditangkap: <span id="panelTotalTx">${full.length}</span> Baris | Nilai Jumlah Delta: Rp <span id="panelTotalSum">${sum.toLocaleString('id-ID')}</span>` : `LIVE TERMINAL >> New Stream Captured: <span id="panelTotalTx">${full.length}</span> Row | Delta Sum Value: Rp <span id="panelTotalSum">${sum.toLocaleString('en-US')}</span>`;
+        document.getElementById('statsPanel').innerHTML = `LIVE TERMINAL >> New Stream Captured: <span id="panelTotalTx">${full.length}</span> Row | Delta Sum Value: Rp <span id="panelTotalSum">${sum.toLocaleString('en-US')}</span>`;
     }
     
-    function copyPanelMainData() { if (parsedPanelDataArray.length) navigator.clipboard.writeText(parsedPanelDataArray.map(i => `${i.time}\t${i.userId}\t${i.coin}\t${i.depo}`).join('\n')).then(() => showToast('toastPanelSuccess')); }
-    function copyPanelTxIdData() { if (parsedPanelDataArray.length) navigator.clipboard.writeText(parsedPanelDataArray.map(i => i.transactionId).join('\n')).then(() => showToast('toastTxSuccess')); }
-    function copyPanelAllData() { if (parsedPanelDataArray.length) navigator.clipboard.writeText(parsedPanelDataArray.map(i => `${i.time}\t${i.userId}\t${i.coin}\t${i.depo}\t\t${i.transactionId}`).join('\n')).then(() => showToast('toastPanelSuccess')); }
+    function copyPanelMainData() { if (parsedPanelDataArray.length) navigator.clipboard.writeText(parsedPanelDataArray.map(i => `${i.time}\t${i.userId}\t${i.coin}\t${i.depo}`).join('\n')).then(() => showToast('SUCCESS // PANEL PACKETS COPIED')); }
+    function copyPanelTxIdData() { if (parsedPanelDataArray.length) navigator.clipboard.writeText(parsedPanelDataArray.map(i => i.transactionId).join('\n')).then(() => showToast('SUCCESS // TXID BLOCK EXTRACTED')); }
+    function copyPanelAllData() { if (parsedPanelDataArray.length) navigator.clipboard.writeText(parsedPanelDataArray.map(i => `${i.time}\t${i.userId}\t${i.coin}\t${i.depo}\t\t${i.transactionId}`).join('\n')).then(() => showToast('SUCCESS // PANEL PACKETS COPIED')); }
     function clearPanelData() { 
         document.getElementById('panelInput').value = ''; document.getElementById('lastTxIdInput').value = ''; document.getElementById('panelTableBody').innerHTML = ''; parsedPanelDataArray = []; 
-        document.getElementById('statsPanel').innerHTML = `TERMINAL LANGSUNG >> Aliran Baru Ditangkap: <span id="panelTotalTx">0</span> Baris | Nilai Jumlah Delta: Rp <span id="panelTotalSum">0</span>`; showToast('toastPanelWipe'); 
+        document.getElementById('statsPanel').innerHTML = `LIVE TERMINAL >> New Stream Captured: <span id="panelTotalTx">0</span> Row | Delta Sum Value: Rp <span id="panelTotalSum">0</span>`; showToast('TERMINAL BUFFER WIPED'); 
     }
 
-    // LOGIKA TAB 4
     function handlePgaMotionPaste(e) { e.preventDefault(); document.getElementById('pgaMotionInput').value = (e.clipboardData || window.clipboardData).getData('text'); parsePgaMotionData(); }
     function parsePgaMotionData() {
-        const input = document.getElementById('pgaMotionInput').value, tbody = document.getElementById('pgaMotionTableBody'); tbody.innerHTML = ''; parsedPgaMotionDataArray = []; const l = languages[currentLanguage];
-        if (!input.trim()) { document.getElementById('statsPga').innerHTML = `PENGENDALI PENYANGGA PGA >> Node Aktif: <span id="pgaTotalTx">0</span> | Agregasi Penyangga: Rp <span id="pgaTotalAmount">0</span>`; return; }
+        const input = document.getElementById('pgaMotionInput').value, tbody = document.getElementById('pgaMotionTableBody'); tbody.innerHTML = ''; parsedPgaMotionDataArray = [];
+        if (!input.trim()) { document.getElementById('statsPga').innerHTML = `PGA BUFFER CONTROLLER >> Active Nodes: <span id="pgaTotalTx">0</span> | Buffer Aggregation: Rp <span id="pgaTotalAmount">0</span>`; return; }
         const blocks = input.split(/NOTE/i).map(b => b.trim()).filter(b => b.length > 0);
         let count = 0, sum = 0, html = '';
         blocks.forEach(b => {
@@ -949,176 +744,73 @@
                 const num = parseInt(amt.replace(/,/g, ''), 10) || 0, isSend = b.toLowerCase().includes("send pga") || b.toLowerCase().includes("kirim pga");
                 if (user && amt && name) {
                     parsedPgaMotionDataArray.push({ username: user, coin: isSend ? '' : amt, wd: amt, name }); sum += num; count++;
-                    html += `<tr><td>${user}</td><td class="${isSend ? 'empty-cell' : ''}" style="${isSend ? '' : 'color:var(--btn-copy-border);font-weight:bold'}">${isSend ? l.cellKosong : amt}</td><td style="color:var(--btn-copy-border);font-weight:bold">${amt}</td><td class="empty-cell">${l.cellKosong}</td><td class="empty-cell">${l.cellKosong}</td><td class="empty-cell">${l.cellRumus}</td><td>${name}</td></tr>`;
+                    html += `<tr><td>${user}</td><td class="${isSend ? 'empty-cell' : ''}" style="${isSend ? '' : 'color:var(--btn-copy-border);font-weight:bold'}">${isSend ? '[Empty]' : amt}</td><td style="color:var(--btn-copy-border);font-weight:bold">${amt}</td><td class="empty-cell">[Empty]</td><td class="empty-cell">[Empty]</td><td class="empty-cell">[Formula]</td><td>${name}</td></tr>`;
                 }
             }
         });
         tbody.innerHTML = html; 
-        document.getElementById('statsPga').innerHTML = currentLanguage === 'id' ? `PENGENDALI PENYANGGA PGA >> Node Aktif: <span id="pgaTotalTx">${count}</span> | Agregasi Penyangga: Rp <span id="pgaTotalAmount">${sum.toLocaleString('id-ID')}</span>` : `PGA BUFFER CONTROLLER >> Active Nodes: <span id="pgaTotalTx">${count}</span> | Buffer Aggregation: Rp <span id="pgaTotalAmount">${sum.toLocaleString('en-US')}</span>`;
+        document.getElementById('statsPga').innerHTML = `PGA BUFFER CONTROLLER >> Active Nodes: <span id="pgaTotalTx">${count}</span> | Buffer Aggregation: Rp <span id="pgaTotalAmount">${sum.toLocaleString('en-US')}</span>`;
     }
-    function copyPgaMotionData() { if (parsedPgaMotionDataArray.length) navigator.clipboard.writeText(parsedPgaMotionDataArray.map(i => `${i.username}\t${i.coin}\t${i.wd}\t\t\t\t${i.name}`).join('\n')).then(() => showToast('toastMotionSuccess')); }
-    function clearPgaMotionData() { document.getElementById('pgaMotionInput').value = ''; document.getElementById('pgaMotionTableBody').innerHTML = ''; document.getElementById('statsPga').innerHTML = `PENGENDALI PENYANGGA PGA >> Node Aktif: <span id="pgaTotalTx">0</span> | Agregasi Penyangga: Rp <span id="pgaTotalAmount">0</span>`; parsedPgaMotionDataArray = []; showToast('toastPgaFlush'); }
+    function copyPgaMotionData() { if (parsedPgaMotionDataArray.length) navigator.clipboard.writeText(parsedPgaMotionDataArray.map(i => `${i.username}\t${i.coin}\t${i.wd}\t\t\t\t${i.name}`).join('\n')).then(() => showToast('SUCCESS // MOTION STACK COPIED')); }
+    function clearPgaMotionData() { document.getElementById('pgaMotionInput').value = ''; document.getElementById('pgaMotionTableBody').innerHTML = ''; document.getElementById('statsPga').innerHTML = `PGA BUFFER CONTROLLER >> Active Nodes: <span id="pgaTotalTx">0</span> | Buffer Aggregation: Rp <span id="pgaTotalAmount">0</span>`; parsedPgaMotionDataArray = []; showToast('PGA FLUSHED'); }
 
-    // LOGIKA TAB 5: POLA GAME (DATABASE GAME SINGKAT SEBAGAI CONTOH AGAR RINGAN)
-    const polaGameList = ["10000 Wishes", "101 Lions", "101 Wolfpack", "2026 GOLDEN GOAL RUSH", "3 Buzzing Wilds", "3 Dancing Monkeys", "3 Diamonds", "3 Genie Wishes", "3 Kingdoms - Battle Of Red Cliffs", "3 Magic Eggs", "3 Wishing Wells", "5 Frozen Charms Megaways", "5 Lions", "5 Lions Dance", "5 Lions Gold", "5 Lions Megaways", "5 Lions Megaways 2", "5 Lions Reborn", "5 Mariachis", "5 Rabbits Megaways", "6 Jokers", "7 Clovers Of Fortune", "7 Monkeys", "7 Monkeys Jackpot", "7 Piggies", "777", "8 Dragons", "8 Golden Dragon Challenge", "888 Bonanza", "888 Dragons", "888 Gold", "Aces & Eights 100 Hand", "Aces & Faces GMW", "African Elephant", "African Wild", "Afroditi", "Aladdin And The Sorcerer", "Aladdin Fortune", "ALCHEMY", "Alien Invaders", "All American", "All For One", "Alley The Cat", "Almighty Zeus Empire", "Almighty Zeus Wilds", "Almighty Zeus Wilds Link&Merge", "American Blackjack", "American Wild", "Amore", "Anaconda Gold", "Ancient Egypt", "Ancient Egypt Classic", "Ancient Fortunes : Poseidon Megaways", "Ancient Island Megaways", "Angel Vs Sinner", "Angkor", "Anime Cosplay VS", "Anime Mecha Megaways", "Anton's Family", "Apocalypse Super XNudge", "Arcane Elements", "Arctic Hunt", "Arctic Wolf", "Arctic Wonders", "Argonauts", "Asgard", "ATHENA", "Atomic Kittens", "AURORA WOLF", "Aztec Blaze", "Aztec Bonanza", "Aztec Gems", "Aztec Gems Deluxe", "Aztec Gems Megaways", "Aztec King", "Aztec King Megaways", "Aztec Lucky Gems", "Aztec Powernudge", "Aztec Smash", "Aztec Treasure Hunt", "Aztlan's Gold", "Baba Yaga", "Badge Blitz", "Bai Longma", "Bald Eagle", "Balloon Balloon", "Bamboo Tiger", "Bandit Megaways", "Banditres", "Barbarian Fury", "Barbarian Riches", "Barn Festival", "Barnstormer Bucks", "Barnyard Megahays Megaways", "Bass Catch SUPER LUCK", "Bear Crazy", "Bear Games", "Be My Valentine", "Bee Keeper", "Beer Fest", "Before Time Runs Out", "Beheaded", "Benji Killed In Vegas", "Berry Billions", "Better Barn House Bonanza", "Beware The Deep Megaways", "Big 5 Baby 5", "Big Bass Amazon Xtreme", "Big Bass Bonanza", "Big Bass Bonanza - Hold And Spinner", "Big Bass Bonanza - Keeping It Reel", "Big Bass Bonanza - Reel Action", "Big Bass Bonanza 1000", "Big Bass Bonanza 3 Reeler", "Big Bass Bonanza Megaways", "Big Bass Boxing Bonus Round", "Big Bass Christmas - Frozen Lake", "Big Bass Christmas Bash", "Big Bass Crash", "Big Bass Day At The Races", "Big Bass Floats My Boat", "Big Bass Football Bonanza", "Big Bass Halloween", "Big Bass Halloween 2", "Big Bass Halloween 3", "Big Bass Hold & Spinner Megaways", "Big Bass Mission Fishin'", "Big Bass Raceday Repeat", "Big Bass Reel Repeat", "Big Bass Return To The Races", "Big Bass Splash", "Big Bass Splash 1000", "Big Bass Trophy Catch", "Big Bass Vegas Double Down Deluxe", "Big Bass Xmas Xtreme", "Big Burger Load It Up With Xtra Cheese", "Big Cash Eruption", "Big Catch", "Big Juan", "Big Top", "Bigger Barn House Bonanza", "Bigger Bass Blizzard - Christmas Catch", "Bigger Bass Bonanza", "Bigger Bass Splash", "Bikini Island", "Bikini Island Deluxe", "Bingo Mania", "Bird of Thunder", "Black Bull", "Black Diamond", "Black Jack 5 Hand GMW", "Black Jack GMW", "Black Panther", "Black Pearl", "Blackbeard's Bounty", "Blade & Fangs", "Blazing Wilds Megaways", "Blitz Super Wheel", "Blood & Shadow", "Blood & Shadow 2", "Blood Diamond", "Bloody Dawn", "Bomb Bonanza", "Bombs Away", "Bonanza Gold", "Bonus Bunnies", "Bonus Poker GMW", "Bonzo The Clown", "Book Of Aztec King", "Book Of Easter", "Book Of Golden Sands", "Book Of Kingdoms", "Book Of Shadows", "Book Of The East", "Book Of The Fallen", "Bounty Gold", "Bounty Hunter", "Bounty Hunter NLC", "Bow Of Artemis", "Break The Bank", "Breakout", "Brick House Bonanza", "Brick Snake 2000", "Bronco", "Brute Force", "Brute Force: Alien Onslaught", "Bubble Pop", "Buffalo Hunter", "Buffalo King", "Buffalo King Megaways", "Buffalo King Untamed Megaways", "Buffalo Run", "Buffalo Run Quad", "Buggy Bonus", "Bula Mula", "Bull Fiesta", "BURLESQUE 2", "Bushido Ways xNudge", "Busy Bees", "Caishen Wins", "Caishen's Cash", "Caishen's Cash Pots", "Caishens Gold", "Cake Valley", "Calaveras Explosivas", "Candy Blitz", "Candy Blitz Bombs", "Candy Corner", "Candy Jar Clusters", "Candy Rush", "Candy Stars", "Candy Tower", "Candy Village", "Captain Kraken Megaways", "Carnival Cash", "Carnival Cove", "Casino Win Spin", "Cash Bonanza", "Cash Box", "Cash Chips", "Cash Elevator", "Cash Patrol", "Cash Reef", "Cash Spin", "Cash Surge", "Cashosaurus", "Castle Of Fire", "Catfish Hunters", "CHALLENGE・FU LU SHOU XI", "CHALLENGE・GOLDEN PIG", "CHALLENGE・MAYAN CALENDAR", "CHEF HUSKY", "CHESTS OF CAI SHEN", "CHESTS OF CAI SHEN 2", "CHICKEN CHASE", "CHICKEN DROP", "CHICKEN+", "CHILLI HEAT", "CHILLI HEAT MEGAWAYS", "CHILLI HEAT SPICY SPINS", "CHINA EMPRESS", "CHOCOLATE MOOSE", "CHRISTMAS BIG BASS BONANZA", "CHRISTMAS CAROL MEGAWAYS", "CHRISTMAS GIFT RUSH", "CHRONICLES OF OLYMPUS II", "CIRCUS CARNIVAL", "CLEO'S KENO GMW", "CLEOPATRA - THE GOLDEN SCARAB", "CLEOCATRA", "CLOWNFISH TREASURE", "CLUCKIN' SWEET FEAST", "CLUMSY COOKS", "CLOVER GOLD", "CLUB TROPICANA", "CLUB TROPICANA - HAPPY HOUR", "COFFEE WILD", "COINS OF FORTUNE", "COLOSSAL CASH ZONE", "CONGO CASH", "CONGO CASH XL", "COWBOY COINS", "COWBOYS GOLD", "COYOTE CRASH", "CRANK IT UP", "CRAZY CIRCUS", "CRAZY EX-GIRLFRIEND", "CROWN OF FIRE", "CRYPTO PROFITS", "CRYSTAL CAVERNS MEGAWAYS", "CUBE?", "CULT.", "CURSE OF THE PYRAMID", "CURSE OF THE WEREWOLF MEGAWAYS", "CYBER HEIST", "CYBER PUP MEGAWAYS", "CYBERHEIST CITY", "CYCLOPS SMASH", "DANCE PARTY", "DARK OVERLORD - FINAL DUEL", "DARUMA IMPACT", "DAS XBOOT", "DAS XBOOT 2WEI!", "DAY OF DEAD", "DEAD CANARY", "DEAD MAN'S RICHES", "DEAD MEN WALKING NLC", "DEADWOOD R.I.P", "DEADWOOD XNUDGE", "DEMON POTS", "DENG DENG", "DEUCES & JOKER GMW", "DEUCES WILD GMW", "DEVIL'S 13", "DEVIL'S CROSSROAD", "DEVILICIOUS", "DIA DE LOS MUERTOS GMW", "DIAMOND CASCADE", "DIAMOND STRIKE", "DIAMOND TOWER H5", "DIAMONDS OF EGYPT", "DIAO CHAN FA DA CAI", "DICK THE DETECTIVE", "DING DONG CHRISTMAS BELLS", "DISCO BEATS", "DISCO FUNK", "DISCO LADY", "DISORDER", "DISTURBED", "DJ PSYCHO", "DOLPHIN'S ADVENTURE", "DOMINO QQ", "DOUBLE BLACK CHERRY", "DOUBLE BONUS DEUCES WILD GMW", "DOUBLE BONUS POKER", "DOUBLE DOUBLE POKER BONUS GMW", "DOUBLE HAPPINESS", "DOUBLE JOKER'S MONEY", "DOUBLE O DOLLARS", "DOUBLE VAULT", "DOWN THE RAILS", "DOWN UNDER", "DR FEELGOOD", "DRAGO - JEWELS OF FORTUNE", "DRAGON BOAT FESTIVAL", "DRAGON BONUS BACCARAT", "DRAGON CASTLE", "DRAGON GATE", "DRAGON GOLD", "DRAGON GOLD 88", "DRAGON HERO", "DRAGON HOT HOLD AND SPIN", "DRAGON KING HOT POTS", "DRAGON KINGDOM", "DRAGON KINGDOM EYES OF FIRE", "DRAGON POTS MEGAWAYS", "DRAGON TIGER", "DRAGON TIGER FORTUNES", "DRAGON TIGER GATE", "DRAGON TRIBE", "DRAGON'S GATE - BONUS CHOICE", "DRAGON'S REALM", "DRAGON'S THRONE", "DRAGON'S TREASURE QUEST", "DRACULUV", "DRILL THAT GOLD", "DUCK HUNTERS", "DUCKY DUCK", "DUEL OF NIGHT & DAY", "DUNGEON QUEST", "DWARF & DRAGON", "DWARVEN GOLD DELUXE", "DYNASTY EMPIRE", "DYNAMITE DIGGIN DOUG", "EAST COAST VS WEST COAST", "EGYPTIAN DREAMS", "EGYPTIAN DREAMS DELUXE", "EGYPTIAN FORTUNES", "EL GALLO PANCHO", "EL PATRON", "ELEPHANT", "ELEMENTAL GEMS MEGAWAYS", "EMERALD KING", "EMERALD KING - WHEEL OF WEALTH", "EMERALD KING RAINBOW ROAD", "EMPEROR CAISHEN", "EMPTY THE BANK!", "ESCAPE THE PYRAMID - FIRE & ICE", "ETERNAL EMPRESS - FREEZE TIME", "ETERNAL WAR", "EVIL GOBLINS XBOMB", "EXCALIBUR UNLEASHED", "EXTRA JUICY", "EXTRA JUICY MEGAWAYS", "EYE OF CLEOPATRA", "EYE OF SPARTACUS", "EYE OF THE STORM", "FA FA MONKEY", "FACE OFF", "FANTASTIC SEVENS", "FANTASY GARDEN", "FANTASY LAND", "FEATURE BUY・CHRISTMAS EXPRESS", "FENG DU", "FENGHUANG", "FIESTA FORTUNE", "FIFI FRUITS", "FINGER LICK N FREE SPINS", "FIONA'S CHRISTMAS FORTUNE", "FIRE 88", "FIRE ARCHER", "FIRE GODDESS H5", "FIRE HOT 100", "FIRE HOT 20", "FIRE HOT 40", "FIRE HOT 5", "FIRE IN THE HOLE 2", "FIRE IN THE HOLE XBOMB", "FIRE PORTALS", "FIRE ROOSTER", "FIRE STAMPEDE", "FIRE STAMPEDE 2", "FIRE STAMPEDE ULTIMATE", "FIRE STRIKE", "FIRE STRIKE 2", "FIREBIRD SPIRIT", "FIREWORKS", "FISH EYE", "FISHIN REELS", "FIVE PRINCESSES", "FIZZY POP", "FLAMINGO", "FLIGHT MODE", "FLOATING DRAGON", "FLOATING DRAGON - DRAGON BOAT FESTIVAL", "FLOATING DRAGON - YEAR OF THE SNAKE", "FLOATING DRAGON MEGAWAYS", "FLOATING DRAGON NEW YEAR FESTIVAL MEGAWAYS", "FLOATING DRAGON WILD HORSES", "FLY X", "FLY!", "FLYING HIGH", "FOLSOM PRISON", "FONZO'S FELINE FORTUNES", "FORGE OF OLYMPUS", "FORGING WILDS", "FORTUNE ACE", "FORTUNE ACE SUPER SCATTER", "FORTUNE BULL", "FORTUNE DOGS", "FORTUNE DRAGON", "FORTUNE GOD", "FORTUNE HIT'N ROLL", "FORTUNE OF GIZA", "FORTUNE OF OLYMPUS", "FORTUNE PAYS H5", "FORTUNE POT", "FORTUNE TIGER", "FORTUNES OF AZTEC", "FORTUNES OF AZTEC PRAGMATIC", "FOXI", "FOXY FOX", "FREAK SHOW REVELATION", "FRIDAY KLIWON", "FRIGHTENING FRANKIE", "FROGS & BUGS", "FRONT RUNNER ODDS ON", "FRONTIER FORTUNES", "FROZEN TROPICS", "FRUIT BLAST", "FRUIT PARTY", "FRUIT PARTY 2", "FRUIT PARTY DICE", "FRUIT RAINBOW", "FRUITS", "FRUITS OF THE AMAZON", "FRICE", "FRUTTI XPLOSION", "FRUITY HALLOWEEN", "FRUITY MAYAN", "FRUITY TREATS", "FRUITY XPLOSION", "FU FU FU", "FU STAR", "FUN FRUITS", "FUN FOREVER", "FUNKY FORTUNEZ", "FURY OF ANUBIS", "FURY OF ODIN MEGAWAYS", "FURRY BONANZA MEGAWAYS", "GAELIC GOLD", "GALACTIC CASH", "GANESHA TREASURE", "GANGSTERS", "GATES OF AZTEC", "GATES OF GATOT KACA", "GATES OF GATOT KACA 1000", "GATES OF GATOT KACA SUPER SCATTER", "GATES OF HADES", "GATES OF OLYMPUS", "GATES OF OLYMPUS 1000", "GATES OF OLYMPUS 1000 DICE", "GATES OF OLYMPUS DICE", "GATES OF OLYMPUS SUPER SCATTER", "GATES OF OLYMPUS XMAS 1000", "GATES OF PYROTH", "GATES OF VALHALLA", "GATOT KACA'S FURY", "GATOR HUNTERS NLC", "GEARS OF HORUS", "GEM ELEVATOR", "GEM FIRE FORTUNE", "GEM TRIO", "GEMS BONANZA", "GEMS FORTUNE", "GEMS OF SERENGETI", "GENIE'S GEM BONANZA", "GENIE'S SHOWTIME", "GHOULISH GHOST", "GLADIATORS", "GLAM ROCK", "GLORIOUS KINGDOM", "GLORY OF KING ARTHUR", "GLORY OF ROME", "GLUTTONY", "GOBLIN HEIST POWERNUDGE", "GOD OF WEALTH", "GODS OF GIZA", "GOLD KOI FORTUNE", "GOLD OASIS", "GOLD PARTY", "GOLD PARTY 2 - AFTER HOURS", "GOLD RUSH", "GOLD TRAIN", "GOLDEN CHEST", "GOLDEN DRAGON", "GOLDEN EGG", "GOLDEN GENIE & THE WALKING WILDS", "GOLDEN JADE", "GOLDEN LAND", "GOLDEN PIG", "GOLDEN PIG GMW", "GOLDEN RABBIT THREGAWAYS", "GOLDEN ROOSTER GMW", "GOLDEN SHOWER NLC", "GOLDEN UNICORN", "GOLDEN WEEK", "GOLDEN VISHNU", "GOLDEN WILD", "GOLDEN ZONGZI", "GOOD LUCK & GOOD FORTUNE", "GOPNIK", "GORILLA MAYHEM", "GRACE OF EBISU", "GRAND CASINO HEIST", "GRAPE ESCAPE", "GRAVITY BONANZA", "GREAT APES", "GREAT GHOSTS!", "GREAT LAGOON", "GREAT RHINO", "GREAT RHINO DELUXE", "GREAT RHINO MEGAWAYS", "GREEDY FORTUNE PIG", "GREEDY WOLF", "GREEK GODS", "GRIMMS BOUNTY: HANSEL & GRETEL", "HABANERO GAMES", "HALLOWEEN", "HAMMERSTORM", "HAND OF GOD", "HAND OF MIDAS 2", "HAPPY APE", "HAPPY GO LUCKY", "HAPPY HOG", "HAPPY NEW YEAR", "HARLEQUIN CARNIVAL", "HAUNTED CRYPT", "HAUNTED HARBOR", "HAUNTED HOUSE", "HEART OF CLEOPATRA", "HEART OF RIO", "HEARTBREAKERS", "HEIST FOR THE GOLDEN NUGGETS", "HELL BUTCHER", "HELLVIS WILD", "HERCULES AND PEGASUS", "HERCULES SON OF ZEUS", "HEROIC SPINS", "HIGH CHIEF SPIRIT", "HIGHLANDS", "HIGHWAY TO HELL", "HIMALAYAN WILD", "HOCKEY ATTACK", "HOKKAIDO WOLF", "HOLIDAY RIDE", "HOME OF THE BRAVE", "HONEY HONEY HONEY", "HOT 4 CASH", "HOT ASIAN FRUITS", "HOT CHILLI", "HOT FIESTA", "HOT HOT FRUIT", "HOT HOT SUMMER", "HOT NUDGE", "HOT PEPPER", "HOT SAFARI", "HOT TO BURN", "HOT TO BURN - 7 DEADLY FREE SPINS", "HOT TO BURN EXTREME", "HOT TO BURN HOLD AND SPIN", "HOT TO BURN MULTIPLIER", "HOT TUNA", "HOT VOLCANO H5", "HUNDREDS AND THOUSANDS", "HYPER HUES", "ICE ICE YETI", "ICE LOBSTER", "ICE MINTS", "ICY VENTURES", "IDOL POP FEVER", "IGAMBLE247 DRAGONS", "IMMORTAL FRUITS", "INCA QUEEN", "INDIA TREASURE", "INDIAN CASH CATCHER", "INDIAN CHIEF", "INDIANA WOLF", "INFECTIOUS 5 XWAYS", "INFECTIVE WILD", "INFERNAL FURY", "INSTANT RICH", "IRISH CROWN", "ISIBAYA QUEENS", "JACK OR BETTER GMW", "JACK QUEST - TREASURE HUNT", "JACK'S OR BETTER MULTIHAND GMW", "JACKPOT BLAZE", "JACKPOT HUNTER", "JADE EMPEROR", "JANE HUNTER AND THE MASK OF MONTEZUMA", "JAPANESE MASK", "JASMINE DREAMS", "JELLY EXPRESS", "JELLYFISH FLOW", "JELLYFISH FLOW ULTRA", "JESTER", "JESTER'S FORTUNES", "JEWEL RUSH", "JINGLE BALLS", "JOHN HUNTER & THE BOOK OF TUT RESPIN", "JOHN HUNTER AND GALILEO'S SECRETS", "JOHN HUNTER AND THE AZTEC TREASURE", "JOHN HUNTER AND THE BOOK OF TUT", "JOHN HUNTER AND THE BOOK OF TUT MEGAWAYS", "JOHN HUNTER AND THE MAYAN GODS", "JOHN HUNTER AND THE QUEST FOR BERMUDA RICHES", "JOHN HUNTER AND THE TOMB OF THE SCARAB QUEEN", "JOKER KING", "JOKER POKER GMW", "JOKER RACE", "JOKER'S GO WILD", "JOKER'S JEWELS", "JOKER'S JEWELS CASH", "JOKER'S JEWELS DICE", "JOKER'S JEWELS HOLD & SPIN", "JOKER'S JEWELS HOT", "JOKER'S JEWELS WILD", "JOKER'S REVENGE", "JOKERS JEWELS", "JOLLY FROG", "JOURNEY TO THE WEST", "JUICY FRUITS", "JUICY FRUITS MULTIHOLD", "JUGGLENAUT", "JULIUS CESAR - THE GOLDEN SCARAB", "JUMBO SAFARI", "JUMP!", "JUMP! 2", "JUNGLE GORILLA", "JUNGLE RUMBLE", "KADITA OCEAN FURY", "KANE'S INFERNO", "KAREN MANEATER", "KASSANDRA", "KENNETH MUST DIE", "KILL EM ALL", "KING CRAB", "KING OF CAIRO DELUXE", "KING OF SPEAR", "KING TUT'S TOMB", "KINGDOM OF ASGARD", "KINGDOM OF THE DEAD", "KISS MY CHAINSAW", "KITCHEN DRAMA: SUSHI MANIA", "KNIGHT HOT SPOTZ", "KNIGHTS OF STEEL", "KNIGHTS VS BARBARIANS", "KNOCKOUT FOOTBALL", "KNOCKOUT FOOTBALL RUSH", "KOI POND", "KRAKEN GOLD RUSH", "KRAKEN'S SKY BOUNTY", "KUNG HEI", "KUNGFU", "LADY GODIVA", "LAMP OF INFINITY", "LAND OF THE FREE", "LANTERN LUCK", "LAUNCH TO RICHES", "LAVA BALLS", "LEGEND OF DRAGON", "LEGEND OF HEROES MEGAWAYS", "LEGEND OF NEZHA", "LEGION X", "LEPRECHAUN CAROL", "LEPRECHAUN SONG", "LIGHTS, CAMERA, ACTION!", "LIGHTNING FRUITS", "LIGHTNING FRUITS QUAD", "LIMBO+", "LION DANCE 888", "LITTLE BIGHORN", "LITTLE GREEN MONEY", "LITTLE GEM", "LIVING THE DREAM CLASSIC", "LOBSTER BOB'S CRAZY CRAB SHACK", "LOBSTER BOB'S SEA FOOD AND WIN IT", "LOBSTER HOUSE", "LOKI'S RICHES", "LONDON HUNTER", "LONER", "LOONY BLOX", "LOVE", "LOVE AND RICHES ELDORADO", "LUAU LUAU", "LUCKY ACE", "LUCKY CLOVER GMW", "LUCKY DRAGON BALL", "LUCKY DRAGONS", "LUCKY EAST", "LUCKY FISHING MEGAWAYS", "LUCKY GRACE AND CHARM", "LUCKY JESTERS", "LUCKY LANTERN", "LUCKY MOONCAKE FESTIVAL", "LUCKY NEKO", "LUCKY NEW YEAR", "LUCKY NEW YEAR - TIGER TREASURES", "LUCKY PANDA", "LUCKY TIMES", "LUCKY TWINS POWERCLUSTER", "LUCKY TWINS WILDS", "LUCKY TWINS WILDS LINK&MERGE", "LUCKY'S WILD PUB", "LUCKY'S WILD PUB 2", "MAHJONG MANIA BLACK", "MAHJONG PANDA", "MAHJONG WAYS 2", "MAHJONG WAYS IV", "MAHJONG WINS", "MAHJONG WINS - GONG XI FA CAI", "MAHJONG WINS 2", "MAHJONG WINS 3 - BLACK SCATTER", "MAHJONG WINS BONUS", "MAHJONG WINS SUPER SCATTER", "MAHJONG WINS TRIPLE POT", "MAHJONG: ORIGIN", "MAJESTIC EXPRESS - GOLD RUN", "MAKI", "MAMMOTH GOLD MEGAWAYS", "MANHATTAN GOES WILD", "MARDI GRAS BASH", "MARIE ANTOINETTE'S RICHES", "MARMIN", "MARVELOUS FURLONGS", "MASSIVE GOLD", "MASTER C HENS FORTUNE", "MASTER HAHA", "MASTER JOKER", "MAYAN DESTINY", "MAYAN DREAMS", "MAYAN KINGDOM", "MAYAN LOST TREASURE", "MAYAN MAGIC WILDFIRE", "MEDUSA", "MEDUSA'S STONE", "MEERKAT THE EXPLORER", "MEGA 7'S", "MENTAL", "MENTAL 2", "MEOW JANKEN", "MEOW MEGAWAYS", "MERMAID'S LUCKY CHEST", "MERMAID'S MELODIES", "MERMAID'S TREASURE TROVE", "MIGHT OF FREYA MEGAWAYS", "MIGHT OF RA", "MIGHTY KONG", "MIGHTY MEDUSA", "MIGHTY MUNCHING MELONS", "MILKY WAYS", "MINES+", "MINING RUSH", "MISTA MOOSE", "MOCHIMON", "MOLEIONAIRE", "MONEY MEOW", "MONEY MONEY MONEY", "MONEY MOUSE", "MONEY ON REELS SUPER ARROW", "MONEY STACKS", "MONEY STACKS DICE", "MONEY STACKS MEGAWAYS", "MONKEY BONANZA", "MONKEY MADNESS", "MONKEY WARRIOR", "MONKEY'S GOLD XPAYS", "MOON FESTIVAL", "MOONEY'S MONEY", "MOO MOO COW", "MOONSHOT", "MOUNT MAZUMA", "MR BLING", "MR NULL'S WICKED WARES", "MUERTOS MULTIPLIER MEGAWAYS", "MULTIHAND BLACKJACK", "MUMMY HUNTER", "MUMMY MONEY", "MUMMY'S JEWELS", "MUMMY'S JEWELS 100", "MUNCHIES", "MUSTANG GOLD", "MUSTANG GOLD MEGAWAYS", "MUSTANG TRAIL", "MX MANIA", "MY GEISHA SECRET", "MY SWEET KINGDOM", "MYSTERIES OF THE DEEP", "MYSTERIOUS", "MYSTERIOUS EGYPT", "MYSTERY MICE", "MYSTERY OF THE ORIENT", "MYSTIC CHIEF", "MYSTIC FORTUNE", "MYSTIC QUEEN", "MYSTIC SHAMAN", "MYSTICAL GUARDIANS", "NAPOLEON GMW", "NAUGHTY SANTA", "NEON LIGHTS QUAD", "NEON NIGHTS", "NEON NIGHTS CLASSIC", "NEW YEARS BASH", "NIGHT MARKET", "NILE FORTUNE", "NINE TAILS", "NINE TO FIVE", "NORTH GUARDIANS", "NORTHERN LIGHTS", "OCEAN LORD", "OCEAN'S CALL", "OCTOBEER FORTUNES", "OKTOBERFEST", "OKTOBERFEST 1000", "OLD GOLD MINER MEGAWAYS", "OLYMPUS", "OLYMPUS FORTUNE", "ON AIR RADIO", "OODLES OF NOODLES", "ORACLE OF GOLD", "ORBS OF ATLANTIS", "OUTSOURCED", "OUTSOURCED PAYDAY", "OUTSOURCED: SLASH GAME", "OWLS", "PAMPER ME", "PANACHE", "PANDA FORTUNE 2", "PANDA PANDA", "PANDA WARRIOR TTG", "PANDA'S FORTUNE", "PANDEMIC RISING", "PARROT FISH TREASURE", "PARTY BEADS", "PATH OF DRAGONS", "PEAK POWER", "PEKING LUCK", "PENGUINS CHRISTMAS PARTY TIME", "PEPPE'S PEPPERONI PIZZA PLAZA", "PERFECT STRIKE", "PHARAOH - THE GOLDEN SCARAB", "PHOENIX FORGE", "PHOENIX RISES", "PIGGY BANK BILLS", "PIGGY BANKERS", "PINUP GIRLS", "PIPO PIG", "PIRATE GOLD", "PIRATE GOLD DELUXE", "PIRATE GOLDEN AGE", "PIRATE TREASURE", "PIRATE'S PLUNDER", "PIRATES PUB", "PIXIE WINGS", "PIXIES VS PIRATES", "PIZZA! PIZZA? PIZZA!", "PLINKO+", "POISON EVE", "POMPEII MEGAREELS MEGAWAYS", "PONG PONG MAHJONG 2", "PONG PONG MAHJONG JACKPOTS", "POOL SHARK", "POSEIDON GMW", "POSSESSED", "POT OF FORTUNE", "POWER OF MERLIN MEGAWAYS", "POWER OF NINJA", "POWER OF ODIN 1000", "POWER OF THOR MEGAWAYS", "PRAGMATIC BACCARAT", "PRAGMATIC ROULETTE", "PRESTO!", "PRINCE OF THE JUNGLE - TREASURE HUNT", "PRINCESS OF THE JUNGLE - TREASURE HUNT", "PROST", "PS CLUB", "PUCKER UP PRINCE", "PUB KINGS", "PUFFIN KING", "PUMPKIN PATCH", "PUNK ROCKER", "PUNK ROCKER 2", "PUNK ROCKER 3", "PUNK TOILET", "PYRAMID BONANZA", "PYRAMID KING", "QUEEN OF GODS", "QUEEN OF QUEENS", "QUEEN OF QUEENS II", "QUEENIE", "QUICK CASH SOLITAIRE", "RABBIT GARDEN", "RABBIT RUNS", "RAGING BULL", "RAGING WATERFALL MEGAWAYS", "RAINBOW GOLD", "RAINBOW POP", "RAINBOW POP DELUXE", "RAINBOW REELS", "RAINBOW TRIPL3 POP", "RAPID REELS", "RAT OF WEALTH", "RED", "RED DIAMONDS", "RED PANDA", "RED RIDING X-MAS", "REEL BANKS", "REELS DELUXE", "RELEASE THE BISON", "RELEASE THE KRAKEN", "RELEASE THE KRAKEN 2", "RELEASE THE KRAKEN MEGAWAYS", "REMEMBER GULAG", "RENEGADE", "RESURRECTING RICHES", "RETURN OF THE DEAD", "REVENGE OF LOKI MEGAWAYS", "RHINO", "RICH & HAPPY", "RIDE 'EM COWBOY", "RIDE THE LIGHTNING", "ROAD KILL", "ROAD RAGE", "ROCK BOTTOM", "ROCKET BLAST MEGAWAYS", "RODEO DRIVE", "ROLLING IN TREASURES", "ROLLING ROGER", "ROMA 2 - DRAGON SLAYER", "ROMAN EMPIRE", "ROYAL 777", "ROYAL GOLDEN DRAGON", "ROYAL RUMBLE XTRAGACHA", "RUFFLED UP", "RUJAK BONANZA", "RUNNING SUSHI", "S.O.S!", "SACRED FLOWER", "SACRED OWL", "SAFARI KING", "SALSA CASH", "SAMURAI CODE", "SAN QUENTIN 2: DEATH ROW", "SANATORIUM SECRETS", "SANTA", "SANTA CLAUS", "SANTA'S GREAT GIFTS", "SANTA'S INN", "SANTA'S SLAY", "SANTA'S WONDERLAND", "SANTA'S XMAS RUSH", "SASQUATCH CASH", "SAVANNAH LEGEND", "SCRUFFY SCALLYWAGS", "SEA FANTASY", "SEA RAIDERS", "SECRET CITY GOLD", "SECRETS OF THE DESERT", "SERIAL", "SERENGETI", "SEVEN'S GO WILD GMW", "SEVENS & JOKER WILD GMW", "SHAMAN'S VISION", "SHAOLIN FORTUNES", "SHAOLIN FORTUNES 100", "SHAMROCK QUEST", "SHIELD OF SPARTA", "SHINING KNIGHT", "SHINING HOT 100", "SHINING HOT 20", "SHINING HOT 40", "SHINING HOT 5", "SHIVERING STRINGS", "SHOGUN'S LAND", "SILKEN SANDS", "SIR BLINGALOT", "SIREN'S SPELL", "SIZZLIN FRUITS", "SKY'S THE LIMIT", "SLEEPING DRAGON", "SLIME PARTY", "SLOT MANIA GATOT KACA'S FURY", "SMILEY VILLE", "SMUGGLERS COVE", "SNAKES & LADDERS 2 - SNAKE EYES", "SNAKES AND LADDERS MEGADICE", "SNOW", "SNOW PARTY", "SOAKED BY SEAMEN", "SODA POP", "SODA POP DELUXE", "SPACE DONKEY", "SPACE FORTUNE", "SPACE GOONZ", "SPACEMAN", "SPARTA", "SPARTAN KING", "SPARTANS THE FINAL STAND", "SPECTACULAR 7'S", "SPELLBINDING MYSTERY", "SPELLMASTER", "SPLENDIDA VENEZIA", "SPIN & SCORE MEGAWAYS", "SPIRIT GUARDIANS", "SPIRIT OF ADVENTURE", "SPIRE+", "SPOT", "STAR BOUNTY", "STAR PIRATES CODE", "STARLIGHT ARCHER 1000", "STARLIGHT CHRISTMAS", "STARLIGHT PRINCESS", "STARLIGHT PRINCESS 1000", "STARLIGHT PRINCESS PACH", "STARLIGHT PRINCESS PACHI", "STARLIGHT PRINCESS SUPER SCATTER", "STARSTRUCK", "STARZ MEGAWAYS", "STEAMIN' REELS", "STICKY BEES", "STOCKHOLM SYNDROME", "STRAWBERRY COCKTAIL", "STREET RACER", "STRIKING HOT 5", "SUGAR & POP DELUXE", "SUGAR BANG", "SUGAR JAR COMBO", "SUGAR POP GMW", "SUGAR RUSH", "SUGAR RUSH 1000", "SUGAR RUSH SUPER SCATTER", "SUGAR RUSH XMAS", "SUGAR SUPREME POWERNUDGE", "SUMO SUPREME MEGAWAYS", "SUN WUKONG", "SUNNYDAZE ASYLUM", "SUPER 8'S", "SUPER 9'S", "SUPER ACES", "SUPER ASIALIVE88", "SUPER FRUIT BLAST", "SUPER FRUITS", "SUPER FRUITS QUAD", "SUPER GUMMY STRIKE", "SUPER JOKER", "SUPER SEVENS", "SUPER STRIKE", "SUPER TIMES", "SUPER TIKI STRIKE", "SUPER TWISTER", "SUPER WIN", "SUPER X", "SUPERSIZED", "SWEET BONANZA", "SWEET BONANZA 1000", "SWEET BONANZA 1000 DICE", "SWEET BONANZA 2500", "SWEET BONANZA DICE", "SWEET BONANZA SUPER SCATTER", "SWEET BONANZA XMAS", "SWEET CRAZE", "SWEET KINGDOM", "SWEET POWERNUDGE", "SWEET RUSH BONANZA", "SWORD OF ARES", "TABERNA DE LOS MUERTOS", "TAIKO BEATS", "TAJ MAHAL", "TALES OF THE PIGGIES", "TASHI", "TECHNO TUMBLE", "TEMPLE GUARDIANS", "TEMUJIN TREASURES", "TEN CROWNS", "TEN TIGERS", "TENS OR BETTER GMW", "TESLA", "TESLA JOLT", "THAI SPICE - HOT WOK", "THAI SPICE - WOKS OF DELIGHT", "THE ALTER EGO", "THE AMAZING MONEY MACHINE", "THE BIG DAWGS", "THE BIG DEAL", "THE BIG DOG HOUSE", "THE BORDER", "THE CAGE", "THE CREEPY CARNIVAL", "THE CRYPT", "THE DA VINCI'S TREASURE", "THE DEAD ESCAPE", "THE DOG HOUSE", "THE DOG HOUSE - DOG OR ALIVE", "THE DOG HOUSE - MUTTLEY CREW", "THE DOG HOUSE - ROYAL HUNT", "THE DOG HOUSE DICE SHOW", "THE DOG HOUSE MEGAWAYS", "THE DOG HOUSE MULTIHOLD", "THE GREAT CHICKEN ESCAPE", "THE GREAT EMPIRE", "THE GREAT STICKUP", "THE HAND OF MIDAS", "THE KNIGHT KING", "THE LOST CITY OF ATLANTIS", "THE MAGIC CAULDRON - ENCHANTED BREW", "THE MONEY MEN MEGAWAYS", "THE RAVE", "THE RED QUEEN", "THE TIGER WARRIOR", "THE TWEETY HOUSE", "THE ULTIMATE 5", "THE WILD GANG", "THE WILD MACHINE", "THOR HAMMER TIME", "THUNDERING ZEUS H5", "THREE STAR FORTUNE", "TIC TAC TAKE", "TIMBER STACKS", "TINY TOADS", "TOMB OF AKHENATEN", "TOMB OF NEFERTITI", "TOMB OF THE SCARAB QUEEN", "TOMB TREASURE", "TOMBSTONE", "TOMBSTONE BEGINS", "TOMBSTONE RIP", "TOMBSTONE SLAUGHTER: EL GORDO'S REVENGE", "TOMBSTONE: NO MERCY", "TOOTY FRUITY FRUITS", "TOTEM TOWERS", "TOTEM WARRIOR", "TOWER OF PIZZA", "TOWERING FORTUNES", "TOYS", "TRACTOR BEAM", "TREASURE DIVER", "TREASURE HORSE", "TREASURE QUEST", "TREASURE TOMB", "TREASURE WILD", "TREASURES OF OSIRIS", "TREE OF RICHES", "TREES OF TREASURE", "TRIBAL SPIRIT", "TRIPLE BANANAS", "TRIPLE DRAGONS", "TRIPLE JEWELS", "TRIPLE JEWELS PLATINUM", "TRIPLE LUCK", "TRIPLE PINATA", "TRIPLE POT DIAMOND", "TRIPLE POT GOLD", "TRIPLE POT PLINKO - HERCULES", "TRIPLE TIGERS", "TROPICAL TIKI", "TRUE GRIT REDEMPTION 2", "TRUE KULT", "TSAR WARS", "TUNDRA'S FORTUNE", "TWILIGHT PRINCESS", "ULTRA BURN", "ULTRA BURN DICE", "ULTRA GATOT KACA", "ULTRA HOLD AND SPIN", "ULTIMATE GOAL BLITZ", "VALENTINE MONCHY", "VAMPIRE", "VAMPIRE'S FATE", "VAMPIRES VS WOLVES", "VAMPY PARTY", "VEGAS MAGIC", "VEGAS NIGHTS", "VEGAS SOLITAIRE GMW", "VIKING", "VIKING FORGE", "VIKING'S PLUNDER", "VOLCANO GODDESS", "VOODOO MAGIC", "WALK OF SHAME", "WALTZ BEAUTY", "WARRIOR GRAVEYARD XNUDGE", "WAVES OF POSEIDON", "WAYS OF FORTUNE", "WEALTH INN", "WEIRD SCIENCE", "WHACKED!", "WHEEL O'GOLD", "WHEEL OF HAPPINESS", "WHIRLWIND OF CASH", "WHO'S THE BOSS", "WICKED WITCH", "WIXX", "WILD BEACH PARTY", "WILD BISON CHARGE", "WILD BOOSTER", "WILD CELEBRITY BUS MEGAWAYS", "WILD CLEOPATRA DELUXE", "WILD DEPTHS", "WILD FLOW", "WILD GLADIATOR", "WILD HOP & DROP", "WILD PIXIES", "WILD RED", "WILD SAFARI", "WILD SKULLZ", "WILD SPELLS", "WILD WALKER", "WILD WEST DUELS", "WILD WEST GOLD", "WILD WEST GOLD BLAZING BOUNTY", "WILD WEST GOLD MEGAWAYS", "WILD WEST H5", "WILD WILDEBEEST WINS", "WILD WILD BANANAS", "WILD WILD JOKER", "WILD WILD PEARLS", "WILD WILD RICHES", "WILD WILD RICHES MEGAWAYS", "WILD WILD RICHES RETURNS", "WILD WILD TIGER", "WILDERNESS", "WILDIES", "WILDMAN SUPER BONANZA", "WINNER'S FRUITS", "WISDOM OF ATHENA", "WISDOM OF ATHENA 1000", "WISDOM OF ATHENA 1000 XMAS", "WITCH HEART MEGAWAYS", "WITCH'S TRIPLE BREW", "WITCHES TOME", "WITCHES TOME", "WOLF GOLD", "WOLF GOLD 4 PACK", "WOLF GOLD ULTIMATE", "WOLFPACK", "WONDERLAND", "WRATH OF NEZHA", "WRATH OF SETH SPLIT", "WU XIA", "WUKONG RUSH", "X-MAS MANIA PP", "XTRA DIAMONDS DELUXE", "XWAYS HOARDER 2", "XWAYS HOARDER XSPLIT", "YEAR OF THE DRAGON KING", "YETI QUEST", "YIN YANG", "YOU CAN PIGGY BANK ON IT", "YUM YUM POWERWAYS", "ZEUS", "ZEUS 2", "ZEUS VS HADES - GODS OF WAR", "ZEUS VS HADES - GODS OF WAR 250", "ZEUS VS TYPHON", "ZOMBIE CARNIVAL", "ZOMBIE SCHOOL MEGAWAYS", "ZOMBIE TRAIN", "ZUMA", "ZULU KING"];
-
-    let polaCurrentFocus = -1;
+    const polaGameList = ["10000 Wishes", "101 Lions", "101 Wolfpack", "2026 GOLDEN GOAL RUSH", "3 Buzzing Wilds", "3 Dancing Monkeys", "3 Diamonds", "3 Genie Wishes", "3 Kingdoms - Battle Of Red Cliffs", "3 Magic Eggs", "3 Wishing Wells", "5 Frozen Charms Megaways", "5 Lions", "5 Lions Dance", "5 Lions Gold", "5 Lions Megaways", "5 Lions Megaways 2", "5 Lions Reborn", "5 Mariachis", "5 Rabbits Megaways", "6 Jokers", "7 Clovers Of Fortune", "7 Monkeys", "7 Monkeys Jackpot", "7 Piggies", "777", "8 Dragons", "8 Golden Dragon Challenge", "888 Bonanza", "888 Dragons", "888 Gold", "Aces & Eights 100 Hand", "Aces & Faces GMW", "African Elephant", "African Wild", "Afroditi", "Aladdin And The Sorcerer", "Aladdin Fortune", "ALCHEMY", "Alien Invaders", "All American", "All For One", "Alley The Cat", "Almighty Zeus Empire", "Almighty Zeus Wilds", "Almighty Zeus Wilds Link&Merge", "American Blackjack", "American Wild", "Amore", "Anaconda Gold", "Ancient Egypt", "Ancient Egypt Classic", "Ancient Fortunes : Poseidon Megaways", "Ancient Island Megaways", "Angel Vs Sinner", "Angkor", "Anime Cosplay VS", "Anime Mecha Megaways", "Anton's Family", "Apocalypse Super XNudge", "Arcane Elements", "Arctic Hunt", "Arctic Wolf", "Arctic Wonders", "Argonauts", "Asgard", "ATHENA", "Atomic Kittens", "AURORA WOLF", "Aztec Blaze", "Aztec Bonanza", "Aztec Gems", "Aztec Gems Deluxe", "Aztec Gems Megaways", "Aztec King", "Aztec King Megaways", "Aztec Lucky Gems", "Aztec Powernudge", "Aztec Smash", "Aztec Treasure Hunt", "Aztlan's Gold", "Baba Yaga", "Badge Blitz", "Bai Longma", "Bald Eagle", "Balloon Balloon", "Bamboo Tiger", "Bandit Megaways", "Banditres", "Barbarian Fury", "Barbarian Riches", "Barn Festival", "Barnstormer Bucks", "Barnyard Megahays Megaways", "Bass Catch SUPER LUCK", "Bear Crazy", "Bear Games", "Be My Valentine", "Bee Keeper", "Beer Fest", "Before Time Runs Out", "Beheaded", "Benji Killed In Vegas", "Berry Billions", "Better Barn House Bonanza", "Beware The Deep Megaways", "Big 5 Baby 5", "Big Bass Amazon Xtreme", "Big Bass Bonanza", "Big Bass Bonanza - Hold And Spinner", "Big Bass Bonanza - Keeping It Reel", "Big Bass Bonanza - Reel Action", "Big Bass Bonanza 1000", "Big Bass Bonanza 3 Reeler", "Big Bass Bonanza Megaways", "Big Bass Boxing Bonus Round", "Big Bass Christmas - Frozen Lake", "Big Bass Christmas Bash", "Big Bass Crash", "Big Bass Day At The Races", "Big Bass Floats My Boat", "Big Bass Football Bonanza", "Big Bass Halloween", "Big Bass Halloween 2", "Big Bass Halloween 3", "Big Bass Hold & Spinner Megaways", "Big Bass Mission Fishin'", "Big Bass Raceday Repeat", "Big Bass Reel Repeat", "Big Bass Return To The Races", "Big Bass Splash", "Big Bass Splash 1000", "Big Bass Trophy Catch", "Big Bass Vegas Double Down Deluxe", "Big Bass Xmas Xtreme", "Big Burger Load It Up With Xtra Cheese", "Big Cash Eruption", "Big Catch", "Big Juan", "Big Top", "Bigger Barn House Bonanza", "Bigger Bass Blizzard - Christmas Catch", "Bigger Bass Bonanza", "Bigger Bass Splash", "Bikini Island", "Bikini Island Deluxe", "Bingo Mania", "Bird of Thunder", "Black Bull", "Black Diamond", "Black Jack 5 Hand GMW", "Black Jack GMW", "Black Panther", "Black Pearl", "Blackbeard's Bounty", "Blade & Fangs", "Blazing Wilds Megaways", "Blitz Super Wheel", "Blood & Shadow", "Blood & Shadow 2", "Blood Diamond", "Bloody Dawn", "Bomb Bonanza", "Bombs Away", "Bonanza Gold", "Bonus Bunnies", "Bonus Poker GMW", "Bonzo The Clown", "Book Of Aztec King", "Book Of Easter", "Book Of Golden Sands", "Book Of Kingdoms", "Book Of Shadows", "Book Of The East", "Book Of The Fallen", "Bounty Gold", "Bounty Hunter", "Bounty Hunter NLC", "Bow Of Artemis", "Break The Bank", "Breakout", "Brick House Bonanza", "Brick Snake 2000", "Bronco", "Brute Force", "Brute Force: Alien Onslaught", "Bubble Pop", "Buffalo Hunter", "Buffalo King", "Buffalo King Megaways", "Buffalo King Untamed Megaways", "Buffalo Run", "Buffalo Run Quad", "Buggy Bonus", "Bula Mula", "Bull Fiesta", "BURLESQUE 2", "Bushido Ways xNudge", "Busy Bees", "Caishen Wins", "Caishen's Cash", "Caishen's Cash Pots", "Caishens Gold", "Cake Valley", "Calaveras Explosivas", "Candy Blitz", "Candy Blitz Bombs", "Candy Corner", "Candy Jar Clusters", "Candy Rush", "Candy Stars", "Candy Tower", "Candy Village", "Captain Kraken Megaways", "Carnival Cash", "Carnival Cove", "Casino Win Spin", "Cash Bonanza", "Cash Box", "Cash Chips", "Cash Elevator", "Cash Patrol", "Cash Reef", "Cash Spin", "Cash Surge", "Cashosaurus", "Castle Of Fire", "Catfish Hunters", "CHALLENGE・FU LU SHOU XI", "CHALLENGE・GOLDEN PIG", "CHALLENGE・MAYAN CALENDAR", "CHEF HUSKY", "CHESTS OF CAI SHEN", "CHESTS OF CAI SHEN 2", "CHICKEN CHASE", "CHICKEN DROP", "CHICKEN+", "CHILLI HEAT", "CHILLI HEAT MEGAWAYS", "CHILLI HEAT SPICY SPINS", "CHINA EMPRESS", "CHOCOLATE MOOSE", "CHRISTMAS BIG BASS BONANZA", "CHRISTMAS CAROL MEGAWAYS", "CHRISTMAS GIFT RUSH", "CHRONICLES OF OLYMPUS II", "CIRCUS CARNIVAL", "CLEO'S KENO GMW", "CLEOPATRA - THE GOLDEN SCARAB", "CLEOCATRA", "CLOWNFISH TREASURE", "CLUCKIN' SWEET FEAST", "CLUMSY COOKS", "CLOVER GOLD", "CLUB TROPICANA", "CLUB TROPICANA - HAPPY HOUR", "COFFEE WILD", "COINS OF FORTUNE", "COLOSSAL CASH ZONE", "CONGO CASH", "CONGO CASH XL", "COWBOY COINS", "COWBOYS GOLD", "COYOTE CRASH", "CRANK IT UP", "CRAZY CIRCUS", "CRAZY EX-GIRLFRIEND", "CROWN OF FIRE", "CRYPTO PROFITS", "CRYSTAL CAVERNS MEGAWAYS", "CUBE?", "CULT.", "CURSE OF THE PYRAMID", "CURSE OF THE WEREWOLF MEGAWAYS", "CYBER HEIST", "CYBER PUP MEGAWAYS", "CYBERHEIST CITY", "CYCLOPS SMASH", "DANCE PARTY", "DARK OVERLORD - FINAL DUEL", "DARUMA IMPACT", "DAS XBOOT", "DAS XBOOT 2WEI!", "DAY OF DEAD", "DEAD CANARY", "DEAD MAN'S RICHES", "DEAD MEN WALKING NLC", "DEADWOOD R.I.P", "DEADWOOD XNUDGE", "DEMON POTS", "DENG DENG", "DEUCES & JOKER GMW", "DEUCES WILD GMW", "DEVIL'S 13", "DEVIL'S CROSSROAD", "DEVILICIOUS", "DIA DE LOS MUERTOS GMW", "DIAMOND CASCADE", "DIAMOND STRIKE", "DIAMOND TOWER H5", "DIAMONDS OF EGYPT", "DIAO CHAN FA DA CAI", "DICK THE DETECTIVE", "DING DONG CHRISTMAS BELLS", "DISCO BEATS", "DISCO FUNK", "DISCO LADY", "DISORDER", "DISTURBED", "DJ PSYCHO", "DOLPHIN'S ADVENTURE", "DOMINO QQ", "DOUBLE BLACK CHERRY", "DOUBLE BONUS DEUCES WILD GMW", "DOUBLE BONUS POKER", "DOUBLE DOUBLE POKER BONUS GMW", "DOUBLE HAPPINESS", "DOUBLE JOKER'S MONEY", "DOUBLE O DOLLARS", "DOUBLE VAULT", "DOWN THE RAILS", "DOWN UNDER", "DR FEELGOOD", "DRAGO - JEWELS OF FORTUNE", "DRAGON BOAT FESTIVAL", "DRAGON BONUS BACCARAT", "DRAGON CASTLE", "DRAGON GATE", "DRAGON GOLD", "DRAGON GOLD 88", "DRAGON HERO", "DRAGON HOT HOLD AND SPIN", "DRAGON KING HOT POTS", "DRAGON KINGDOM", "DRAGON KINGDOM EYES OF FIRE", "DRAGON POTS MEGAWAYS", "DRAGON TIGER", "DRAGON TIGER FORTUNES", "DRAGON TIGER GATE", "DRAGON TRIBE", "DRAGON'S GATE - BONUS CHOICE", "DRAGON'S REALM", "DRAGON'S THRONE", "DRAGON'S TREASURE QUEST", "DRACULUV", "DRILL THAT GOLD", "DUCK HUNTERS", "DUCKY DUCK", "DUEL OF NIGHT & DAY", "DUNGEON QUEST", "DWARF & DRAGON", "DWARVEN GOLD DELUXE", "DYNASTY EMPIRE", "DYNAMITE DIGGIN DOUG", "EAST COAST VS WEST COAST", "EGYPTIAN DREAMS", "EGYPTIAN DREAMS DELUXE", "EGYPTIAN FORTUNES", "EL GALLO PANCHO", "EL PATRON", "ELEPHANT", "ELEMENTAL GEMS MEGAWAYS", "EMERALD KING", "EMERALD KING - WHEEL OF WEALTH", "EMERALD KING RAINBOW ROAD", "EMPEROR CAISHEN", "EMPTY THE BANK!", "ESCAPE THE PYRAMID - FIRE & ICE", "ETERNAL EMPRESS - FREEZE TIME", "ETERNAL WAR", "EVIL GOBLINS XBOMB", "EXCALIBUR UNLEASHED", "EXTRA JUICY", "EXTRA JUICY MEGAWAYS", "EYE OF CLEOPATRA", "EYE OF SPARTACUS", "EYE OF THE STORM", "FA FA MONKEY", "FACE OFF", "FANTASTIC SEVENS", "FANTASY GARDEN", "FANTASY LAND", "FEATURE BUY・CHRISTMAS EXPRESS", "FENG DU", "FENGHUANG", "FIESTA FORTUNE", "FIFI FRUITS", "FINGER LICK N FREE SPINS", "FIONA'S CHRISTMAS FORTUNE", "FIRE 88", "FIRE ARCHER", "FIRE GODDESS H5", "FIRE HOT 100", "FIRE HOT 20", "FIRE HOT 40", "FIRE HOT 5", "FIRE IN THE HOLE 2", "FIRE IN THE HOLE XBOMB", "FIRE PORTALS", "FIRE ROOSTER", "FIRE STAMPEDE", "FIRE STAMPEDE 2", "FIRE STAMPEDE ULTIMATE", "FIRE STRIKE", "FIRE STRIKE 2", "FIREBIRD SPIRIT", "FIREWORKS", "FISH EYE", "FISHIN REELS", "FIVE PRINCESSES", "FIZZY POP", "FLAMINGO", "FLIGHT MODE", "FLOATING DRAGON", "FLOATING DRAGON - DRAGON BOAT FESTIVAL", "FLOATING DRAGON - YEAR OF THE SNAKE", "FLOATING DRAGON MEGAWAYS", "FLOATING DRAGON NEW YEAR FESTIVAL MEGAWAYS", "FLOATING DRAGON WILD HORSES", "FLY X", "FLY!", "FLYING HIGH", "FOLSOM PRISON", "FONZO'S FELINE FORTUNES", "FORGE OF OLYMPUS", "FORGING WILDS", "FORTUNE ACE", "FORTUNE ACE SUPER SCATTER", "FORTUNE BULL", "FORTUNE DOGS", "FORTUNE DRAGON", "FORTUNE GOD", "FORTUNE HIT'N ROLL", "FORTUNE OF GIZA", "FORTUNE OF OLYMPUS", "FORTUNE PAYS H5", "FORTUNE POT", "FORTUNE TIGER", "FORTUNES OF AZTEC", "FORTUNES OF AZTEC PRAGMATIC", "FOXI", "FOXY FOX", "FREAK SHOW REVELATION", "FRIDAY KLIWON", "FRIGHTENING FRANKIE", "FROGS & BUGS", "FRONT RUNNER ODDS ON", "FRONTIER FORTUNES", "FROZEN TROPICS", "FRUIT BLAST", "FRUIT PARTY", "FRUIT PARTY 2", "FRUIT PARTY DICE", "FRUIT RAINBOW", "FRUITS", "FRUITS OF THE AMAZON", "FRICE", "FRUTTI XPLOSION", "FRUITY HALLOWEEN", "FRUITY MAYAN", "FRUITY TREATS", "FRUITY XPLOSION", "FU FU FU", "FU STAR", "FUN FRUITS", "FUN FOREVER", "FUNKY FORTUNEZ", "FURY OF ANUBIS", "FURY OF ODIN MEGAWAYS", "FURRY BONANZA MEGAWAYS", "GAELIC GOLD", "GALACTIC CASH", "GANESHA TREASURE", "GANGSTERS", "GATES OF AZTEC", "GATES OF GATOT KACA", "GATES OF GATOT KACA 1000", "GATES OF GATOT KACA SUPER SCATTER", "GATES OF HADES", "GATES OF OLYMPUS", "GATES OF OLYMPUS 1000", "GATES OF OLYMPUS 1000 DICE", "GATES OF OLYMPUS DICE", "GATES OF OLYMPUS SUPER SCATTER", "GATES OF OLYMPUS XMAS 1000", "GATES OF PYROTH", "GATES OF VALHALLA", "GATOT KACA'S FURY", "GATOR HUNTERS NLC", "GEARS OF HORUS", "GEM ELEVATOR", "GEM FIRE FORTUNE", "GEM TRIO", "GEMS BONANZA", "GEMS FORTUNE", "GEMS OF SERENGETI", "GENIE'S GEM BONANZA", "GENIE'S SHOWTIME", "GHOULISH GHOST", "GLADIATORS", "GLAM ROCK", "GLORIOUS KINGDOM", "GLORY OF KING ARTHUR", "GLORY OF ROME", "GLUTTONY", "GOBLIN HEIST POWERNUDGE", "GOD OF WEALTH", "GODS OF GIZA", "GOLD KOI FORTUNE", "GOLD OASIS", "GOLD PARTY", "GOLD PARTY 2 - AFTER HOURS", "GOLD RUSH", "GOLD TRAIN", "GOLDEN CHEST", "GOLDEN DRAGON", "GOLDEN EGG", "GOLDEN GENIE & THE WALKING WILDS", "GOLDEN JADE", "GOLDEN LAND", "GOLDEN PIG", "GOLDEN PIG GMW", "GOLDEN RABBIT THREGAWAYS", "GOLDEN ROOSTER GMW", "GOLDEN SHOWER NLC", "GOLDEN UNICORN", "GOLDEN WEEK", "GOLDEN VISHNU", "GOLDEN WILD", "GOLDEN ZONGZI", "GOOD LUCK & GOOD FORTUNE", "GOPNIK", "GORILLA MAYHEM", "GRACE OF EBISU", "GRAND CASINO HEIST", "GRAPE ESCAPE", "GRAVITY BONANZA", "GREAT APES", "GREAT GHOSTS!", "GREAT LAGOON", "GREAT RHINO", "GREAT RHINO DELUXE", "GREAT RHINO MEGAWAYS", "GREEDY FORTUNE PIG", "GREEDY WOLF", "GREEK GODS", "GRIMMS BOUNTY: HANSEL & GRETEL", "HABANERO GAMES", "HALLOWEEN", "HAMMERSTORM", "HAND OF GOD", "HAND OF MIDAS 2", "HAPPY APE", "HAPPY GO LUCKY", "HAPPY HOG", "HAPPY NEW YEAR", "HARLEQUIN CARNIVAL", "HAUNTED CRYPT", "HAUNTED HARBOR", "HAUNTED HOUSE", "HEART OF CLEOPATRA", "HEART OF RIO", "HEARTBREAKERS", "HEIST FOR THE GOLDEN NUGGETS", "HELL BUTCHER", "HELLVIS WILD", "HERCULES AND PEGASUS", "HERCULES SON OF ZEUS", "HEROIC SPINS", "HIGH CHIEF SPIRIT", "HIGHLANDS", "HIGHWAY TO HELL", "HIMALAYAN WILD", "HOCKEY ATTACK", "HOKKAIDO WOLF", "HOLIDAY RIDE", "HOME OF THE BRAVE", "HONEY HONEY HONEY", "HOT 4 CASH", "HOT ASIAN FRUITS", "HOT CHILLI", "HOT FIESTA", "HOT HOT FRUIT", "HOT HOT SUMMER", "HOT NUDGE", "HOT PEPPER", "HOT SAFARI", "HOT TO BURN", "HOT TO BURN - 7 DEADLY FREE SPINS", "HOT TO BURN EXTREME", "HOT TO BURN HOLD AND SPIN", "HOT TO BURN MULTIPLIER", "HOT TUNA", "HOT VOLCANO H5", "HUNDREDS AND THOUSANDS", "HYPER HUES", "ICE ICE YETI", "ICE LOBSTER", "ICE MINTS", "ICY VENTURES", "IDOL POP FEVER", "IGAMBLE247 DRAGONS", "IMMORTAL FRUITS", "INCA QUEEN", "INDIA TREASURE", "INDIAN CASH CATCHER", "INDIAN CHIEF", "INDIANA WOLF", "INFECTIOUS 5 XWAYS", "INFECTIVE WILD", "INFERNAL FURY", "INSTANT RICH", "IRISH CROWN", "ISIBAYA QUEENS", "JACK OR BETTER GMW", "JACK QUEST - TREASURE HUNT", "JACK'S OR BETTER MULTIHAND GMW", "JACKPOT BLAZE", "JACKPOT HUNTER", "JADE EMPEROR", "JANE HUNTER AND THE MASK OF MONTEZUMA", "JAPANESE MASK", "JASMINE DREAMS", "JELLY EXPRESS", "JELLYFISH FLOW", "JELLYFISH FLOW ULTRA", "JESTER", "JESTER'S FORTUNES", "JEWEL RUSH", "JINGLE BALLS", "JOHN HUNTER & THE BOOK OF TUT RESPIN", "JOHN HUNTER AND GALILEO'S SECRETS", "JOHN HUNTER AND THE AZTEC TREASURE", "JOHN HUNTER AND THE BOOK OF TUT", "JOHN HUNTER AND THE BOOK OF TUT MEGAWAYS", "JOHN HUNTER AND THE MAYAN GODS", "JOHN HUNTER AND THE QUEST FOR BERMUDA RICHES", "JOHN HUNTER AND THE TOMB OF THE SCARAB QUEEN", "JOKER KING", "JOKER POKER GMW", "JOKER RACE", "JOKER'S GO WILD", "JOKER'S JEWELS", "JOKER'S JEWELS CASH", "JOKER'S JEWELS DICE", "JOKER'S JEWELS HOLD & SPIN", "JOKER'S JEWELS HOT", "JOKER'S JEWELS WILD", "JOKER'S REVENGE", "JOKERS JEWELS", "JOLLY FROG", "JOURNEY TO THE WEST", "JUICY FRUITS", "JUICY FRUITS MULTIHOLD", "JUGGLENAUT", "JULIUS CESAR - THE GOLDEN SCARAB", "JUMBO SAFARI", "JUMP!", "JUMP! 2", "JUNGLE GORILLA", "JUNGLE RUMBLE", "KADITA OCEAN FURY", "KANE'S INFERNO", "KAREN MANEATER", "KASSANDRA", "KENNETH MUST DIE", "KILL EM ALL", "KING CRAB", "KING OF CAIRO DELUXE", "KING OF SPEAR", "KING TUT'S TOMB", "KINGDOM OF ASGARD", "KINGDOM OF THE DEAD", "KISS MY CHAINSAW", "KITCHEN DRAMA: SUSHI MANIA", "KNIGHT HOT SPOTZ", "KNIGHTS OF STEEL", "KNIGHTS VS BARBARIANS", "KNOCKOUT FOOTBALL", "KNOCKOUT FOOTBALL RUSH", "KOI POND", "KRAKEN GOLD RUSH", "KRAKEN'S SKY BOUNTY", "KUNG HEI", "KUNGFU", "LADY GODIVA", "LAMP OF INFINITY", "LAND OF THE FREE", "LANTERN LUCK", "LAUNCH TO RICHES", "LAVA BALLS", "LEGEND OF DRAGON", "LEGEND OF HEROES MEGAWAYS", "LEGEND OF NEZHA", "LEGION X", "LEPRECHAUN CAROL", "LEPRECHAUN SONG", "LIGHTS, CAMERA, ACTION!", "LIGHTNING FRUITS", "LIGHTNING FRUITS QUAD", "LIMBO+", "LION DANCE 888", "LITTLE BIGHORN", "LITTLE GREEN MONEY", "LITTLE GEM", "LIVING THE DREAM CLASSIC", "LOBSTER BOB'S CRAZY CRAB SHACK", "LOBSTER BOB'S SEA FOOD AND WIN IT", "LOBSTER HOUSE", "LOKI'S RICHES", "LONDON HUNTER", "LONER", "LOONY BLOX", "LOVE", "LOVE AND RICHES ELDORADO", "LUAU LUAU", "LUCKY ACE", "LUCKY CLOVER GMW", "LUCKY DRAGON BALL", "LUCKY DRAGONS", "LUCKY EAST", "LUCKY FISHING MEGAWAYS", "LUCKY GRACE AND CHARM", "LUCKY JESTERS", "LUCKY LANTERN", "LUCKY MOONCAKE FESTIVAL", "LUCKY NEKO", "LUCKY NEW YEAR", "LUCKY NEW YEAR - TIGER TREASURES", "LUCKY PANDA", "LUCKY TIMES", "LUCKY TWINS POWERCLUSTER", "LUCKY TWINS WILDS", "LUCKY TWINS WILDS LINK&MERGE", "LUCKY'S WILD PUB", "LUCKY'S WILD PUB 2", "MAHJONG MANIA BLACK", "MAHJONG PANDA", "MAHJONG WAYS 2", "MAHJONG WAYS IV", "MAHJONG WINS", "MAHJONG WINS - GONG XI FA CAI", "MAHJONG WINS 2", "MAHJONG WINS 3 - BLACK SCATTER", "MAHJONG WINS BONUS", "MAHJONG WINS SUPER SCATTER", "MAHJONG WINS TRIPLE POT", "MAHJONG: ORIGIN", "MAJESTIC EXPRESS - GOLD RUN", "MAKI", "MAMMOTH GOLD MEGAWAYS", "MANHATTAN GOES WILD", "MARDI GRAS BASH", "MARIE ANTOINETTE'S RICHES", "MARMIN", "MARVELOUS FURLONGS", "MASSIVE GOLD", "MASTER C HENS FORTUNE", "MASTER HAHA", "MASTER JOKER", "MAYAN DESTINY", "MAYAN DREAMS", "MAYAN KINGDOM", "MAYAN LOST TREASURE", "MAYAN MAGIC WILDFIRE", "MEDUSA", "MEDUSA'S STONE", "MEERKAT THE EXPLORER", "MEGA 7'S", "MENTAL", "MENTAL 2", "MEOW JANKEN", "MEOW MEGAWAYS", "MERMAID'S LUCKY CHEST", "MERMAID'S MELODIES", "MERMAID'S TREASURE TROVE", "MIGHT OF FREYA MEGAWAYS", "MIGHT OF RA", "MIGHTY KONG", "MIGHTY MEDUSA", "MIGHTY MUNCHING MELONS", "MILKY WAYS", "MINES+", "MINING RUSH", "MISTA MOOSE", "MOCHIMON", "MOLEIONAIRE", "MONEY MEOW", "MONEY MONEY MONEY", "MONEY MOUSE", "MONEY ON REELS SUPER ARROW", "MONEY STACKS", "MONEY STACKS DICE", "MONEY STACKS MEGAWAYS", "MONKEY BONANZA", "MONKEY MADNESS", "MONKEY WARRIOR", "MONKEY'S GOLD XPAYS", "MOON FESTIVAL", "MOONEY'S MONEY", "MOO MOO COW", "MOONSHOT", "MOUNT MAZUMA", "MR BLING", "MR NULL'S WICKED WARES", "MUERTOS MULTIPLIER MEGAWAYS", "MULTIHAND BLACKJACK", "MUMMY HUNTER", "MUMMY MONEY", "MUMMY'S JEWELS", "MUMMY'S JEWELS 100", "MUNCHIES", "MUSTANG GOLD", "MUSTANG GOLD MEGAWAYS", "MUSTANG TRAIL", "MX MANIA", "MY GEISHA SECRET", "MY SWEET KINGDOM", "MYSTERIES OF THE DEEP", "MYSTERIOUS", "MYSTERIOUS EGYPT", "MYSTERY MICE", "MYSTERY OF THE ORIENT", "MYSTIC CHIEF", "MYSTIC FORTUNE", "MYSTIC QUEEN", "MYSTIC SHAMAN", "MYSTICAL GUARDIANS", "NAPOLEON GMW", "NAUGHTY SANTA", "NEON LIGHTS QUAD", "NEON NIGHTS", "NEON NIGHTS CLASSIC", "NEW YEARS BASH", "NIGHT MARKET", "NILE FORTUNE", "NINE TAILS", "NINE TO FIVE", "NORTH GUARDIANS", "NORTHERN LIGHTS", "OCEAN LORD", "OCEAN'S CALL", "OCTOBEER FORTUNES", "OKTOBERFEST", "OKTOBERFEST 1000", "OLD GOLD MINER MEGAWAYS", "OLYMPUS", "OLYMPUS FORTUNE", "ON AIR RADIO", "OODLES OF NOODLES", "ORACLE OF GOLD", "ORBS OF ATLANTIS", "OUTSOURCED", "OUTSOURCED PAYDAY", "OUTSOURCED: SLASH GAME", "OWLS", "PAMPER ME", "PANACHE", "PANDA FORTUNE 2", "PANDA PANDA", "PANDA WARRIOR TTG", "PANDA'S FORTUNE", "PANDEMIC RISING", "PARROT FISH TREASURE", "PARTY BEADS", "PATH OF DRAGONS", "PEAK POWER", "PEKING LUCK", "PENGUINS CHRISTMAS PARTY TIME", "PEPPE'S PEPPERONI PIZZA PLAZA", "PERFECT STRIKE", "PHARAOH - THE GOLDEN SCARAB", "PHOENIX FORGE", "PHOENIX RISES", "PIGGY BANK BILLS", "PIGGY BANKERS", "PINUP GIRLS", "PIPO PIG", "PIRATE GOLD", "PIRATE GOLD DELUXE", "PIRATE GOLDEN AGE", "PIRATE TREASURE", "PIRATE'S PLUNDER", "PIRATES PUB", "PIXIE WINGS", "PIXIES VS PIRATES", "PIZZA! PIZZA? PIZZA!", "PLINKO+", "POISON EVE", "POMPEII MEGAREELS MEGAWAYS", "PONG PONG MAHJONG 2", "PONG PONG MAHJONG JACKPOTS", "POOL SHARK", "POSEIDON GMW", "POSSESSED", "POT OF FORTUNE", "POWER OF MERLIN MEGAWAYS", "POWER OF NINJA", "POWER OF ODIN 1000", "POWER OF THOR MEGAWAYS", "PRAGMATIC BACCARAT", "PRAGMATIC ROULETTE", "PRESTO!", "PRINCE OF THE JUNGLE - TREASURE HUNT", "PRINCESS OF THE JUNGLE - TREASURE HUNT", "PROST", "PS CLUB", "PUCKER UP PRINCE", "PUB KINGS", "PUFFIN KING", "PUMPKIN PATCH", "PUNK ROCKER", "PUNK ROCKER 2", "PUNK ROCKER 3", "PUNK TOILET", "PYRAMID BONANZA", "PYRAMID KING", "QUEEN OF GODS", "QUEEN OF QUEENS", "QUEEN OF QUEENS II", "QUEENIE", "QUICK CASH SOLITAIRE", "RABBIT GARDEN", "RABBIT RUNS", "RAGING BULL", "RAGING WATERFALL MEGAWAYS", "RAINBOW GOLD", "RAINBOW POP", "RAINBOW POP DELUXE", "RAINBOW REELS", "RAINBOW TRIPL3 POP", "RAPID REELS", "RAT OF WEALTH", "RED", "RED DIAMONDS", "RED PANDA", "RED RIDING X-MAS", "REEL BANKS", "REELS DELUXE", "RELEASE THE BISON", "RELEASE THE KRAKEN", "RELEASE THE KRAKEN 2", "RELEASE THE KRAKEN MEGAWAYS", "REMEMBER GULAG", "RENEGADE", "RESURRECTING RICHES", "RETURN OF THE DEAD", "REVENGE OF LOKI MEGAWAYS", "RHINO", "RICH & HAPPY", "RIDE 'EM COWBOY", "RIDE THE LIGHTNING", "ROAD KILL", "ROAD RAGE", "ROCK BOTTOM", "ROCKET BLAST MEGAWAYS", "RODEO DRIVE", "ROLLING IN TREASURES", "ROLLING ROGER", "ROMA 2 - DRAGON SLAYER", "ROMAN EMPIRE", "ROYAL 777", "ROYAL GOLDEN DRAGON", "ROYAL RUMBLE XTRAGACHA", "RUFFLED UP", "RUJAK BONANZA", "RUNNING SUSHI", "S.O.S!", "SACRED FLOWER", "SACRED OWL", "SAFARI KING", "SALSA CASH", "SAMURAI CODE", "SAN QUENTIN 2: DEATH ROW", "SANATORIUM SECRETS", "SANTA", "SANTA CLAUS", "SANTA'S GREAT GIFTS", "SANTA'S INN", "SANTA'S SLAY", "SANTA'S WONDERLAND", "SANTA'S XMAS RUSH", "SASQUATCH CASH", "SAVANNAH LEGEND", "SCRUFFY SCALLYWAGS", "SEA FANTASY", "SEA RAIDERS", "SECRET CITY GOLD", "SECRETS OF THE DESERT", "SERIAL", "SERENGETI", "SEVEN'S GO WILD GMW", "SEVENS & JOKER WILD GMW", "SHAMAN'S VISION", "SHAOLIN FORTUNES", "SHAOLIN FORTUNES 100", "SHAMROCK QUEST", "SHIELD OF SPARTA", "SHINING KNIGHT", "SHINING HOT 100", "SHINING HOT 20", "SHINING HOT 40", "SHINING HOT 5", "SHIVERING STRINGS", "SHOGUN'S LAND", "SILKEN SANDS", "SIR BLINGALOT", "SIREN'S SPELL", "SIZZLIN"];
 
     function polaCariGame() {
-        const keyword = document.getElementById("polaUniversalSearch").value.toLowerCase();
-        const dropdown = document.getElementById("polaResultsDropdown");
-        dropdown.innerHTML = "";
-        polaCurrentFocus = -1; 
-        
-        if (keyword.length < 1) { dropdown.style.display = "none"; return; }
-
-        const matches = polaGameList.filter(g => g.toLowerCase().includes(keyword));
-        if (matches.length > 0) {
-            dropdown.style.display = "block";
-            matches.forEach((m) => {
-                const div = document.createElement("div");
-                div.className = "pola-result-item";
-                div.textContent = m;
-                div.onclick = () => { polaPilihGame(m); };
+        const query = document.getElementById('polaUniversalSearch').value.toLowerCase();
+        const dropdown = document.getElementById('polaResultsDropdown');
+        dropdown.innerHTML = '';
+        if (query.trim() === '') {
+            dropdown.style.display = 'none';
+            return;
+        }
+        const filtered = polaGameList.filter(g => g.toLowerCase().includes(query));
+        if (filtered.length > 0) {
+            dropdown.style.display = 'block';
+            filtered.forEach(game => {
+                const div = document.createElement('div');
+                div.className = 'pola-result-item';
+                div.textContent = game;
+                div.onclick = () => {
+                    document.getElementById('polaSelectedGameDisplay').value = game;
+                    dropdown.style.display = 'none';
+                    document.getElementById('polaUniversalSearch').value = '';
+                };
                 dropdown.appendChild(div);
             });
         } else {
-            dropdown.style.display = "none";
-        }
-    }
-
-    function polaPilihGame(namaGame) {
-        document.getElementById("polaSelectedGameDisplay").value = namaGame;
-        document.getElementById("polaResultsDropdown").style.display = "none";
-        document.getElementById("polaUniversalSearch").value = "";
-        polaCurrentFocus = -1;
-    }
-
-    document.getElementById("polaUniversalSearch").addEventListener("keydown", function(e) {
-        const dropdown = document.getElementById("polaResultsDropdown");
-        let items = dropdown.getElementsByClassName("pola-result-item");
-        if (dropdown.style.display === "none" || items.length === 0) return;
-
-        if (e.key === "ArrowDown") {
-            e.preventDefault(); polaCurrentFocus++; polaAddActive(items); polaScrollIntoView(items);
-        } else if (e.key === "ArrowUp") {
-            e.preventDefault(); polaCurrentFocus--; polaAddActive(items); polaScrollIntoView(items);
-        } else if (e.key === "Enter") {
-            e.preventDefault();
-            if (polaCurrentFocus > -1 && items[polaCurrentFocus]) {
-                items[polaCurrentFocus].click();
-            }
-        }
-    });
-
-    function polaAddActive(items) {
-        if (!items) return false;
-        for (let i = 0; i < items.length; i++) items[i].classList.remove("active");
-        if (polaCurrentFocus >= items.length) polaCurrentFocus = 0;
-        if (polaCurrentFocus < 0) polaCurrentFocus = (items.length - 1);
-        items[polaCurrentFocus].classList.add("active");
-    }
-
-    function polaScrollIntoView(items) {
-        if (polaCurrentFocus > -1 && items[polaCurrentFocus]) {
-            items[polaCurrentFocus].scrollIntoView({ block: "nearest", behavior: "smooth" });
+            dropdown.style.display = 'none';
         }
     }
 
     function polaAcakPola() {
-        const game = document.getElementById("polaSelectedGameDisplay").value;
-        if (!game) { alert("Pilih game dari daftar terlebih dahulu!"); return; }
-        const pola = [
-            "✅❎❎ 10x Auto Off", "❎✅❎ 20x Manual On", "✅❎✅ 30x Auto On", "❎✅✅ 40x Manual Off", 
-            "✅✅❎ 50x Auto Off", "❎❎✅ 60x Manual On", "❎✅❎ 80x Auto On", "❎✅✅ 70x Manual Off", 
-            "✅❎❎ 20x Manual Off", "❎✅❎ 10x Auto On", "✅✅✅ 40x Manual On", "❎✅✅ 30x Auto Off", 
-            "✅✅❎ 60x Manual Off", "✅❎✅ 50x Auto On", "❎✅✅ 70x Manual On", "✅✅❎ 80x Auto Off"
-        ];
-        const res = pola.sort(() => Math.random() - 0.5).slice(0, 4).join("\n");
-        document.getElementById("polaHasilPola").value = `GAME: ${game}\n\n${res}`;
-        showToast('toastPolaGen');
+        const game = document.getElementById('polaSelectedGameDisplay').value;
+        if (!game) {
+            showToast('PLEASE SELECT A GAME FIRST');
+            return;
+        }
+        
+        const r1 = Math.floor(Math.random() * 50) + 10;
+        const r2 = Math.floor(Math.random() * 50) + 10;
+        const r3 = Math.floor(Math.random() * 50) + 10;
+        
+        const type1 = Math.random() > 0.5 ? 'Auto On' : 'Auto Off';
+        const type2 = Math.random() > 0.5 ? 'Manual On' : 'Manual Off';
+        const type3 = Math.random() > 0.5 ? 'Auto On' : 'Auto Off';
+        
+        const result = `==================\nGAME: ${game}\n==================\nPattern 1: ${r1} Spin (${type1})\nPattern 2: ${r2} Spin (${type2})\nPattern 3: ${r3} Spin (${type3})\n==================`;
+        
+        document.getElementById('polaHasilPola').value = result;
+        showToast('PATTERN GENERATED');
     }
 
     function polaSalinHasil() {
-        const copyText = document.getElementById("polaHasilPola");
-        if (!copyText.value) { alert("Belum ada pola yang di-generate!"); return; }
-        copyText.select();
-        document.execCommand("copy");
-        showToast('toastPolaCopy');
+        const text = document.getElementById('polaHasilPola').value;
+        if (!text) return;
+        navigator.clipboard.writeText(text).then(() => {
+            showToast('PATTERN COPIED');
+        });
     }
-
-    // ==================== MESIN 1: LOTUS ADVANCED KALEIDOSCOPE ====================
-    const canvas = document.getElementById('cyberCanvas'); const ctx = canvas.getContext('2d');
-    let time = 0; let particles = [];
-    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-    window.addEventListener('resize', resizeCanvas); resizeCanvas();
-    function createParticle(x, y) { 
-        const isLight = document.body.classList.contains('light-theme');
-        const color1 = isLight ? '#d4af37' : '#00f0ff'; // Gold / Cyan
-        const color2 = isLight ? '#0f172a' : '#bd00ff'; // Midnight / Purple
-        return { 
-            x: x, y: y, angle: Math.random() * Math.PI * 2, 
-            speed: 0.2 + Math.random() * 0.8, radius: 0.5 + Math.random() * 1.5, 
-            color: Math.random() > 0.5 ? color1 : color2, 
-            alpha: 1, decay: 0.003 + Math.random() * 0.005 
-        }; 
-    }
-    
-    function drawLotusBackground() {
-        const isLight = document.body.classList.contains('light-theme');
-        ctx.fillStyle = isLight ? 'rgba(248, 250, 252, 0.15)' : 'rgba(2, 0, 6, 0.08)'; 
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        const centerX = canvas.width / 2; const centerY = canvas.height / 2; 
-        const baseRadius = Math.min(canvas.width, canvas.height) * 0.28; 
-        const symmetry = 8; time += 0.004; 
-        
-        if (particles.length < 60 && Math.random() < 0.3) { 
-            particles.push(createParticle(centerX + (Math.random() - 0.5) * 40, centerY + (Math.random() - 0.5) * 40)); 
-        }
-        for (let i = particles.length - 1; i >= 0; i--) {
-            let p = particles[i]; p.x += Math.cos(p.angle) * p.speed; p.y += Math.sin(p.angle) * p.speed; p.alpha -= p.decay;
-            if (p.alpha <= 0) { particles.splice(i, 1); continue; }
-            ctx.save(); ctx.globalAlpha = p.alpha; ctx.shadowBlur = 8; ctx.shadowColor = p.color; ctx.fillStyle = p.color; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fill(); ctx.restore();
-        }
-        
-        ctx.save(); ctx.translate(centerX, centerY); ctx.rotate(time * 0.08); 
-        for (let layer = 3; layer >= 1; layer--) {
-            const layerScale = layer * 0.35;
-            for (let i = 0; i < symmetry; i++) {
-                ctx.save(); ctx.rotate((i * Math.PI * 2) / symmetry);
-                const pulse = Math.sin(time * 2.5 + layer) * 15; const r = baseRadius * layerScale + pulse;
-                let grad = ctx.createRadialGradient(0, 0, 5, 0, -r, r);
-                
-                if(isLight) {
-                    if (layer === 3) { grad.addColorStop(0, 'rgba(212, 175, 55, 0)'); grad.addColorStop(0.5, 'rgba(212, 175, 55, 0.15)'); grad.addColorStop(1, 'rgba(15, 23, 42, 0)'); }
-                    else if (layer === 2) { grad.addColorStop(0, 'rgba(15, 23, 42, 0.05)'); grad.addColorStop(0.6, 'rgba(15, 23, 42, 0.15)'); grad.addColorStop(1, 'rgba(212, 175, 55, 0)'); }
-                    else { grad.addColorStop(0, 'rgba(255, 255, 255, 0.95)'); grad.addColorStop(0.25, 'rgba(212, 175, 55, 0.6)'); grad.addColorStop(1, 'rgba(15, 23, 42, 0)'); }
-                    ctx.fillStyle = grad; ctx.shadowBlur = 0;
-                } else {
-                    /* CYBERPUNK COLORS */
-                    if (layer === 3) { grad.addColorStop(0, 'rgba(0, 240, 255, 0)'); grad.addColorStop(0.5, 'rgba(0, 240, 255, 0.28)'); grad.addColorStop(1, 'rgba(189, 0, 255, 0)'); }
-                    else if (layer === 2) { grad.addColorStop(0, 'rgba(255, 0, 119, 0.05)'); grad.addColorStop(0.6, 'rgba(189, 0, 255, 0.45)'); grad.addColorStop(1, 'rgba(0, 240, 255, 0)'); }
-                    else { grad.addColorStop(0, 'rgba(2, 0, 6, 0.95)'); grad.addColorStop(0.25, 'rgba(0, 240, 255, 0.85)'); grad.addColorStop(1, 'rgba(189, 0, 255, 0)'); }
-                    ctx.fillStyle = grad; ctx.shadowBlur = layer * 15; ctx.shadowColor = layer % 2 === 0 ? '#bd00ff' : '#00f0ff';
-                }
-                
-                ctx.beginPath(); ctx.moveTo(0, 0); ctx.bezierCurveTo(-r * 0.48, -r * 0.38, -r * 0.28, -r * 0.92, 0, -r); ctx.bezierCurveTo(r * 0.28, -r * 0.92, r * 0.48, -r * 0.38, 0, 0); ctx.fill(); ctx.restore();
-            }
-        }
-        ctx.restore();
-        
-        if(!isLight) {
-            let rayGrad = ctx.createLinearGradient(0, centerY, canvas.width, centerY); 
-            rayGrad.addColorStop(0, 'rgba(0,240,255,0)'); 
-            rayGrad.addColorStop(0.5, 'rgba(0,240,255,0.45)'); 
-            rayGrad.addColorStop(1, 'rgba(0,240,255,0)');
-            ctx.fillStyle = rayGrad; ctx.fillRect(0, centerY - 1.5, canvas.width, 3);
-        }
-        requestAnimationFrame(drawLotusBackground);
-    }
-    drawLotusBackground();
 </script>
-
 </body>
 </html>
