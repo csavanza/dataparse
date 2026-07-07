@@ -8,7 +8,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;500;600;700&display=swap');
         
         :root {
-            /* KODE PERBAIKAN: Menggunakan RGBA agar background.jpg bisa terlihat tembus pandang */
+            /* TEMA DARK MODE (DEFAULT) */
             --bg-color: rgba(2, 0, 6, 0.85); 
             --container-bg: rgba(2, 0, 6, 0.82); 
             --bg-sidebar: #0a0514;
@@ -36,35 +36,34 @@
             --hover-text-color: #020006;
         }
 
+        /* TEMA LIGHT MODE (SESUAI REQUEST) */
         body.light-theme {
-            /* KODE PERBAIKAN: Transparansi untuk mode terang */
-            --bg-color: rgba(248, 250, 252, 0.88); 
+            --bg-color: #f8fafc; 
             --container-bg: rgba(255, 255, 255, 0.95); 
             --bg-sidebar: #ffffff;
             --gold: #d4af37; 
             --gold-glow: rgba(212, 175, 55, 0.15);
             --text-color: #0f172a; 
-            --sub-text: #475569; 
+            --sub-text: #64748b; 
             --table-head-bg: #e2e8f0;
-            --table-row-hover: rgba(212, 175, 55, 0.05); 
-            --input-bg: rgba(248, 250, 252, 0.85); 
-            --box-bg: rgba(241, 245, 249, 0.9);
-            --btn-copy-bg: rgba(212, 175, 55, 0.1); 
-            --btn-copy-border: #d4af37; 
-            --btn-copy-text: #b89528;
+            --table-row-hover: rgba(212, 175, 55, 0.1); 
+            --input-bg: #f8fafc; 
+            --box-bg: #f1f5f9;
+            --btn-copy-bg: rgba(42, 157, 143, 0.1); 
+            --btn-copy-border: #2a9d8f; 
+            --btn-copy-text: #1d7066;
             --btn-delete-bg: rgba(220, 38, 38, 0.08); 
             --btn-delete-border: #dc2626; 
             --btn-delete-text: #b91c1c;
-            --btn-alt-bg: rgba(15, 23, 42, 0.05); 
-            --btn-alt-border: #0f172a; 
-            --btn-alt-text: #0f172a;
+            --btn-alt-bg: rgba(212, 175, 55, 0.1); 
+            --btn-alt-border: #d4af37; 
+            --btn-alt-text: #aa8412;
             --scrollbar-thumb: #cbd5e1; 
             --scrollbar-track: #f1f5f9; 
-            --switch-active: #d4af37;
+            --switch-active: #10b981;
             --hover-text-color: #ffffff;
         }
 
-        /* KODE PERBAIKAN: Dipisahkan agar transparansi warna tidak menumpuk (double opacity) */
         html { margin: 0; padding: 0; width: 100%; height: 100vh; background-color: #020006; }
         
         body {
@@ -76,7 +75,7 @@
             position: relative;
         }
 
-        /* KODE PERBAIKAN: Layer khusus untuk Background Image */
+        /* BACKGROUND IMAGE LOGIC: DARK MODE */
         body::before {
             content: "";
             position: fixed;
@@ -84,12 +83,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('background.jpg') center center / cover no-repeat;
-            z-index: -2; /* Letakkan paling belakang di bawah cyberCanvas */
+            background: url('background-dark.jpg') center center / cover no-repeat;
+            z-index: -2;
+            transition: background-image 0.4s ease-in-out;
+        }
+
+        /* BACKGROUND IMAGE LOGIC: LIGHT MODE */
+        body.light-theme::before {
+            background: url('background-light.jpg') center center / cover no-repeat;
         }
 
         #cyberCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0.6; }
-        body.light-theme #cyberCanvas { opacity: 0.15; }
+        body.light-theme #cyberCanvas { opacity: 0.1; }
 
         .sidebar {
             width: 250px; min-width: 250px; background-color: var(--bg-sidebar);
@@ -130,7 +135,7 @@
             color: var(--gold); border: 1px solid var(--gold); background: var(--gold-glow);
             text-shadow: 0 0 8px var(--gold-glow);
         }
-        body.light-theme .tab-btn.active { background: #fffbeb; text-shadow: none; }
+        body.light-theme .tab-btn.active { background: #fffbeb; text-shadow: none; border-color: #cbd5e1; color: #0f172a; }
 
         .main-content {
             flex: 1; display: flex; flex-direction: column; padding: 30px 40px;
@@ -199,7 +204,7 @@
         .upload-area input[type="file"] { position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0; cursor: pointer; }
         .upload-text { color: var(--sub-text); font-size: 12px; font-weight: 600; letter-spacing: 0.5px; }
         .file-status { margin-bottom: 15px; background: rgba(0, 240, 255, 0.05); border: 1px solid var(--gold); color: var(--gold); padding: 12px; font-size: 11px; font-weight: bold; display: none; border-radius: var(--global-radius); font-family: monospace; box-shadow: 0 0 10px var(--gold-glow);}
-        body.light-theme .file-status { box-shadow: none; }
+        body.light-theme .file-status { box-shadow: none; border-color: #cbd5e1; }
 
         .action-buttons { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
         .btn { padding: 10px 20px; border: 1px solid transparent; font-size: 10px; font-weight: 700; cursor: pointer; transition: all 0.25s ease; text-transform: uppercase; letter-spacing: 1px; border-radius: var(--global-radius); }
@@ -289,27 +294,13 @@
         .pola-result-item:hover, .pola-result-item.active { background: rgba(0, 240, 255, 0.15); color: var(--gold); font-weight: bold; }
         
         .pola-guide-box { margin-top: 15px; background: var(--input-bg); padding: 15px; border-radius: var(--global-radius); border: 1px dashed var(--gold); font-size: 10px; color: var(--sub-text); line-height: 1.6; }
+        body.light-theme .pola-guide-box { border-color: #cbd5e1; }
         .pola-guide-box span { color: var(--gold); font-weight: bold; }
 
         .filter-container { background: var(--input-bg); border: 1px dashed rgba(0, 240, 255, 0.3); padding: 15px; margin-bottom: 15px; border-radius: var(--global-radius); }
         body.light-theme .filter-container { border-color: #cbd5e1; }
         .filter-label { font-size: 10px; color: var(--gold); font-weight: bold; margin-bottom: 8px; display: block; letter-spacing: 0.5px; }
 
-        /* KODE PERBAIKAN: Border Hitam Tegas Khusus Light Mode */
-        body.light-theme .pola-input, body.light-theme .pola-textarea,
-        body.light-theme input, body.light-theme textarea, body.light-theme select,
-        body.light-theme table, body.light-theme th, body.light-theme td,
-        body.light-theme .sidebar, body.light-theme .tab-btn,
-        body.light-theme .filter-container, body.light-theme .pola-guide-box,
-        body.light-theme #polaResultsDropdown, body.light-theme .pola-result-item,
-        body.light-theme .upload-area, body.light-theme .settings-dropdown,
-        body.light-theme .guide-content, body.light-theme .btn,
-        body.light-theme .table-container, body.light-theme .file-status {
-            border-color: #000000 !important;
-        }
-        body.light-theme .setting-row, body.light-theme .pola-result-item {
-            border-bottom-color: #000000 !important;
-        }
     </style>
 </head>
 <body>
@@ -821,7 +812,7 @@
         }
     }
 
-    // KODE PERBAIKAN: Fungsi Navigasi Keyboard (Panah Atas, Bawah, Enter)
+    // Fungsi Navigasi Keyboard (Panah Atas, Bawah, Enter)
     document.getElementById('polaUniversalSearch').addEventListener('keydown', function(e) {
         const dropdown = document.getElementById('polaResultsDropdown');
         if (!dropdown || dropdown.style.display === 'none') return;
